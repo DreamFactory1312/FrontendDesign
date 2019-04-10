@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +16,12 @@ import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dreamfactory.novax.R;
 import com.dreamfactory.novax.activity.MenuActivity;
+import com.dreamfactory.novax.adapter.FragmentHomeMenuPageAdapter;
+import com.dreamfactory.novax.model.HomeMenu;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -26,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import lecho.lib.hellocharts.listener.LineChartOnValueSelectListener;
 import lecho.lib.hellocharts.model.Axis;
 import lecho.lib.hellocharts.model.AxisValue;
 import lecho.lib.hellocharts.model.Line;
@@ -43,9 +49,12 @@ public class MenuHomeFragment extends Fragment {
     private MaterialSpinner spinnerMenuHome;
     private LineChartView lineChartViewMenuHome;
     private SeekBar seekBarMenuHome;
-    private LinearLayout llReturnVsRiskLayout, llDiversificationLayout;
-    private TextView txtReturnVsRisk, txtDiversification;
+    private LinearLayout llReturnVsRiskLayout, llDiversificationLayout, llProfitAndLoss, llCompletedOrder;
+    private TextView txtReturnVsRisk, txtDiversification, txtProfitAndLoss, txtCompletedOrder, txtProfitLossCount;
 
+    private RecyclerView recyclerViewMenuHome;
+    private FragmentHomeMenuPageAdapter homeMenuPageAdapter;
+    private List<HomeMenu> homeMenuList = new ArrayList<>();
 
     private String[] xAxisData = {"Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept",
             "Oct", "Nov", "Dec"};
@@ -66,32 +75,81 @@ public class MenuHomeFragment extends Fragment {
         spinnerMenuHome = view.findViewById(R.id.spinner_menu_home);
         lineChartViewMenuHome = view.findViewById(R.id.lineChartViewMenuHome);
         seekBarMenuHome = view.findViewById(R.id.seekBarMenuHome);
+
         llReturnVsRiskLayout = view.findViewById(R.id.llReturnVsRiskLayout);
         llDiversificationLayout = view.findViewById(R.id.llDiversificationLayout);
         txtReturnVsRisk = view.findViewById(R.id.txtReturnVsRisk);
         txtDiversification = view.findViewById(R.id.txtDiversification);
 
+        llProfitAndLoss = view.findViewById(R.id.llProfitAndLoss);
+        llCompletedOrder = view.findViewById(R.id.llCompletedOrder);
+        txtCompletedOrder = view.findViewById(R.id.txtCompletedOrder);
+        txtProfitAndLoss = view.findViewById(R.id.txtProfitAndLoss);
+
+        txtProfitLossCount = view.findViewById(R.id.txtProfitLossCount);
+
+        recyclerViewMenuHome = view.findViewById(R.id.recyclerViewMenuHome);
+        recyclerViewMenuHome.setHasFixedSize(false);
+        recyclerViewMenuHome.setLayoutManager(new LinearLayoutManager(getContext()));
+
 
         implementationSpinnerMenuHome();
         implementationLineChartViewMenuHome();
         implementationSeekBarMenuHome();
+
         implementationllReturnVsRiskLayout();
         implementationllDiversificationLayout();
 
+        implementationllProfitAndLossLayout();
+        implementationllCompletedOrderLayout();
+
+        implementationRecyclerViewMenuHome();
+
 
         return view;
+    }
+
+    private void implementationRecyclerViewMenuHome() {
+        homeMenuList.clear();
+        homeMenuList.add(new HomeMenu(R.drawable.icon_deposit_rules_money, "US:NVIDIA", "40+(1.5%)"));
+        homeMenuList.add(new HomeMenu(R.drawable.icon_deposit_rules_money, "US:AMD", "40+(1.5%)"));
+        homeMenuPageAdapter = new FragmentHomeMenuPageAdapter(homeMenuList, getContext());
+        recyclerViewMenuHome.setAdapter(homeMenuPageAdapter);
+    }
+
+    private void implementationllCompletedOrderLayout() {
+        llCompletedOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                llProfitAndLoss.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
+                txtProfitAndLoss.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+
+                llCompletedOrder.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryLight));
+                txtCompletedOrder.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+            }
+        });
+    }
+
+    private void implementationllProfitAndLossLayout() {
+        llProfitAndLoss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                llCompletedOrder.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
+                txtCompletedOrder.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+
+                llProfitAndLoss.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryLight));
+                txtProfitAndLoss.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+            }
+        });
     }
 
     private void implementationllDiversificationLayout() {
         llDiversificationLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //txtDiversification.setText("Diverfication");
                 txtDiversification.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-                //llDiversificationLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));
                 llDiversificationLayout.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryLight));
 
-                //txtReturnVsRisk.setText("Return vs Risk");
                 txtReturnVsRisk.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
                 llReturnVsRiskLayout.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
             }
@@ -133,7 +191,7 @@ public class MenuHomeFragment extends Fragment {
         List lines = new ArrayList();
         lines.add(line);
 
-        LineChartData data = new LineChartData();
+        final LineChartData data = new LineChartData();
         data.setLines(lines);
 
         Axis xAxis = new Axis();
@@ -153,6 +211,19 @@ public class MenuHomeFragment extends Fragment {
         viewport.top = 10;  //set max value of Y axies
         lineChartViewMenuHome.setMaximumViewport(viewport);
         lineChartViewMenuHome.setCurrentViewport(viewport);
+
+        lineChartViewMenuHome.setOnValueTouchListener(new LineChartOnValueSelectListener() {
+
+            @Override
+            public void onValueSelected(int lineIndex, int pointIndex, PointValue value) {
+                Toast.makeText(getActivity(), "Touched: " + value.getY(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onValueDeselected() {
+
+            }
+        });
     }
 
     private void implementationSpinnerMenuHome() {

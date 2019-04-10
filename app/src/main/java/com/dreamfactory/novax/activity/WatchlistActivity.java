@@ -36,9 +36,11 @@ public class WatchlistActivity extends AppCompatActivity implements NavigationVi
         toolbar = (Toolbar) findViewById(R.id.toolbar_watchlist);
         setSupportActionBar(toolbar);
         toolbar.setBackgroundColor(ContextCompat.getColor(WatchlistActivity.this, R.color.colorPrimary));
+
         watchlistRecyclerView = findViewById(R.id.watchlistRecycler);
         watchlistRecyclerView.setHasFixedSize(false);
         watchlistRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         watchlists.clear();
         watchlists.add(new Watchlist(R.drawable.icon_nvedia, "US: NVIDIA", "40", "15", "30,372.50", "4,500", "-22.4", "39.73"));
         watchlists.add(new Watchlist(R.drawable.icon_facebook, "US: NVIDIA", "40", "15", "30,372.50", "4,500", "-22.4", "39.73"));
@@ -96,9 +98,9 @@ public class WatchlistActivity extends AppCompatActivity implements NavigationVi
             Toast.makeText(this, "Clicked: " + item.getTitle(), Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_watchlist) {
 
-
         } else if (id == R.id.nav_contact_us) {
-            Toast.makeText(this, "Clicked: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+            Intent intent1 = new Intent(this, ContactUsActivity.class);
+            startActivity(intent1);
         } else if (id == R.id.nav_logout) {
             Toast.makeText(this, "Clicked: " + item.getTitle(), Toast.LENGTH_SHORT).show();
         }

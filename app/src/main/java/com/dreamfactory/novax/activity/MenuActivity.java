@@ -164,7 +164,8 @@ public class MenuActivity extends AppCompatActivity
             Intent intent=new Intent(MenuActivity.this,WatchlistActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_contact_us) {
-            Toast.makeText(this, "Clicked: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+            Intent intent1 = new Intent(this, ContactUsActivity.class);
+            startActivity(intent1);
         } else if (id == R.id.nav_logout) {
             Toast.makeText(this, "Clicked: " + item.getTitle(), Toast.LENGTH_SHORT).show();
         }
