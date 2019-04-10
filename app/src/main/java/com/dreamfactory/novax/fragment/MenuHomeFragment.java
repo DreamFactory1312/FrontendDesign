@@ -111,8 +111,8 @@ public class MenuHomeFragment extends Fragment {
 
     private void implementationRecyclerViewMenuHome() {
         homeMenuList.clear();
-        homeMenuList.add(new HomeMenu(R.drawable.icon_deposit_rules_money, "US:NVIDIA", "40+(1.5%)"));
-        homeMenuList.add(new HomeMenu(R.drawable.icon_deposit_rules_money, "US:AMD", "40+(1.5%)"));
+        homeMenuList.add(new HomeMenu(R.drawable.icon_nvedia, "US:NVIDIA", "40+(1.5%)"));
+        homeMenuList.add(new HomeMenu(R.drawable.icon_facebook, "US:AMD", "40+(1.5%)"));
         homeMenuPageAdapter = new FragmentHomeMenuPageAdapter(homeMenuList, getContext());
         recyclerViewMenuHome.setAdapter(homeMenuPageAdapter);
     }
