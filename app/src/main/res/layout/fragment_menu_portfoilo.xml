@@ -68,7 +68,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:gravity="center"
-                        android:text="DKD"
+                        android:text="HKD"
                         android:textSize="18sp"
                         android:textStyle="normal" />
                 </LinearLayout>
@@ -131,8 +131,9 @@
                             android:layout_marginBottom="10dp"
                             android:drawableRight="@drawable/icon_return_vs_risk"
                             android:text="Return Vs Risk"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textColor="@color/white"
-                            android:textSize="14sp"
+                            android:textSize="12sp"
                             android:textStyle="normal" />
 
                         <SeekBar
@@ -165,8 +166,9 @@
                             android:layout_weight="1"
                             android:gravity="start"
                             android:text="Low"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textColor="@color/white"
-                            android:textSize="11sp"
+                            android:textSize="10sp"
                             android:textStyle="normal" />
 
                         <TextView
@@ -176,9 +178,9 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Medium"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textColor="@color/white"
-                            android:textSize="11sp"
-                            android:textStyle="normal" />
+                            android:textSize="10sp" />
 
                         <TextView
                             android:id="@+id/txtHigh"
@@ -187,8 +189,9 @@
                             android:layout_weight="1"
                             android:gravity="end"
                             android:text="High"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textColor="@color/white"
-                            android:textSize="11sp"
+                            android:textSize="10sp"
                             android:textStyle="normal" />
 
                     </LinearLayout>
@@ -223,8 +226,9 @@
                             android:layout_marginBottom="10dp"
                             android:drawableRight="@drawable/icon_return_vs_risk"
                             android:text="Diversification"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textColor="@color/white"
-                            android:textSize="14sp"
+                            android:textSize="12sp"
                             android:textStyle="normal" />
 
                         <SeekBar
@@ -255,8 +259,9 @@
                             android:layout_weight="1"
                             android:gravity="start"
                             android:text="Low"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textColor="@color/white"
-                            android:textSize="11sp"
+                            android:textSize="10sp"
                             android:textStyle="normal" />
 
                         <TextView
@@ -266,8 +271,9 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Medium"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textColor="@color/white"
-                            android:textSize="11sp"
+                            android:textSize="10sp"
                             android:textStyle="normal" />
 
                         <TextView
@@ -277,8 +283,9 @@
                             android:layout_weight="1"
                             android:gravity="end"
                             android:text="High"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textColor="@color/white"
-                            android:textSize="11sp"
+                            android:textSize="10sp"
                             android:textStyle="normal" />
 
                     </LinearLayout>
