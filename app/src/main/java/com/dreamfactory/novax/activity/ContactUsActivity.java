@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -15,6 +16,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.dreamfactory.novax.R;
@@ -33,16 +35,19 @@ public class ContactUsActivity extends AppCompatActivity implements NavigationVi
     MapView mapView;
     GoogleMap googleMap;
     Marker mCurrLocationMarker;
+    private FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contactus_menu);
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
         toolbar = (Toolbar) findViewById(R.id.toolbar_contactus);
+        floatingActionButton=findViewById(R.id.fabbtn_contactus_page);
+
         setSupportActionBar(toolbar);
         toolbar.setBackgroundColor(ContextCompat.getColor(ContactUsActivity.this, R.color.colorPrimary));
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_contactus);
@@ -55,7 +60,12 @@ public class ContactUsActivity extends AppCompatActivity implements NavigationVi
         navigationView.setNavigationItemSelectedListener(this);
 
 
-
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ContactUsActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -90,7 +100,8 @@ public class ContactUsActivity extends AppCompatActivity implements NavigationVi
         int id = item.getItemId();
 
         if (id == R.id.nav_balance) {
-            Toast.makeText(this, "Clicked: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, BalanceActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_watchlist) {
             Intent intent = new Intent(this, WatchlistActivity.class);
             startActivity(intent);

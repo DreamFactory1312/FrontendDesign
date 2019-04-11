@@ -178,6 +178,7 @@ public class MenuHomeFragment extends Fragment {
     }
 
     private void implementationLineChartViewMenuHome() {
+
         List yAxisValues = new ArrayList();
         List xAisValues = new ArrayList();
 

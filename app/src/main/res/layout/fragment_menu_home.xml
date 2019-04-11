@@ -69,12 +69,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="vertical">
 
                 <lecho.lib.hellocharts.view.LineChartView
                     android:id="@+id/lineChartViewMenuHome"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
+                    android:layout_height="150dp" />
 
             </LinearLayout>
 

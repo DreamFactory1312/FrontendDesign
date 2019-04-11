@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dreamfactory.novax.R;
 import com.dreamfactory.novax.model.Watchlist;
@@ -55,7 +56,7 @@ public class WatchlistSearchAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         ((WatchlistViewHolder) viewHolder).img_product.setImageResource(list.getImg_product());
         int itemViewType = getItemViewType(position);
         if (itemViewType == USER_TYPE) {
-            ((WatchlistViewHolder) viewHolder).img_toggle_add.setImageResource(R.drawable.icon_add);
+            ((WatchlistViewHolder) viewHolder).img_toggle_add.setImageResource(R.drawable.icon_adding);
         } else {
             ((WatchlistViewHolder) viewHolder).img_toggle_add.setImageResource(R.drawable.icon_tick);
         }
@@ -84,6 +85,13 @@ public class WatchlistSearchAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
             img_product=itemView.findViewById(R.id.img_product);
             img_toggle_add=itemView.findViewById(R.id.img_toggle_add);
+
+            img_toggle_add.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(mcontext, "Clicked", Toast.LENGTH_SHORT).show();
+                }
+            });
 
 
         }

@@ -14,9 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.ConvertActivity">
-
+        <activity
+            android:name=".activity.BalanceActivity"
+            android:label="@string/title_activity_balance"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity android:name=".activity.ConvertActivity"></activity>
         <activity
             android:name=".activity.ContactUsActivity"
             android:label="@string/title_activity_contactus"
@@ -52,7 +55,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.DepositeActivity" />
+        <activity
+            android:name=".activity.DepositeActivity"
+            android:label="@string/title_activity_deposite_rules"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.TestingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

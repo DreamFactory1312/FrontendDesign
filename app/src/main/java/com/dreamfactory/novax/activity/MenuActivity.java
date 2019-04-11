@@ -128,11 +128,11 @@ public class MenuActivity extends AppCompatActivity
                 break;
 
             case 1:
-                toolbar.setTitle("Portfolio");
+                toolbar.setTitle("Portfolios");
                 break;
 
             case 2:
-                toolbar.setTitle("Order");
+                toolbar.setTitle("Orders");
                 break;
 
             case 3:
@@ -182,7 +182,8 @@ public class MenuActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_balance) {
-            Toast.makeText(this, "Clicked: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, BalanceActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_watchlist) {
             Intent intent = new Intent(MenuActivity.this, WatchlistActivity.class);
             startActivity(intent);

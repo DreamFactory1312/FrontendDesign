@@ -95,7 +95,8 @@ public class WatchlistActivity extends AppCompatActivity implements NavigationVi
         int id = item.getItemId();
 
         if (id == R.id.nav_balance) {
-            Toast.makeText(this, "Clicked: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, BalanceActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_watchlist) {
 
         } else if (id == R.id.nav_contact_us) {

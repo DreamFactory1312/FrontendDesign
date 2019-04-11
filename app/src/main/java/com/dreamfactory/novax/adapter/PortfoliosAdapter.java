@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dreamfactory.novax.R;
 import com.dreamfactory.novax.model.Watchlist;
@@ -53,7 +54,7 @@ public class PortfoliosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     public class WatchlistViewHolder extends RecyclerView.ViewHolder{
 
-         ImageView img_product;
+         ImageView img_product,right_arrow;
          TextView txt_product_name,txt_product_price,txt_product_percentage,txt_product_amount,txt_product_share_amount,txt_product_loss,txt_product_loss_weight;
 
         public WatchlistViewHolder(@NonNull View itemView) {
@@ -68,6 +69,13 @@ public class PortfoliosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             txt_product_loss_weight=itemView.findViewById(R.id.txt_product_loss_weight);
 
             img_product=itemView.findViewById(R.id.img_product);
+            right_arrow=itemView.findViewById(R.id.right_arrow);
+            right_arrow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(mcontext, "Clicked", Toast.LENGTH_SHORT).show();
+                }
+            });
 
 
         }
