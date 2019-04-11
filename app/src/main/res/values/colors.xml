@@ -5,6 +5,8 @@
     <color name="colorAccent">#ffffff</color>
     <color name="navigationBarColor">#180F0E</color>
     <color name="bgLayoutColor">#CFE3E3</color>
+    <color name="colorReturnVsRisk">#7B7BCD</color>
+    <color name="colorDiversification">#D47578</color>
 
     <color name="colorYellow">#f79604</color>
     <color name="text_menu">#ffffff</color>

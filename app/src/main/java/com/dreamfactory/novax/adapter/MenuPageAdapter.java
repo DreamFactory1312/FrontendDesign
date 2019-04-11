@@ -24,9 +24,9 @@ public class MenuPageAdapter extends FragmentPagerAdapter {
             case 0:
                 return new MenuHomeFragment();
             case 1:
-                return new MenuOrderFragment();
-            case 2:
                 return new MenuPortfoiloFragment();
+            case 2:
+                return new MenuOrderFragment();
             case 3:
                 return new MenuSocialFragment();
         }

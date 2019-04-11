@@ -79,6 +79,8 @@ public class MenuActivity extends AppCompatActivity
                     getWindow().setStatusBarColor(ContextCompat.getColor(MenuActivity.this, R.color.colorPrimary));
                 }
 
+                setToolBarTitle(tab.getPosition());
+
                 /*if (tab.getPosition() == 1) {
                     toolbar.setBackgroundColor(ContextCompat.getColor(MenuActivity.this, R.color.colorAccent));
                     menuTabLayout.setBackgroundColor(ContextCompat.getColor(MenuActivity.this, R.color.colorAccent));
@@ -116,6 +118,27 @@ public class MenuActivity extends AppCompatActivity
         });
 
         menuViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(menuTabLayout));
+    }
+
+    private void setToolBarTitle(int position) {
+        switch (position) {
+
+            case 0:
+                toolbar.setTitle("Home");
+                break;
+
+            case 1:
+                toolbar.setTitle("Portfolio");
+                break;
+
+            case 2:
+                toolbar.setTitle("Order");
+                break;
+
+            case 3:
+                toolbar.setTitle("Social");
+                break;
+        }
     }
 
     @Override
@@ -161,7 +184,7 @@ public class MenuActivity extends AppCompatActivity
         if (id == R.id.nav_balance) {
             Toast.makeText(this, "Clicked: " + item.getTitle(), Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_watchlist) {
-            Intent intent=new Intent(MenuActivity.this,WatchlistActivity.class);
+            Intent intent = new Intent(MenuActivity.this, WatchlistActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_contact_us) {
             Intent intent1 = new Intent(this, ContactUsActivity.class);

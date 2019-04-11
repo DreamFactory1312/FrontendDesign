@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">NovaX</string>
-    <string name="title_activity_menu">MenuActivity</string>
+    <string name="title_activity_menu">Home</string>
     <string name="title_activity_watchlistsearch">Search</string>
     <string name="title_activity_watchlist">Watchlist</string>
     <string name="title_activity_contactus">Contact Us</string>
@@ -16,4 +16,5 @@
     <string name="balance">Balance</string>
     <string name="watchlist">Watchlist</string>
     <string name="contact_us">Contact Us</string>
+    <string name="profitloss"><![CDATA[Profit & Loss]]></string>
 </resources>

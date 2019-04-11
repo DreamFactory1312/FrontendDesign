@@ -152,6 +152,8 @@ public class MenuHomeFragment extends Fragment {
 
                 txtReturnVsRisk.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
                 llReturnVsRiskLayout.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
+
+                seekBarMenuHome.setProgress(80);
             }
         });
     }
@@ -165,12 +167,14 @@ public class MenuHomeFragment extends Fragment {
 
                 txtReturnVsRisk.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
                 llReturnVsRiskLayout.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryLight));
+
+                seekBarMenuHome.setProgress(40);
             }
         });
     }
 
     private void implementationSeekBarMenuHome() {
-        seekBarMenuHome.setMax(150);
+        seekBarMenuHome.setMax(100);
     }
 
     private void implementationLineChartViewMenuHome() {
@@ -206,7 +210,9 @@ public class MenuHomeFragment extends Fragment {
         yAxis.setTextSize(12);
         data.setAxisYLeft(yAxis);
 
+
         lineChartViewMenuHome.setLineChartData(data);
+
         Viewport viewport = new Viewport(lineChartViewMenuHome.getMaximumViewport());
         viewport.top = 10;  //set max value of Y axies
         lineChartViewMenuHome.setMaximumViewport(viewport);

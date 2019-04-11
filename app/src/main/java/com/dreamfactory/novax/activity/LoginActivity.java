@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.dreamfactory.novax.R;
 
@@ -16,11 +17,19 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         btn_signin = findViewById(R.id.btn_signin);
+
         btn_signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(LoginActivity.this, WelcomeActivity.class);
                 startActivity(intent1);
+            }
+        });
+
+        ((TextView) findViewById(R.id.txt_login_signup)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ConvertActivity.class));
             }
         });
 
