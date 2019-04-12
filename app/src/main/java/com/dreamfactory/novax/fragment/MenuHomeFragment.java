@@ -3,6 +3,7 @@ package com.dreamfactory.novax.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -48,7 +49,8 @@ public class MenuHomeFragment extends Fragment {
 
     private MaterialSpinner spinnerMenuHome;
     private LineChartView lineChartViewMenuHome;
-    private SeekBar seekBarMenuHome;
+    private ProgressBar progressBarMenuHome;
+
     private LinearLayout llReturnVsRiskLayout, llDiversificationLayout, llProfitAndLoss, llCompletedOrder;
     private TextView txtReturnVsRisk, txtDiversification, txtProfitAndLoss, txtCompletedOrder, txtProfitLossCount;
 
@@ -59,6 +61,11 @@ public class MenuHomeFragment extends Fragment {
     private String[] xAxisData = {"Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept",
             "Oct", "Nov", "Dec"};
     private int[] yAxisData = {50, 20, 15, 30, 20, 60, 15, 40, 45, 10, 90, 18};
+
+    //Handle ProgressBar
+    private int progress = 0;
+    private Handler handler = new Handler();
+
 
     public MenuHomeFragment() {
         // Required empty public constructor
@@ -74,7 +81,7 @@ public class MenuHomeFragment extends Fragment {
 
         spinnerMenuHome = view.findViewById(R.id.spinner_menu_home);
         lineChartViewMenuHome = view.findViewById(R.id.lineChartViewMenuHome);
-        seekBarMenuHome = view.findViewById(R.id.seekBarMenuHome);
+        progressBarMenuHome = view.findViewById(R.id.progressBarMenuHome);
 
         llReturnVsRiskLayout = view.findViewById(R.id.llReturnVsRiskLayout);
         llDiversificationLayout = view.findViewById(R.id.llDiversificationLayout);
@@ -95,7 +102,9 @@ public class MenuHomeFragment extends Fragment {
 
         implementationSpinnerMenuHome();
         implementationLineChartViewMenuHome();
-        implementationSeekBarMenuHome();
+        implementationProgressBarMenuHome();
+
+        //implementationSeekBarMenuHome();
 
         implementationllReturnVsRiskLayout();
         implementationllDiversificationLayout();
@@ -105,8 +114,53 @@ public class MenuHomeFragment extends Fragment {
 
         implementationRecyclerViewMenuHome();
 
+        firstCall();
+
 
         return view;
+    }
+
+    private void firstCall() {
+        llReturnVsRiskLayout.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.left_convertlayout_rounded_sharpe));
+        txtReturnVsRisk.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+
+        llDiversificationLayout.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.right_convertlayout_rounded_shape_white));
+        txtReturnVsRisk.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+
+        llCompletedOrder.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.right_convertlayout_rounded_sharpe));
+        txtCompletedOrder.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+
+        llProfitAndLoss.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.left_convertlayout_rounded_shape_white));
+        txtProfitAndLoss.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+
+    }
+
+    private void implementationProgressBarMenuHome() {
+
+        //progress = progressBarMenuHome.getProgress();
+
+        if (progress > 0) {
+            progress = 0;
+        }
+
+        new Thread(new Runnable() {
+            public void run() {
+                while (progress < getProgressData()) {
+                    progress += 1;
+                    handler.post(new Runnable() {
+                        public void run() {
+                            progressBarMenuHome.setProgress(progress);
+                        }
+                    });
+                    try {
+                        // Sleep for 100 milliseconds to show the progress slowly.
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
     }
 
     private void implementationRecyclerViewMenuHome() {
@@ -121,10 +175,10 @@ public class MenuHomeFragment extends Fragment {
         llCompletedOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                llProfitAndLoss.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
+                llProfitAndLoss.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.left_convertlayout_rounded_shape_white));
                 txtProfitAndLoss.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
 
-                llCompletedOrder.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryLight));
+                llCompletedOrder.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.right_convertlayout_rounded_sharpe));
                 txtCompletedOrder.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
             }
         });
@@ -134,10 +188,10 @@ public class MenuHomeFragment extends Fragment {
         llProfitAndLoss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                llCompletedOrder.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
+                llCompletedOrder.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.right_convertlayout_rounded_shape_white));
                 txtCompletedOrder.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
 
-                llProfitAndLoss.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryLight));
+                llProfitAndLoss.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.left_convertlayout_rounded_sharpe));
                 txtProfitAndLoss.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
             }
         });
@@ -148,12 +202,12 @@ public class MenuHomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 txtDiversification.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-                llDiversificationLayout.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryLight));
+                llDiversificationLayout.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.right_convertlayout_rounded_sharpe));
 
                 txtReturnVsRisk.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
-                llReturnVsRiskLayout.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
+                llReturnVsRiskLayout.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.left_convertlayout_rounded_shape_white));
 
-                seekBarMenuHome.setProgress(80);
+                implementationProgressBarMenuHome();
             }
         });
     }
@@ -163,18 +217,14 @@ public class MenuHomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 txtDiversification.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
-                llDiversificationLayout.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
+                llDiversificationLayout.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.right_convertlayout_rounded_shape_white));
 
                 txtReturnVsRisk.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-                llReturnVsRiskLayout.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryLight));
+                llReturnVsRiskLayout.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.left_convertlayout_rounded_sharpe));
 
-                seekBarMenuHome.setProgress(40);
+                implementationProgressBarMenuHome();
             }
         });
-    }
-
-    private void implementationSeekBarMenuHome() {
-        seekBarMenuHome.setMax(100);
     }
 
     private void implementationLineChartViewMenuHome() {
@@ -234,14 +284,14 @@ public class MenuHomeFragment extends Fragment {
     }
 
     private void implementationSpinnerMenuHome() {
+
+        spinnerMenuHome.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.right_convertlayout_rounded_sharpe));
         spinnerMenuHome.setItems("2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020");
         spinnerMenuHome.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
             public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
                 Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
 
-//                lineChartViewMenuHome.clearAnimation();
-//                lineChartViewMenuHome.clearFocus();
                 implementationLineChartViewMenuHome();
             }
         });
@@ -249,5 +299,9 @@ public class MenuHomeFragment extends Fragment {
 
     public int getArr() {
         return new Random().nextInt(10) + 1;
+    }
+
+    public int getProgressData() {
+        return new Random().nextInt(100) + 1;
     }
 }

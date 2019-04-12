@@ -2,6 +2,7 @@ package com.dreamfactory.novax.fragment;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,18 +11,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.SeekBar;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.dreamfactory.novax.R;
-import com.dreamfactory.novax.adapter.FragmentHomeMenuPageAdapter;
 import com.dreamfactory.novax.adapter.PortfoliosAdapter;
-import com.dreamfactory.novax.adapter.WatchlistAdapter;
-import com.dreamfactory.novax.model.HomeMenu;
 import com.dreamfactory.novax.model.Watchlist;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 /**
@@ -35,7 +34,11 @@ public class MenuPortfoiloFragment extends Fragment {
 
     private LinearLayout llMenuPortfoiloAll, llMenuPortfoiloHKD, llMenuPortfoiloUSD;
     private TextView txtFirstPercentage, txtSecondPercentage;
-    private SeekBar seekBarMenuPortfoiloRVS, seekBarMenuPortfoiloDiversification;
+    private ProgressBar progressBarMenuPortfoiloRVS, progressBarMenuPortfoiloDiversification;
+
+    //Handle ProgressBar
+    private int progress = 0;
+    private Handler handler = new Handler();
 
     public MenuPortfoiloFragment() {
         // Required empty public constructor
@@ -46,7 +49,6 @@ public class MenuPortfoiloFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         View view = inflater.inflate(R.layout.fragment_menu_portfoilo, container, false);
         recyclerViewMenuHomePorfolios = view.findViewById(R.id.portfoliosRecycler);
         recyclerViewMenuHomePorfolios.setHasFixedSize(false);
@@ -59,34 +61,94 @@ public class MenuPortfoiloFragment extends Fragment {
         txtFirstPercentage = view.findViewById(R.id.txtFirstPercentage);
         txtSecondPercentage = view.findViewById(R.id.txtSecondPercentage);
 
-        seekBarMenuPortfoiloRVS = view.findViewById(R.id.seekBarMenuPortfoiloRVS);
-        seekBarMenuPortfoiloDiversification = view.findViewById(R.id.seekBarMenuPortfoiloDiversification);
+        progressBarMenuPortfoiloRVS = view.findViewById(R.id.progressBarMenuPortfoiloRVS);
+        progressBarMenuPortfoiloDiversification = view.findViewById(R.id.progressBarMenuPortfoiloDiversification);
 
 
         implementationRecyclerViewMenuHome();
 
-        implementationSeekBarMenuPortfoiloRVS();
-        implementationSeekBarMenuPortfoiloDiversification();
+        implementationProgressBarMenuPortfoiloRVS();
+        implementationProgressBarMenuPortfoiloDiversification();
 
         implementationllMenuPortfoiloAll();
         implementationllMenuPortfoiloHKD();
         implementationllMenuPortfoiloUSD();
 
+        firstCall();
+
         return view;
+    }
+
+    private void firstCall() {
+        llMenuPortfoiloAll.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.left_convertlayout_rounded_sharpe));
+        llMenuPortfoiloHKD.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
+        llMenuPortfoiloUSD.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.right_convertlayout_rounded_shape_white));
+    }
+
+    private void implementationProgressBarMenuPortfoiloDiversification() {
+
+        if (progress > 0) {
+            progress = 0;
+        }
+
+        new Thread(new Runnable() {
+            public void run() {
+                while (progress < getProgressData()) {
+                    progress += 1;
+                    handler.post(new Runnable() {
+                        public void run() {
+                            progressBarMenuPortfoiloDiversification.setProgress(progress);
+                        }
+                    });
+                    try {
+                        // Sleep for 100 milliseconds to show the progress slowly.
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+    }
+
+    private void implementationProgressBarMenuPortfoiloRVS() {
+        if (progress > 0) {
+            progress = 0;
+        }
+
+        new Thread(new Runnable() {
+            public void run() {
+                while (progress < getProgressData()) {
+                    progress += 1;
+                    handler.post(new Runnable() {
+                        public void run() {
+                            progressBarMenuPortfoiloRVS.setProgress(progress);
+                        }
+                    });
+                    try {
+                        // Sleep for 100 milliseconds to show the progress slowly.
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
     }
 
     private void implementationllMenuPortfoiloUSD() {
         llMenuPortfoiloUSD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                llMenuPortfoiloUSD.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryLight));
+                llMenuPortfoiloUSD.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.right_convertlayout_rounded_sharpe));
                 llMenuPortfoiloHKD.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
-                llMenuPortfoiloAll.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
+                llMenuPortfoiloAll.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.left_convertlayout_rounded_shape_white));
 
-                seekBarMenuPortfoiloRVS.setProgress(40);
-                seekBarMenuPortfoiloDiversification.setProgress(70);
                 txtFirstPercentage.setText("-13.62%");
                 txtSecondPercentage.setText("08");
+
+                implementationProgressBarMenuPortfoiloDiversification();
+                implementationProgressBarMenuPortfoiloRVS();
             }
         });
     }
@@ -96,13 +158,14 @@ public class MenuPortfoiloFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 llMenuPortfoiloHKD.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryLight));
-                llMenuPortfoiloUSD.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
-                llMenuPortfoiloAll.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
+                llMenuPortfoiloUSD.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.right_convertlayout_rounded_shape_white));
+                llMenuPortfoiloAll.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.left_convertlayout_rounded_shape_white));
 
-                seekBarMenuPortfoiloRVS.setProgress(80);
-                seekBarMenuPortfoiloDiversification.setProgress(30);
                 txtFirstPercentage.setText("-18.60%");
                 txtSecondPercentage.setText("11");
+
+                implementationProgressBarMenuPortfoiloDiversification();
+                implementationProgressBarMenuPortfoiloRVS();
             }
         });
     }
@@ -111,24 +174,18 @@ public class MenuPortfoiloFragment extends Fragment {
         llMenuPortfoiloAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                llMenuPortfoiloAll.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryLight));
+                llMenuPortfoiloAll.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.left_convertlayout_rounded_sharpe));
                 llMenuPortfoiloHKD.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
-                llMenuPortfoiloUSD.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
+                llMenuPortfoiloUSD.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.right_convertlayout_rounded_shape_white));
 
-                seekBarMenuPortfoiloRVS.setProgress(76);
-                seekBarMenuPortfoiloDiversification.setProgress(86);
+
                 txtFirstPercentage.setText("-28.90%");
                 txtSecondPercentage.setText("05");
+
+                implementationProgressBarMenuPortfoiloDiversification();
+                implementationProgressBarMenuPortfoiloRVS();
             }
         });
-    }
-
-    private void implementationSeekBarMenuPortfoiloDiversification() {
-        seekBarMenuPortfoiloDiversification.setMax(100);
-    }
-
-    private void implementationSeekBarMenuPortfoiloRVS() {
-        seekBarMenuPortfoiloRVS.setMax(100);
     }
 
     private void implementationRecyclerViewMenuHome() {
@@ -137,6 +194,10 @@ public class MenuPortfoiloFragment extends Fragment {
         homeMenuPorfoliosList.add(new Watchlist(R.drawable.icon_facebook, "US: NVIDIA", "40", "15", "30,372.50", "4,500", "-22.4", "39.73"));
         homeMenuPorfoliosPageAdapter = new PortfoliosAdapter(homeMenuPorfoliosList, getContext());
         recyclerViewMenuHomePorfolios.setAdapter(homeMenuPorfoliosPageAdapter);
+    }
+
+    public int getProgressData() {
+        return new Random().nextInt(100) + 1;
     }
 
 }

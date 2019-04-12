@@ -72,9 +72,9 @@ public class WatchlistSearchActivity extends AppCompatActivity implements Naviga
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        switch(item.getItemId()) {
+        switch (id) {
             case R.id.item_menu_search_watchlist:
-                Intent intent=new Intent(this,WatchlistSearchActivity.class);
+                Intent intent = new Intent(this, WatchlistSearchActivity.class);
                 startActivity(intent);
                 break;
             default:
@@ -99,7 +99,8 @@ public class WatchlistSearchActivity extends AppCompatActivity implements Naviga
             Intent intent1 = new Intent(this, ContactUsActivity.class);
             startActivity(intent1);
         } else if (id == R.id.nav_logout) {
-            Toast.makeText(this, "Clicked: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+            Intent intent1 = new Intent(this, WelcomeActivity.class);
+            startActivity(intent1);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_watchlistSearch);

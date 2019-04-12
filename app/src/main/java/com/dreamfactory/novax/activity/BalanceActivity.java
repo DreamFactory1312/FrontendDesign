@@ -2,6 +2,7 @@ package com.dreamfactory.novax.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
@@ -9,14 +10,12 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -153,7 +152,8 @@ public class BalanceActivity extends AppCompatActivity implements NavigationView
             Intent intent = new Intent(this, ContactUsActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_logout) {
-            Toast.makeText(this, "Clicked: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+            Intent intent1 = new Intent(this, WelcomeActivity.class);
+            startActivity(intent1);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_balance);

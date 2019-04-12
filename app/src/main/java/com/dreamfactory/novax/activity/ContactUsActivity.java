@@ -1,18 +1,15 @@
 package com.dreamfactory.novax.activity;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,12 +22,10 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 
-public class ContactUsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,OnMapReadyCallback{
+public class ContactUsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
     private Toolbar toolbar;
     MapView mapView;
     GoogleMap googleMap;
@@ -46,7 +41,7 @@ public class ContactUsActivity extends AppCompatActivity implements NavigationVi
         mapFragment.getMapAsync(this);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar_contactus);
-        floatingActionButton=findViewById(R.id.fabbtn_contactus_page);
+        floatingActionButton = findViewById(R.id.fabbtn_contactus_page);
 
         setSupportActionBar(toolbar);
         toolbar.setBackgroundColor(ContextCompat.getColor(ContactUsActivity.this, R.color.colorPrimary));
@@ -108,10 +103,11 @@ public class ContactUsActivity extends AppCompatActivity implements NavigationVi
         } else if (id == R.id.nav_contact_us) {
 
         } else if (id == R.id.nav_logout) {
-            Toast.makeText(this, "Clicked: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+            Intent intent1 = new Intent(this, WelcomeActivity.class);
+            startActivity(intent1);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_watchlistSearch);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_contactus);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -121,7 +117,7 @@ public class ContactUsActivity extends AppCompatActivity implements NavigationVi
     public void onMapReady(GoogleMap googleMap) {
         googleMap = googleMap;
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        LatLng latLng = new LatLng(22.27833, 114.15861);
+        LatLng latLng = new LatLng(22.2826263, 114.1524992);
 //        MarkerOptions markerOptions = new MarkerOptions();
 //        markerOptions.position(latLng);
 //        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));

@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(LoginActivity.this, WelcomeActivity.class);
+                Intent intent1 = new Intent(LoginActivity.this, MenuActivity.class);
                 startActivity(intent1);
             }
         });
@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.txt_login_signup)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ConvertActivity.class));
+                startActivity(new Intent(getApplicationContext(), AmendCancelOrderActivity.class));
             }
         });
 

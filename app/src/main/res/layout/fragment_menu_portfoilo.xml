@@ -136,16 +136,21 @@
                             android:textSize="12sp"
                             android:textStyle="normal" />
 
-                        <SeekBar
-                            android:id="@+id/seekBarMenuPortfoiloRVS"
+                        <ProgressBar
+                            android:id="@+id/progressBarMenuPortfoiloRVS"
+                            style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="10dp"
-                            android:layout_marginStart="3dp"
-                            android:layout_marginEnd="3dp"
+                            android:layout_height="5dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
                             android:layout_marginBottom="6dp"
+                            android:indeterminate="false"
                             android:max="100"
-                            android:progress="60"
+                            android:minWidth="200dp"
+                            android:minHeight="50dp"
+                            android:progress="0"
                             android:progressDrawable="@drawable/custom_progress_seekbar" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -231,13 +236,19 @@
                             android:textSize="12sp"
                             android:textStyle="normal" />
 
-                        <SeekBar
-                            android:id="@+id/seekBarMenuPortfoiloDiversification"
+                        <ProgressBar
+                            android:id="@+id/progressBarMenuPortfoiloDiversification"
+                            style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="10dp"
+                            android:layout_height="5dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
                             android:layout_marginBottom="6dp"
+                            android:indeterminate="false"
                             android:max="100"
-                            android:progress="80"
+                            android:minWidth="200dp"
+                            android:minHeight="50dp"
+                            android:progress="0"
                             android:progressDrawable="@drawable/custom_progress_seekbar" />
                     </LinearLayout>
 

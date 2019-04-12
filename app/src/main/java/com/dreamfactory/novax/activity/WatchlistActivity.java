@@ -103,7 +103,8 @@ public class WatchlistActivity extends AppCompatActivity implements NavigationVi
             Intent intent1 = new Intent(this, ContactUsActivity.class);
             startActivity(intent1);
         } else if (id == R.id.nav_logout) {
-            Toast.makeText(this, "Clicked: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+            Intent intent1 = new Intent(this, WelcomeActivity.class);
+            startActivity(intent1);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_watchlist);

@@ -1,6 +1,7 @@
 package com.dreamfactory.novax.fragment;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -8,9 +9,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.dreamfactory.novax.R;
+import com.dreamfactory.novax.activity.AmendCancelOrderActivity;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import java.util.ArrayList;
@@ -38,6 +41,7 @@ public class MenuOrderFragment extends Fragment {
     private String[] xAxisData = {"Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept",
             "Oct", "Nov", "Dec"};
     private int[] yAxisData = {50, 20, 15, 30, 20, 60, 15, 40, 45, 10, 90, 18};
+    private Button btnSellMenuOrder,btnBuyMenuOrder;
 
 
     public MenuOrderFragment() {
@@ -54,9 +58,19 @@ public class MenuOrderFragment extends Fragment {
 
         spinnerMenuOrder = view.findViewById(R.id.spinner_menu_order);
         lineChartViewMenuOrder = view.findViewById(R.id.lineChartViewMenuOrder);
+        btnBuyMenuOrder = view.findViewById(R.id.btnBuyMenuOrder);
+        btnSellMenuOrder = view.findViewById(R.id.btnSellMenuOrder);
 
         implementationSpinnerMenuOrder();
         implementationLineChartViewMenuOrder();
+
+        btnSellMenuOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), AmendCancelOrderActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         return view;

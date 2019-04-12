@@ -14,22 +14,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".activity.BalanceActivity"
-            android:label="@string/title_activity_balance"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".activity.ConvertActivity"></activity>
+            android:label="@string/title_activity_balance" />
+
+        <activity android:name=".activity.AmendCancelOrderActivity"></activity>
+
         <activity
             android:name=".activity.ContactUsActivity"
-            android:label="@string/title_activity_contactus"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+            android:label="@string/title_activity_contactus" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -37,46 +31,21 @@
 
         <activity
             android:name=".activity.WatchlistSearchActivity"
-            android:label="@string/title_activity_watchlistsearch"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:label="@string/title_activity_watchlistsearch" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".activity.WatchlistActivity"
-            android:label="@string/title_activity_watchlist"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:label="@string/title_activity_watchlist" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".activity.DepositeActivity"
-            android:label="@string/title_activity_deposite_rules"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.TestingActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+            android:label="@string/title_activity_deposite_rules" />
         <activity
             android:name=".activity.MenuActivity"
-            android:label="@string/title_activity_menu"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:label="@string/title_activity_menu" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         <activity android:name=".activity.WelcomeActivity" />
+
         <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -84,6 +53,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
