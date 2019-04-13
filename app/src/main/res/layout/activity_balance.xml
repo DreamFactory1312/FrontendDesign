@@ -218,22 +218,326 @@
 
                                     android:text="CONVERT" />
                             </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!--Deposite Layout Start-->
 
 
+                <ScrollView
+                    android:id="@+id/depositelayoutContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.6"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight=".75"
+                            android:background="#E7F5F8"
+                            android:orientation="vertical"
+                            android:visibility="visible"
+                            android:weightSum="2">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="1.95"
+                                android:background="#E7F5F8"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1.8"
+                                    android:background="@drawable/rounded_shape"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+
+                                    <LinearLayout
+
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
+                                        android:orientation="horizontal"
+                                        android:visibility="visible"
+                                        android:weightSum="2">
+
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1.85"
+                                            android:orientation="vertical"
+                                            android:visibility="visible">
+
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:layout_marginBottom="5dp"
+                                                android:gravity="left"
+                                                android:orientation="horizontal"
+                                                android:weightSum="2">
+
+
+                                                <TextView
+                                                    android:layout_width="0dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="left"
+                                                    android:layout_weight="1.6"
+                                                    android:text="How do I make a deposit?"
+                                                    android:textColor="@color/colorPrimary"
+                                                    android:textSize="16dp" />
+
+
+                                                <ImageView
+                                                    android:id="@+id/depositeImage"
+                                                    android:layout_width="15dp"
+                                                    android:layout_height="15dp"
+                                                    android:layout_gravity="center"
+                                                    android:background="@drawable/icon_faq_one_deposite"
+                                                    android:gravity="left"
+                                                    android:textSize="16dp" />
+
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:layout_marginBottom="10dp"
+                                                android:gravity="center"
+                                                android:orientation="vertical"
+                                                android:weightSum="2">
+
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="2"
+                                                    android:text="Daily cutoff times are provided in the
+above. Your deposit will be reflected in
+your accountupon confirmation from
+our bank."
+                                                    android:textSize="14dp" />
+
+                                            </LinearLayout>
+
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:layout_marginBottom="5dp"
+                                                android:gravity="left"
+                                                android:orientation="horizontal"
+                                                android:weightSum="2">
+
+
+                                                <TextView
+                                                    android:layout_width="0dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="1"
+                                                    android:text="Deposit Details"
+                                                    android:textColor="@color/colorPrimary"
+                                                    android:textSize="16dp" />
+
+
+                                                <ImageView
+                                                    android:id="@+id/depositeDetailsImage"
+                                                    android:layout_width="15dp"
+                                                    android:layout_height="15dp"
+                                                    android:layout_gravity="center"
+                                                    android:background="@drawable/icon_faq_two_deposite"
+                                                    android:gravity="left"
+                                                    android:textSize="16dp" />
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:layout_marginBottom="10dp"
+                                                android:gravity="center"
+                                                android:orientation="vertical"
+                                                android:weightSum="2">
+
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="2"
+                                                    android:text="The receipt should show your name/bank
+account number and deposit amount."
+                                                    android:textSize="14dp" />
+
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/btnPhotoUpload"
+                            android:layout_width="150dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/btn_camera_balance_deposite" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1.4"
+                            android:background="#E7F5F8"
+                            android:orientation="vertical"
+                            android:visibility="visible"
+                            android:weightSum="2">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="1.95"
+                                android:background="#E7F5F8"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1.8"
+                                    android:background="@drawable/rounded_shape"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+
+                                    <LinearLayout
+
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
+                                        android:orientation="horizontal"
+                                        android:visibility="visible"
+                                        android:weightSum="2">
+
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1.85"
+                                            android:orientation="vertical"
+                                            android:visibility="visible">
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="10dp"
+                                                android:layout_marginBottom="5dp"
+                                                android:text="Bank Accounts"
+                                                android:textColor="@color/colorPrimary"
+                                                android:textSize="18dp" />
+
+
+                                            <com.jaredrummler.materialspinner.MaterialSpinner
+                                                android:id="@+id/userDepositeAccountSpinner"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content" />
+                                            <!--android:entries="@array/list_user"-->
+
+                                            <View
+                                                android:layout_width="match_parent"
+                                                android:layout_height="1dp"
+                                                android:layout_marginStart="3dp"
+                                                android:layout_marginEnd="3dp"
+                                                android:background="@color/grey" />
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="10dp"
+                                                android:layout_marginBottom="5dp"
+                                                android:text="Deposite Currency*"
+                                                android:textColor="@color/colorPrimary"
+                                                android:textSize="18dp" />
+
+                                            <com.jaredrummler.materialspinner.MaterialSpinner
+                                                android:id="@+id/currencyDepositeSpinner"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content" />
+
+                                            <View
+                                                android:layout_width="match_parent"
+                                                android:layout_height="1dp"
+                                                android:layout_marginStart="3dp"
+                                                android:layout_marginEnd="3dp"
+                                                android:background="@color/grey" />
+
+                                            <EditText
+                                                android:id="@+id/depositeAmount"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="10dp"
+                                                android:backgroundTint="@color/grey"
+                                                android:fontFamily="@font/neosans_pro_regular"
+                                                android:hint="Amount (HKD)"
+                                                android:inputType="textPersonName"
+                                                android:textSize="14dp" />
+
+                                            <Button
+                                                android:id="@+id/buttonUploadBalanceDeposite"
+                                                android:layout_width="150dp"
+                                                android:layout_height="50dp"
+                                                android:layout_gravity="center"
+                                                android:layout_marginTop="15dp"
+                                                android:background="@drawable/btn_upload_balance_deposite" />
+
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+                            </LinearLayout>
                         </LinearLayout>
 
                     </LinearLayout>
 
-                </LinearLayout>
-
+                </ScrollView>
+                <!--Withdraw Layout Start-->
 
                 <LinearLayout
+                    android:id="@+id/withdrawlayoutContent"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1.4"
                     android:background="#E7F5F8"
                     android:orientation="vertical"
+                    android:visibility="gone"
                     android:weightSum="2">
 
                     <LinearLayout
@@ -255,8 +559,9 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
+
                             <LinearLayout
-                                android:id="@+id/withdrawlayoutContent"
+
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"
@@ -352,17 +657,56 @@
                                         android:background="@drawable/btn_withdraw" />
 
                                 </LinearLayout>
-
                             </LinearLayout>
 
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <!--Convet Layout Start-->
+
+
+                <LinearLayout
+                    android:id="@+id/convertlayoutContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1.4"
+                    android:background="#E7F5F8"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.95"
+                        android:background="#E7F5F8"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.8"
+                            android:background="@drawable/rounded_shape"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+
                             <LinearLayout
-                                android:id="@+id/convertlayoutContent"
+
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"
                                 android:gravity="center"
                                 android:orientation="horizontal"
-                                android:visibility="gone"
+                                android:visibility="visible"
                                 android:weightSum="2">
 
 
@@ -419,6 +763,7 @@
 
 
                                     </LinearLayout>
+
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -454,6 +799,7 @@
 
 
                                     </LinearLayout>
+
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -489,6 +835,7 @@
 
 
                                     </LinearLayout>
+
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"

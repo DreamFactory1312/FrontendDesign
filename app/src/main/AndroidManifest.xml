@@ -14,13 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".activity.SocialFollowes"></activity>
         <activity
             android:name=".activity.BalanceActivity"
             android:label="@string/title_activity_balance" />
-
-        <activity android:name=".activity.AmendCancelOrderActivity"></activity>
-
+        <activity android:name=".activity.AmendCancelOrderActivity" />
         <activity
             android:name=".activity.ContactUsActivity"
             android:label="@string/title_activity_contactus" />
@@ -32,20 +30,16 @@
         <activity
             android:name=".activity.WatchlistSearchActivity"
             android:label="@string/title_activity_watchlistsearch" />
-
         <activity
             android:name=".activity.WatchlistActivity"
             android:label="@string/title_activity_watchlist" />
-
         <activity
             android:name=".activity.DepositeActivity"
             android:label="@string/title_activity_deposite_rules" />
         <activity
             android:name=".activity.MenuActivity"
             android:label="@string/title_activity_menu" />
-
         <activity android:name=".activity.WelcomeActivity" />
-
         <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,7 +47,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.dreamfactory.novax.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -11,15 +12,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dreamfactory.novax.R;
+import com.dreamfactory.novax.activity.SocialFollowes;
 import com.dreamfactory.novax.model.SocialRating;
-import com.dreamfactory.novax.model.Watchlist;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SocialMyRatingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    List<SocialRating> SocialMyRating=new ArrayList<>();
+    List<SocialRating> SocialMyRating = new ArrayList<>();
     Context mcontext;
     private static final int USER_TYPE = 1;
     private static final int HEADER_TYPE = 2;
@@ -66,19 +67,26 @@ public class SocialMyRatingAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         return SocialMyRating == null ? 0 : SocialMyRating.size();
     }
 
-    public class SocialRatingViewHolder extends RecyclerView.ViewHolder{
+    public class SocialRatingViewHolder extends RecyclerView.ViewHolder {
 
-         ImageView tradersImage,ratingSign;
-         TextView tradersName,tradersRating;
+        ImageView tradersImage, ratingSign;
+        TextView tradersName, tradersRating;
 
         public SocialRatingViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tradersName=itemView.findViewById(R.id.tradersName);
-            tradersRating=itemView.findViewById(R.id.tradersRating);
-            tradersImage=itemView.findViewById(R.id.tradersImage);
-            ratingSign=itemView.findViewById(R.id.ratingSign);
+            tradersName = itemView.findViewById(R.id.tradersName);
+            tradersRating = itemView.findViewById(R.id.tradersRating);
+            tradersImage = itemView.findViewById(R.id.tradersImage);
+            ratingSign = itemView.findViewById(R.id.ratingSign);
 
+            tradersName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mcontext, SocialFollowes.class);
+                    mcontext.startActivity(intent);
+                }
+            });
 
         }
     }

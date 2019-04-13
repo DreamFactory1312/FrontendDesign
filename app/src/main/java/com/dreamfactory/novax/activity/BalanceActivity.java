@@ -15,7 +15,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,51 +27,43 @@ import com.jaredrummler.materialspinner.MaterialSpinner;
 public class BalanceActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private Toolbar toolbar;
     private LinearLayout depositeLayout, withdrawLayout, convertLayout, withdrawlayoutContent, convetlayoutContent;
-    TextView txtwithdraw, txtconvert;
+    private ScrollView depositelayoutContent;
+    TextView txtwithdraw, txtconvert, txtdepsite;
     View deposite_withdraw_view, convet_withdraw_view;
     private Button buttonWithdraw, buttonConvert;
-    private MaterialSpinner userAccountSpinner, currencySpinner;
+    private MaterialSpinner userAccountSpinner, currencySpinner, userDepositeAccountSpinner, currencyDepositeSpinner;
+    private ImageView depositeImage, depositeDetailsImage;
+    private Button btnPhotoUpload, buttonUploadBalanceDeposite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_balance_menu);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar_balance);
-        depositeLayout = findViewById(R.id.depositeLayout);
-        withdrawLayout = findViewById(R.id.withdrawLayout);
-        convertLayout = findViewById(R.id.convertLayout);
-        withdrawlayoutContent = findViewById(R.id.withdrawlayoutContent);
-        convetlayoutContent = findViewById(R.id.convertlayoutContent);
-        txtwithdraw = findViewById(R.id.txtwithdraw);
-        txtconvert = findViewById(R.id.txtconvert);
-        deposite_withdraw_view = findViewById(R.id.deposite_withdraw_view);
-        convet_withdraw_view = findViewById(R.id.convet_withdraw_view);
-        buttonWithdraw = findViewById(R.id.buttonWithdraw);
-        buttonConvert = findViewById(R.id.buttonConvert);
-        userAccountSpinner = findViewById(R.id.userAccountSpinner);
-        currencySpinner = findViewById(R.id.currencySpinner);
+        findViewId();
+        firstCall();
+        spinnersItem();
+        toolbarInit();
+        drawerInit();
+        navInit();
 
-        userAccountSpinner.setItems("WONG MAY FUNG ", "WONG MAY FUNG ", "WONG MAY FUNG ");
-        currencySpinner.setItems("USD ", "MY ", "TA ");
-
-        withdrawLayout.setBackgroundColor(ContextCompat.getColor(BalanceActivity.this, R.color.colorPrimaryLight));
-        setSupportActionBar(toolbar);
-        toolbar.setBackgroundColor(ContextCompat.getColor(BalanceActivity.this, R.color.colorPrimary));
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_balance);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_balance);
-        navigationView.setNavigationItemSelectedListener(this);
 
         depositeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BalanceActivity.this, DepositeActivity.class);
-                startActivity(intent);
+
+                depositeLayout.setBackgroundDrawable(ContextCompat.getDrawable(BalanceActivity.this, R.drawable.deposite_rounded_shape_left));
+                withdrawLayout.setBackgroundColor(Color.TRANSPARENT);
+                convertLayout.setBackgroundColor(Color.TRANSPARENT);
+
+                depositelayoutContent.setVisibility(View.VISIBLE);
+                withdrawlayoutContent.setVisibility(View.GONE);
+                convetlayoutContent.setVisibility(View.GONE);
+
+                txtdepsite.setTextColor(getResources().getColor(R.color.white));
+                txtconvert.setTextColor(getResources().getColor(R.color.black));
+                txtwithdraw.setTextColor(getResources().getColor(R.color.black));
+
             }
         });
 
@@ -78,11 +72,15 @@ public class BalanceActivity extends AppCompatActivity implements NavigationView
             public void onClick(View v) {
                 withdrawLayout.setBackgroundColor(ContextCompat.getColor(BalanceActivity.this, R.color.colorPrimaryLight));
                 convertLayout.setBackgroundColor(Color.TRANSPARENT);
+                depositeLayout.setBackgroundColor(Color.TRANSPARENT);
+
                 withdrawlayoutContent.setVisibility(View.VISIBLE);
                 convetlayoutContent.setVisibility(View.GONE);
+                depositelayoutContent.setVisibility(View.GONE);
 
                 txtwithdraw.setTextColor(getResources().getColor(R.color.white));
                 txtconvert.setTextColor(getResources().getColor(R.color.black));
+                txtdepsite.setTextColor(getResources().getColor(R.color.black));
             }
         });
 
@@ -91,26 +89,117 @@ public class BalanceActivity extends AppCompatActivity implements NavigationView
             public void onClick(View v) {
                 convertLayout.setBackgroundDrawable(ContextCompat.getDrawable(BalanceActivity.this, R.drawable.convertlayout_rounded_shape));
                 withdrawLayout.setBackgroundColor(Color.TRANSPARENT);
+                depositeLayout.setBackgroundColor(Color.TRANSPARENT);
+
                 withdrawlayoutContent.setVisibility(View.GONE);
+                depositelayoutContent.setVisibility(View.GONE);
                 convetlayoutContent.setVisibility(View.VISIBLE);
 
                 txtconvert.setTextColor(getResources().getColor(R.color.white));
                 txtwithdraw.setTextColor(getResources().getColor(R.color.black));
+                txtdepsite.setTextColor(getResources().getColor(R.color.black));
 
             }
         });
+
+
+
+        buttonUploadBalanceDeposite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(BalanceActivity.this, "Upload", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnPhotoUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(BalanceActivity.this, "Upload Photo", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         buttonWithdraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(BalanceActivity.this, "Withdraw", Toast.LENGTH_SHORT).show();
             }
         });
+
         buttonConvert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(BalanceActivity.this, "Convert", Toast.LENGTH_SHORT).show();
             }
         });
+
+        depositeDetailsImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(BalanceActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        depositeImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(BalanceActivity.this, DepositeActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void navInit() {
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_balance);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void drawerInit() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_balance);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+    }
+
+    private void toolbarInit() {
+        setSupportActionBar(toolbar);
+        toolbar.setBackgroundColor(ContextCompat.getColor(BalanceActivity.this, R.color.colorPrimary));
+    }
+
+    private void spinnersItem() {
+        userAccountSpinner.setItems("WONG MAY FUNG ", "WONG MAY FUNG ", "WONG MAY FUNG ");
+        userDepositeAccountSpinner.setItems("WONG MAY FUNG ", "WONG MAY FUNG ", "WONG MAY FUNG ");
+        currencySpinner.setItems("USD ", "MY ", "TA ");
+        currencyDepositeSpinner.setItems("USD ", "MY ", "TA ");
+    }
+
+    private void firstCall() {
+        depositeLayout.setBackgroundDrawable(ContextCompat.getDrawable(BalanceActivity.this, R.drawable.deposite_rounded_shape_left));
+        txtdepsite.setTextColor(getResources().getColor(R.color.white));
+    }
+
+    private void findViewId() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar_balance);
+        depositeLayout = findViewById(R.id.depositeLayout);
+        withdrawLayout = findViewById(R.id.withdrawLayout);
+        convertLayout = findViewById(R.id.convertLayout);
+        withdrawlayoutContent = findViewById(R.id.withdrawlayoutContent);
+        convetlayoutContent = findViewById(R.id.convertlayoutContent);
+        depositelayoutContent = findViewById(R.id.depositelayoutContent);
+        txtwithdraw = findViewById(R.id.txtwithdraw);
+        txtconvert = findViewById(R.id.txtconvert);
+        deposite_withdraw_view = findViewById(R.id.deposite_withdraw_view);
+        convet_withdraw_view = findViewById(R.id.convet_withdraw_view);
+        buttonWithdraw = findViewById(R.id.buttonWithdraw);
+        buttonConvert = findViewById(R.id.buttonConvert);
+        userAccountSpinner = findViewById(R.id.userAccountSpinner);
+        currencySpinner = findViewById(R.id.currencySpinner);
+        txtdepsite = findViewById(R.id.txtdepsite);
+        depositeImage = findViewById(R.id.depositeImage);
+        depositeDetailsImage = findViewById(R.id.depositeDetailsImage);
+        userDepositeAccountSpinner = findViewById(R.id.userDepositeAccountSpinner);
+        currencyDepositeSpinner = findViewById(R.id.currencyDepositeSpinner);
+        btnPhotoUpload = findViewById(R.id.btnPhotoUpload);
+        buttonUploadBalanceDeposite = findViewById(R.id.buttonUploadBalanceDeposite);
     }
 
     @Override

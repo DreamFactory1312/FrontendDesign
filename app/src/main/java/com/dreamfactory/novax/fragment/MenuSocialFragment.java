@@ -1,7 +1,6 @@
 package com.dreamfactory.novax.fragment;
 
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -16,11 +15,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.dreamfactory.novax.R;
-import com.dreamfactory.novax.adapter.PortfoliosAdapter;
 import com.dreamfactory.novax.adapter.SocialMyRatingAdapter;
 import com.dreamfactory.novax.adapter.SocialStarRatingAdapter;
 import com.dreamfactory.novax.model.SocialRating;
-import com.dreamfactory.novax.model.Watchlist;
 
 import java.util.ArrayList;
 import java.util.List;

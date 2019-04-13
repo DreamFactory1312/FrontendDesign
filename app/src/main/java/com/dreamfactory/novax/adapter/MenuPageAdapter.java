@@ -13,6 +13,8 @@ public class MenuPageAdapter extends FragmentPagerAdapter {
 
     private int numOfTabs;
 
+    private Fragment fragment;
+
     public MenuPageAdapter(FragmentManager fm, int numOfTabs) {
         super(fm);
         this.numOfTabs = numOfTabs;
@@ -22,15 +24,19 @@ public class MenuPageAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new MenuHomeFragment();
+                fragment = new MenuHomeFragment();
+                break;
             case 1:
-                return new MenuPortfoiloFragment();
+                fragment = new MenuPortfoiloFragment();
+                break;
             case 2:
-                return new MenuOrderFragment();
+                fragment = new MenuOrderFragment();
+                break;
             case 3:
-                return new MenuSocialFragment();
+                fragment = new MenuSocialFragment();
+                break;
         }
-        return null;
+        return fragment;
     }
 
     @Override
