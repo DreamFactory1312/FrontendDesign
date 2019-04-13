@@ -1,5 +1,6 @@
 package com.dreamfactory.novax.adapter;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dreamfactory.novax.R;
 import com.dreamfactory.novax.model.SocialRating;
@@ -18,7 +20,7 @@ import java.util.List;
 
 public class SocialStarRatingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    List<SocialRating> SocialStarRating=new ArrayList<>();
+    List<SocialRating> SocialStarRating = new ArrayList<>();
     Context mcontext;
     private static final int USER_TYPE = 1;
     private static final int HEADER_TYPE = 2;
@@ -37,7 +39,6 @@ public class SocialStarRatingAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
 
-
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         SocialRating list = SocialStarRating.get(position);
@@ -52,16 +53,45 @@ public class SocialStarRatingAdapter extends RecyclerView.Adapter<RecyclerView.V
         return SocialStarRating == null ? 0 : SocialStarRating.size();
     }
 
-    public class SocialStarRatingViewHolder extends RecyclerView.ViewHolder{
+    public class SocialStarRatingViewHolder extends RecyclerView.ViewHolder {
 
-         ImageView startradersImage;
-         TextView startradersName;
+        ImageView startradersImage;
+        TextView startradersName, btn_cancel,btn_continue;
+        Dialog dialog;
 
         public SocialStarRatingViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            startradersImage=itemView.findViewById(R.id.startradersImage);
-            startradersName=itemView.findViewById(R.id.startradersName);
+            startradersImage = itemView.findViewById(R.id.startradersImage);
+            startradersName = itemView.findViewById(R.id.startradersName);
+            //  btn_cancel=itemView.findViewById(R.id.btn_cancel);
+
+            startradersName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog = new Dialog(mcontext);
+                    dialog.setContentView(R.layout.social_star_traders_verify_dialog);
+                    btn_cancel = dialog.findViewById(R.id.btn_cancel);
+                    btn_continue = dialog.findViewById(R.id.btn_continue);
+                    btn_cancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                            Toast.makeText(mcontext, "Dismiss", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    btn_continue.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                            Toast.makeText(mcontext, "Continue", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    dialog.show();
+                }
+            });
+
+
 
         }
     }

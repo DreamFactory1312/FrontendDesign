@@ -1,6 +1,7 @@
 package com.dreamfactory.novax.fragment;
 
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -134,6 +135,8 @@ public class MenuSocialFragment extends Fragment {
                 socialRatings.add(new SocialRating(R.drawable.icon_facebook, "US: NVIDIA"));
                 socialStarRatingAdapter = new SocialStarRatingAdapter(socialRatings, getContext());
                 socialRecycler.setAdapter(socialStarRatingAdapter);
+
+
 
 
             }
