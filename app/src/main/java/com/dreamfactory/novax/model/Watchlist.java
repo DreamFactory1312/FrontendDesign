@@ -2,9 +2,20 @@ package com.dreamfactory.novax.model;
 
 public class Watchlist {
 
-    private int img_product;
-    private String txt_product_name,txt_product_price,txt_product_percentage,txt_product_amount,txt_product_share_amount,txt_product_loss,txt_product_loss_weight,type;
+    private int img_product, img_product_social_followers;
+    private String txt_product_name, txt_product_price, txt_product_percentage, txt_product_amount, txt_product_share_amount, txt_product_loss, txt_product_loss_weight, type;
+    private String txt_product_name_social_follwer,txt_product_Buy_amount,txt_product_SL_amount,txt_product_exit_amount,txt_product_quentity;
+
     public Watchlist() {
+    }
+
+    public Watchlist(int img_product_social_followers, String txt_product_name_social_follwer, String txt_product_Buy_amount, String txt_product_SL_amount, String txt_product_exit_amount, String txt_product_quentity) {
+        this.img_product_social_followers = img_product_social_followers;
+        this.txt_product_name_social_follwer = txt_product_name_social_follwer;
+        this.txt_product_Buy_amount = txt_product_Buy_amount;
+        this.txt_product_SL_amount = txt_product_SL_amount;
+        this.txt_product_exit_amount = txt_product_exit_amount;
+        this.txt_product_quentity = txt_product_quentity;
     }
 
     public Watchlist(int img_product, String txt_product_name, String txt_product_price, String txt_product_percentage, String txt_product_amount, String txt_product_share_amount, String txt_product_loss, String txt_product_loss_weight) {
@@ -63,5 +74,29 @@ public class Watchlist {
 
     public String getType() {
         return type;
+    }
+
+    public int getImg_product_social_followers() {
+        return img_product_social_followers;
+    }
+
+    public String getTxt_product_name_social_follwer() {
+        return txt_product_name_social_follwer;
+    }
+
+    public String getTxt_product_Buy_amount() {
+        return txt_product_Buy_amount;
+    }
+
+    public String getTxt_product_SL_amount() {
+        return txt_product_SL_amount;
+    }
+
+    public String getTxt_product_exit_amount() {
+        return txt_product_exit_amount;
+    }
+
+    public String getTxt_product_quentity() {
+        return txt_product_quentity;
     }
 }

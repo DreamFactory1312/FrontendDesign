@@ -1,5 +1,6 @@
 package com.dreamfactory.novax.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,15 +16,15 @@ import com.dreamfactory.novax.R;
 public class AmendCancelOrderActivity extends AppCompatActivity {
 
     private Toolbar toolBarBalance;
-    private Button btn_amend_order,btn_cancel_order;
+    private Button btn_amend_order, btn_cancel_order;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_amend_cancel_order);
 
-        btn_amend_order=findViewById(R.id.btn_amend_order);
-        btn_cancel_order=findViewById(R.id.btn_cancel_order);
+        btn_amend_order = findViewById(R.id.btn_amend_order);
+        btn_cancel_order = findViewById(R.id.btn_cancel_order);
 
         toolBarBalance = findViewById(R.id.toolBarBalance);
         toolBarBalance.setTitle(R.string.US_NVIDIA);
@@ -43,7 +44,7 @@ public class AmendCancelOrderActivity extends AppCompatActivity {
         btn_amend_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(AmendCancelOrderActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), AmendOrder.class));
             }
         });
     }

@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/bg_light_ash"
             android:orientation="vertical">
@@ -454,6 +454,7 @@
                     android:scrollbars="vertical" />
             </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
 
 

@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.txt_login_signup)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), AmendCancelOrderActivity.class));
+                startActivity(new Intent(getApplicationContext(), OrderHistoryActivity.class));
             }
         });
 
