@@ -80,13 +80,6 @@ public class SocialMyRatingAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             tradersImage = itemView.findViewById(R.id.tradersImage);
             ratingSign = itemView.findViewById(R.id.ratingSign);
 
-            tradersName.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(mcontext, SocialFollowes.class);
-                    mcontext.startActivity(intent);
-                }
-            });
 
         }
     }

@@ -57,7 +57,7 @@ public class FragmentHomeMenuPageAdapter extends RecyclerView.Adapter<RecyclerVi
         List yAxisValues = new ArrayList();
         List axisValues = new ArrayList();
 
-        Line line = new Line(yAxisValues).setColor(Color.parseColor("#339684"));
+        Line line = new Line(yAxisValues).setColor(Color.parseColor("#24A2C1"));
 
         for (int i = 0; i < axisData.length; i++) {
             axisValues.add(i, new AxisValue(i).setLabel(axisData[i]));

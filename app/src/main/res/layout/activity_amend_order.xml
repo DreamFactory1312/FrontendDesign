@@ -219,8 +219,8 @@
                     android:text="Limit Price"
                     android:textSize="12sp" />
 
-                <ProgressBar
-                    android:id="@+id/progressBarLimitPrice"
+                <SeekBar
+                    android:id="@+id/seekBarLimitPrice"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="10dp"
@@ -258,8 +258,8 @@
                     android:text="Quantity"
                     android:textSize="12sp" />
 
-                <ProgressBar
-                    android:id="@+id/progressBarQuantityAmendOrder"
+                <SeekBar
+                    android:id="@+id/seekBarQuantityAmendOrder"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="10dp"

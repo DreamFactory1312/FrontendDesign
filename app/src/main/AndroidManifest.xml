@@ -14,7 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.OrderHistoryActivity"></activity>
+        <activity android:name=".activity.SellGTDOrder"></activity>
+        <activity android:name=".activity.SellMktOrder" />
+        <activity android:name=".activity.BuyMarketOrder" />
+        <activity android:name=".activity.OrderHistoryActivity" />
         <activity android:name=".activity.AmendOrder" />
         <activity android:name=".activity.SocialFollowes" />
         <activity

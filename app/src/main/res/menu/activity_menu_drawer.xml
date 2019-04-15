@@ -18,7 +18,7 @@
             android:title="@string/contact_us" />
     </group>
 
-    <item android:title="Others">
+    <item android:title="">
         <menu>
             <item
                 android:id="@+id/nav_logout"

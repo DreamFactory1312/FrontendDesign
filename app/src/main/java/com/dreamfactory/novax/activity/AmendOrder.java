@@ -1,5 +1,6 @@
 package com.dreamfactory.novax.activity;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.dreamfactory.novax.R;
@@ -21,7 +23,7 @@ public class AmendOrder extends AppCompatActivity {
 
     private TextView txtFirstValueAmendOrder, txtSecondValueAmendOrder, txtRealTimeUpdate, txtAvailableForSellValue, txtAmountValue;
 
-    private ProgressBar progressBarLimitPrice, progressBarQuantityAmendOrder;
+    private SeekBar seekBarLimitPrice, seekBarQuantityAmendOrder;
 
     private Button btnNextAmendOrder;
 
@@ -49,21 +51,23 @@ public class AmendOrder extends AppCompatActivity {
         txtAvailableForSellValue = findViewById(R.id.txtAvailableForSellValue);
         txtAmountValue = findViewById(R.id.txtAmountValue);
 
-        progressBarLimitPrice = findViewById(R.id.progressBarLimitPrice);
-        progressBarQuantityAmendOrder = findViewById(R.id.progressBarQuantityAmendOrder);
+        seekBarLimitPrice = findViewById(R.id.seekBarLimitPrice);
+        seekBarQuantityAmendOrder = findViewById(R.id.seekBarQuantityAmendOrder);
 
         btnNextAmendOrder = findViewById(R.id.btnNextAmendOrder);
 
-        implementationprogressBarLimitPrice();
-        implementationprogressBarQuantityAmendOrder();
+        implementationseekBarLimitPrice();
+        implementationseekBarQuantityAmendOrder();
 
         btnNextAmendOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                implementationprogressBarLimitPrice();
-                implementationprogressBarQuantityAmendOrder();
+                implementationseekBarLimitPrice();
+                implementationseekBarQuantityAmendOrder();
 
                 getNextValue();
+                Intent intent = new Intent(AmendOrder.this, OrderHistoryActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -80,7 +84,7 @@ public class AmendOrder extends AppCompatActivity {
         return java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
     }
 
-    private void implementationprogressBarQuantityAmendOrder() {
+    private void implementationseekBarQuantityAmendOrder() {
         if (progress > 0) {
             progress = 0;
         }
@@ -91,7 +95,7 @@ public class AmendOrder extends AppCompatActivity {
                     progress += 1;
                     handler.post(new Runnable() {
                         public void run() {
-                            progressBarQuantityAmendOrder.setProgress(progress);
+                            seekBarQuantityAmendOrder.setProgress(progress);
                         }
                     });
                     try {
@@ -105,7 +109,7 @@ public class AmendOrder extends AppCompatActivity {
         }).start();
     }
 
-    private void implementationprogressBarLimitPrice() {
+    private void implementationseekBarLimitPrice() {
         if (progress > 0) {
             progress = 0;
         }
@@ -116,7 +120,7 @@ public class AmendOrder extends AppCompatActivity {
                     progress += 1;
                     handler.post(new Runnable() {
                         public void run() {
-                            progressBarLimitPrice.setProgress(progress);
+                            seekBarLimitPrice.setProgress(progress);
                         }
                     });
                     try {

@@ -15,7 +15,7 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        btn_continue = findViewById(R.id.btn_continue);
+        btn_continue = findViewById(R.id.btn_continue_welcomePage);
         btn_continue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

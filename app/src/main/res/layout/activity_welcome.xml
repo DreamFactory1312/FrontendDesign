@@ -61,6 +61,7 @@
                         android:fontFamily="@font/neosans_pro_regular"
                         android:text="Welcome back , "
                         android:textColor="@color/white"
+                        android:textStyle="bold"
                         android:textSize="18dp" />
 
                     <TextView
@@ -70,6 +71,7 @@
                         android:fontFamily="@font/neosans_pro_regular"
                         android:text="Jarret Brakus"
                         android:textColor="@color/blue_natural"
+                        android:textStyle="bold"
                         android:textSize="18dp" />
 
                 </LinearLayout>
@@ -82,7 +84,7 @@
                     android:orientation="vertical">
 
                     <EditText
-                        android:id="@+id/editText"
+                        android:id="@+id/editText_userName_WelcomePage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
@@ -105,7 +107,7 @@
                     android:orientation="vertical">
 
                     <EditText
-                        android:id="@+id/editText2"
+                        android:id="@+id/editText_userPassword_WelcomePage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
@@ -113,7 +115,7 @@
                         android:backgroundTint="@android:color/white"
                         android:drawableEnd="@drawable/icon_show_password"
                         android:fontFamily="@font/neosans_pro_regular"
-                        android:hint="*******"
+                        android:text="password"
                         android:inputType="textPassword"
                         android:textColor="@color/white"
                         android:textColorHint="@color/white"
@@ -129,7 +131,7 @@
                     android:orientation="vertical">
 
                     <Button
-                        android:id="@+id/btn_continue"
+                        android:id="@+id/btn_continue_welcomePage"
                         android:layout_width="wrap_content"
                         android:layout_height="45dp"
                         android:layout_margin="15dp"
@@ -140,16 +142,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:gravity="center"
                     android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/forgotPassText"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:text="Not User?"
+                        android:id="@+id/forgotPassText_welcomePage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Not this User?"
                         android:textColor="@color/white"
                         android:textSize="15dp" />
+                    <View
+                        android:layout_width="100dp"
+                        android:layout_height="1dp"
+                        android:background="@color/white"/>
 
                 </LinearLayout>
 

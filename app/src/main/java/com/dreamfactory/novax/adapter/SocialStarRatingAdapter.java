@@ -2,6 +2,7 @@ package com.dreamfactory.novax.adapter;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dreamfactory.novax.R;
+import com.dreamfactory.novax.activity.SocialFollowes;
 import com.dreamfactory.novax.model.SocialRating;
 
 import java.util.ArrayList;
@@ -55,7 +57,7 @@ public class SocialStarRatingAdapter extends RecyclerView.Adapter<RecyclerView.V
     public class SocialStarRatingViewHolder extends RecyclerView.ViewHolder {
 
         ImageView startradersImage;
-        TextView startradersName, btn_cancel,btn_continue;
+        TextView startradersName, btn_cancel,btn_continue,txt_followTrader_social_star;
         Dialog dialog;
 
         public SocialStarRatingViewHolder(@NonNull View itemView) {
@@ -63,7 +65,17 @@ public class SocialStarRatingAdapter extends RecyclerView.Adapter<RecyclerView.V
 
             startradersImage = itemView.findViewById(R.id.startradersImage);
             startradersName = itemView.findViewById(R.id.startradersName);
+            txt_followTrader_social_star = itemView.findViewById(R.id.txt_followTrader_social_star);
             //  btn_cancel=itemView.findViewById(R.id.btn_cancel);
+
+            txt_followTrader_social_star.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent=new Intent(mcontext, SocialFollowes.class);
+                    mcontext.startActivity(intent);
+                }
+            });
 
             startradersName.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -71,7 +83,7 @@ public class SocialStarRatingAdapter extends RecyclerView.Adapter<RecyclerView.V
                     dialog = new Dialog(mcontext);
                     dialog.setContentView(R.layout.social_star_traders_verify_dialog);
                     btn_cancel = dialog.findViewById(R.id.btn_cancel);
-                    btn_continue = dialog.findViewById(R.id.btn_continue);
+                    btn_continue = dialog.findViewById(R.id.btn_continue_welcomePage);
                     btn_cancel.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

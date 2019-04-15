@@ -1,6 +1,7 @@
 package com.dreamfactory.novax.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dreamfactory.novax.R;
+import com.dreamfactory.novax.activity.SellMktOrder;
 import com.dreamfactory.novax.model.Watchlist;
 
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ import java.util.List;
 
 public class SocialFollowersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    List<Watchlist> socialFollowers=new ArrayList<>();
+    List<Watchlist> socialFollowers = new ArrayList<>();
     Context mcontext;
 
     public SocialFollowersAdapter(List<Watchlist> socialFollowers, Context mcontext) {
@@ -52,27 +54,27 @@ public class SocialFollowersAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         return socialFollowers == null ? 0 : socialFollowers.size();
     }
 
-    public class SocialFollowersViewHolder extends RecyclerView.ViewHolder{
+    public class SocialFollowersViewHolder extends RecyclerView.ViewHolder {
 
-         ImageView img_product_social_followers;
-         TextView txt_product_name_social_follwer,txt_product_Buy_amount,txt_product_SL_amount,txt_product_exit_amount,txt_product_quentity;
-         ImageView SLEdit,decriment_social_followers,increment_social_followers;
-         Button btn_social_follers_sell;
+        ImageView img_product_social_followers;
+        TextView txt_product_name_social_follwer, txt_product_Buy_amount, txt_product_SL_amount, txt_product_exit_amount, txt_product_quentity;
+        ImageView SLEdit, decriment_social_followers, increment_social_followers;
+        Button btn_social_follers_sell;
 
         public SocialFollowersViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            txt_product_name_social_follwer=itemView.findViewById(R.id.txt_product_name_social_follwer);
-            txt_product_Buy_amount=itemView.findViewById(R.id.txt_product_Buy_amount);
-            txt_product_SL_amount=itemView.findViewById(R.id.txt_product_SL_amount);
-            txt_product_exit_amount=itemView.findViewById(R.id.txt_product_exit_amount);
-            txt_product_quentity=itemView.findViewById(R.id.txt_product_quentity);
+            txt_product_name_social_follwer = itemView.findViewById(R.id.txt_product_name_social_follwer);
+            txt_product_Buy_amount = itemView.findViewById(R.id.txt_product_Buy_amount);
+            txt_product_SL_amount = itemView.findViewById(R.id.txt_product_SL_amount);
+            txt_product_exit_amount = itemView.findViewById(R.id.txt_product_exit_amount);
+            txt_product_quentity = itemView.findViewById(R.id.txt_product_quentity);
 
-            img_product_social_followers=itemView.findViewById(R.id.img_product_social_followers);
-            SLEdit=itemView.findViewById(R.id.SLEdit);
-            decriment_social_followers=itemView.findViewById(R.id.decriment_social_followers);
-            increment_social_followers=itemView.findViewById(R.id.increment_social_followers);
-            btn_social_follers_sell=itemView.findViewById(R.id.btn_social_follers_sell);
+            img_product_social_followers = itemView.findViewById(R.id.img_product_social_followers);
+            SLEdit = itemView.findViewById(R.id.SLEdit);
+            decriment_social_followers = itemView.findViewById(R.id.decriment_social_followers);
+            increment_social_followers = itemView.findViewById(R.id.increment_social_followers);
+            btn_social_follers_sell = itemView.findViewById(R.id.btn_social_follers_sell);
 
             SLEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -95,7 +97,7 @@ public class SocialFollowersAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             btn_social_follers_sell.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mcontext, "Clicked", Toast.LENGTH_SHORT).show();
+                    mcontext.startActivity(new Intent(mcontext, SellMktOrder.class));
                 }
             });
 

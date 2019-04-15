@@ -92,7 +92,7 @@
                                 android:layout_gravity="end"
                                 android:fontFamily="@font/neosans_pro_regular"
                                 android:gravity="end"
-                                android:text="222.2"
+                                android:text="227.22"
                                 android:textColor="@color/black"
                                 android:textSize="18dp" />
 
@@ -164,7 +164,7 @@
                                     android:layout_gravity="center"
                                     android:fontFamily="@font/neosans_pro_regular"
                                     android:gravity="center"
-                                    android:text="DEPOSITE"
+                                    android:text="DEPOSIT"
                                     android:textColor="@color/black" />
 
                             </LinearLayout>
@@ -481,7 +481,7 @@ account number and deposit amount."
                                                 android:layout_height="wrap_content"
                                                 android:layout_marginTop="10dp"
                                                 android:layout_marginBottom="5dp"
-                                                android:text="Deposite Currency*"
+                                                android:text="Deposit Currency*"
                                                 android:textColor="@color/colorPrimary"
                                                 android:textSize="18dp" />
 
@@ -758,7 +758,7 @@ account number and deposit amount."
                                             android:layout_weight=".6"
                                             android:fontFamily="@font/neosans_pro_regular"
                                             android:gravity="right"
-                                            android:text="227.2"
+                                            android:text="227.22"
                                             android:textSize="16dp" />
 
 

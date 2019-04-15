@@ -37,7 +37,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimaryLight"
                     android:orientation="vertical">
 
                     <TextView
@@ -46,11 +45,17 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
                         android:gravity="center"
                         android:text="ALL"
                         android:textSize="18sp"
                         android:textStyle="normal" />
+
+                    <View
+                        android:id="@+id/viewMenuAll"
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/blue_natural" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -66,11 +71,17 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
                         android:gravity="center"
                         android:text="HKD"
                         android:textSize="18sp"
                         android:textStyle="normal" />
+
+                    <View
+                        android:id="@+id/viewMenuHKD"
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/white" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -86,11 +97,17 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
                         android:gravity="center"
                         android:text="USD"
                         android:textSize="18sp"
                         android:textStyle="normal" />
+
+                    <View
+                        android:id="@+id/viewMenuUSD"
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/white" />
                 </LinearLayout>
 
             </LinearLayout>

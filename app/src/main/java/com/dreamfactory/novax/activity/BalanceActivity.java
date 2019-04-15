@@ -70,7 +70,7 @@ public class BalanceActivity extends AppCompatActivity implements NavigationView
         withdrawLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                withdrawLayout.setBackgroundColor(ContextCompat.getColor(BalanceActivity.this, R.color.colorPrimaryLight));
+                withdrawLayout.setBackgroundColor(ContextCompat.getColor(BalanceActivity.this, R.color.colorPrimary));
                 convertLayout.setBackgroundColor(Color.TRANSPARENT);
                 depositeLayout.setBackgroundColor(Color.TRANSPARENT);
 

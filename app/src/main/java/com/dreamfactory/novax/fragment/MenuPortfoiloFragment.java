@@ -36,6 +36,8 @@ public class MenuPortfoiloFragment extends Fragment {
     private TextView txtFirstPercentage, txtSecondPercentage;
     private ProgressBar progressBarMenuPortfoiloRVS, progressBarMenuPortfoiloDiversification;
 
+    private View viewMenuAll, viewMenuHKD, viewMenuUSD;
+
     //Handle ProgressBar
     private int progress = 0;
     private Handler handler = new Handler();
@@ -57,6 +59,9 @@ public class MenuPortfoiloFragment extends Fragment {
         llMenuPortfoiloAll = view.findViewById(R.id.llMenuPortfoiloAll);
         llMenuPortfoiloHKD = view.findViewById(R.id.llMenuPortfoiloHKD);
         llMenuPortfoiloUSD = view.findViewById(R.id.llMenuPortfoiloUSD);
+        viewMenuAll = view.findViewById(R.id.viewMenuAll);
+        viewMenuHKD = view.findViewById(R.id.viewMenuHKD);
+        viewMenuUSD = view.findViewById(R.id.viewMenuUSD);
 
         txtFirstPercentage = view.findViewById(R.id.txtFirstPercentage);
         txtSecondPercentage = view.findViewById(R.id.txtSecondPercentage);
@@ -80,9 +85,9 @@ public class MenuPortfoiloFragment extends Fragment {
     }
 
     private void firstCall() {
-        llMenuPortfoiloAll.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.left_convertlayout_rounded_sharpe));
-        llMenuPortfoiloHKD.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
-        llMenuPortfoiloUSD.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.right_convertlayout_rounded_shape_white));
+        viewMenuAll.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
+        viewMenuHKD.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
+        viewMenuUSD.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
     }
 
     private void implementationProgressBarMenuPortfoiloDiversification() {
@@ -140,9 +145,9 @@ public class MenuPortfoiloFragment extends Fragment {
         llMenuPortfoiloUSD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                llMenuPortfoiloUSD.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.right_convertlayout_rounded_sharpe));
-                llMenuPortfoiloHKD.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
-                llMenuPortfoiloAll.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.left_convertlayout_rounded_shape_white));
+                viewMenuAll.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
+                viewMenuHKD.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
+                viewMenuUSD.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
 
                 txtFirstPercentage.setText("-13.62%");
                 txtSecondPercentage.setText("08");
@@ -157,9 +162,9 @@ public class MenuPortfoiloFragment extends Fragment {
         llMenuPortfoiloHKD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                llMenuPortfoiloHKD.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryLight));
-                llMenuPortfoiloUSD.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.right_convertlayout_rounded_shape_white));
-                llMenuPortfoiloAll.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.left_convertlayout_rounded_shape_white));
+                viewMenuAll.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
+                viewMenuHKD.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
+                viewMenuUSD.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
 
                 txtFirstPercentage.setText("-18.60%");
                 txtSecondPercentage.setText("11");
@@ -174,10 +179,10 @@ public class MenuPortfoiloFragment extends Fragment {
         llMenuPortfoiloAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                llMenuPortfoiloAll.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.left_convertlayout_rounded_sharpe));
-                llMenuPortfoiloHKD.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
-                llMenuPortfoiloUSD.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.right_convertlayout_rounded_shape_white));
 
+                viewMenuAll.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
+                viewMenuHKD.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
+                viewMenuUSD.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
 
                 txtFirstPercentage.setText("-28.90%");
                 txtSecondPercentage.setText("05");

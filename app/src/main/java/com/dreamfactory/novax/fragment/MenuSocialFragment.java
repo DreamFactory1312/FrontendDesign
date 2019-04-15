@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.dreamfactory.novax.R;
@@ -34,7 +35,7 @@ public class MenuSocialFragment extends Fragment {
 
     private TextView txtCurrentRatingValue, txtFollowersValue, txtFollowingValue;
 
-    private ProgressBar progressMyTradingRecentTab;
+    private SeekBar seekBarMyTradingRecentTab;
 
     private TextView txtPercentageValue, txtZeroPercentage, txtThirtyPercentage;
 
@@ -45,6 +46,7 @@ public class MenuSocialFragment extends Fragment {
     //Handle ProgressBar
     private int progress = 0;
     private Handler handler = new Handler();
+
     private RecyclerView socialRecycler;
     private SocialStarRatingAdapter socialStarRatingAdapter;
     private SocialMyRatingAdapter socialMyRatingAdapter;
@@ -80,14 +82,14 @@ public class MenuSocialFragment extends Fragment {
         txtMyRatingTab = view.findViewById(R.id.txtMyRatingTab);
         txtStarTradersTab = view.findViewById(R.id.txtStarTradersTab);
 
-        progressMyTradingRecentTab = view.findViewById(R.id.progressMyTradingRecentTab);
+        seekBarMyTradingRecentTab = view.findViewById(R.id.seekBarMyTradingRecentTab);
 
         llMyRatingTab = view.findViewById(R.id.llMyRatingTab);
         llStarTradersTab = view.findViewById(R.id.llStarTradersTab);
 
         implementationllMyTradingTab();
         implementationllRecentTab();
-        implementationprogressMyTradingRecentTab();
+        implementationseekBarMyTradingRecentTab();
         implementationllMyRatingTab();
         implementationllStarTradersTab();
 
@@ -110,8 +112,8 @@ public class MenuSocialFragment extends Fragment {
 
         //for recyclerview
         socialRatings.clear();
-        socialRatings.add(new SocialRating(R.drawable.icon_nvedia, "US: NVIDIA", "40", ""));
-        socialRatings.add(new SocialRating(R.drawable.icon_nvedia, "US: NVIDIA", "40", "0"));
+        socialRatings.add(new SocialRating(R.drawable.icon_profile, "Arthur Morgan", "34", ""));
+        socialRatings.add(new SocialRating(R.drawable.icon_profile, "Jeremy Clarkson", "37", "0"));
         socialMyRatingAdapter = new SocialMyRatingAdapter(socialRatings, getContext());
         socialRecycler.setAdapter(socialMyRatingAdapter);
     }
@@ -128,12 +130,10 @@ public class MenuSocialFragment extends Fragment {
                 txtMyRatingTab.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
 
                 socialRatings.clear();
-                socialRatings.add(new SocialRating(R.drawable.icon_facebook, "US: NVIDIA"));
-                socialRatings.add(new SocialRating(R.drawable.icon_facebook, "US: NVIDIA"));
+                socialRatings.add(new SocialRating(R.drawable.icon_profile, "Richard Hammond"));
+                socialRatings.add(new SocialRating(R.drawable.icon_profile, "Harry Lincoln"));
                 socialStarRatingAdapter = new SocialStarRatingAdapter(socialRatings, getContext());
                 socialRecycler.setAdapter(socialStarRatingAdapter);
-
-
 
 
             }
@@ -151,15 +151,15 @@ public class MenuSocialFragment extends Fragment {
                 txtStarTradersTab.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
 
                 socialRatings.clear();
-                socialRatings.add(new SocialRating(R.drawable.icon_nvedia, "US: NVIDIA", "40", ""));
-                socialRatings.add(new SocialRating(R.drawable.icon_nvedia, "US: NVIDIA", "40", "0"));
+                socialRatings.add(new SocialRating(R.drawable.icon_profile, "Arthur Morgan", "34", ""));
+                socialRatings.add(new SocialRating(R.drawable.icon_profile, "Jeremy Clarkson", "37", "0"));
                 socialMyRatingAdapter = new SocialMyRatingAdapter(socialRatings, getContext());
                 socialRecycler.setAdapter(socialMyRatingAdapter);
             }
         });
     }
 
-    private void implementationprogressMyTradingRecentTab() {
+    private void implementationseekBarMyTradingRecentTab() {
         if (progress > 0) {
             progress = 0;
         }
@@ -170,7 +170,7 @@ public class MenuSocialFragment extends Fragment {
                     progress += 1;
                     handler.post(new Runnable() {
                         public void run() {
-                            progressMyTradingRecentTab.setProgress(progress);
+                            seekBarMyTradingRecentTab.setProgress(progress);
                             txtPercentageValue.setText(progress + "%");
                             //txtPercentageValue.setPadding(progress + 270, 0, 0, 0);
                         }

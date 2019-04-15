@@ -125,7 +125,7 @@ public class MenuHomeFragment extends Fragment {
         txtReturnVsRisk.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
 
         llDiversificationLayout.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.right_convertlayout_rounded_shape_white));
-        txtReturnVsRisk.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+        txtDiversification.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
 
         llCompletedOrder.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.right_convertlayout_rounded_sharpe));
         txtCompletedOrder.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
@@ -233,7 +233,7 @@ public class MenuHomeFragment extends Fragment {
         List xAisValues = new ArrayList();
 
 
-        Line line = new Line(yAxisValues).setColor(Color.parseColor("#339684"));
+        Line line = new Line(yAxisValues).setColor(Color.parseColor("#24A2C1"));
 
         for (int i = 0; i < xAxisData.length; i++) {
             xAisValues.add(i, new AxisValue(i).setLabel(xAxisData[i]));

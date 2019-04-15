@@ -2,12 +2,15 @@ package com.dreamfactory.novax.model;
 
 public class Watchlist {
 
-    private int img_product, img_product_social_followers;
+    private int img_product, img_product_social_followers,img_order_history;
     private String txt_product_name, txt_product_price, txt_product_percentage, txt_product_amount, txt_product_share_amount, txt_product_loss, txt_product_loss_weight, type;
     private String txt_product_name_social_follwer,txt_product_Buy_amount,txt_product_SL_amount,txt_product_exit_amount,txt_product_quentity;
+    private String txt_product_name_history_order,txt_order_history_date,txt_Direction,txt_Type,txt_Quantity,txt_LimitPrice,txt_ExpiryDate;
 
     public Watchlist() {
     }
+
+
 
     public Watchlist(int img_product_social_followers, String txt_product_name_social_follwer, String txt_product_Buy_amount, String txt_product_SL_amount, String txt_product_exit_amount, String txt_product_quentity) {
         this.img_product_social_followers = img_product_social_followers;

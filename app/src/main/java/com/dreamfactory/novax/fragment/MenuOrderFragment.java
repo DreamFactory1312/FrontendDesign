@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.dreamfactory.novax.R;
 import com.dreamfactory.novax.activity.AmendCancelOrderActivity;
+import com.dreamfactory.novax.activity.BuyMarketOrder;
+import com.dreamfactory.novax.activity.SellMktOrder;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import java.util.ArrayList;
@@ -41,7 +43,7 @@ public class MenuOrderFragment extends Fragment {
     private String[] xAxisData = {"Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept",
             "Oct", "Nov", "Dec"};
     private int[] yAxisData = {50, 20, 15, 30, 20, 60, 15, 40, 45, 10, 90, 18};
-    private Button btnSellMenuOrder,btnBuyMenuOrder;
+    private Button btnSellMenuOrder, btnBuyMenuOrder;
 
 
     public MenuOrderFragment() {
@@ -67,8 +69,15 @@ public class MenuOrderFragment extends Fragment {
         btnSellMenuOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getContext(), AmendCancelOrderActivity.class);
+                Intent intent = new Intent(getContext(), SellMktOrder.class);
                 startActivity(intent);
+            }
+        });
+
+        btnBuyMenuOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), BuyMarketOrder.class));
             }
         });
 
@@ -82,7 +91,7 @@ public class MenuOrderFragment extends Fragment {
         List xAisValues = new ArrayList();
 
 
-        Line line = new Line(yAxisValues).setColor(Color.parseColor("#339684"));
+        Line line = new Line(yAxisValues).setColor(Color.parseColor("#24A2C1"));
 
         for (int i = 0; i < xAxisData.length; i++) {
             xAisValues.add(i, new AxisValue(i).setLabel(xAxisData[i]));

@@ -26,10 +26,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        ((TextView) findViewById(R.id.txt_login_signup)).setOnClickListener(new View.OnClickListener() {
+        ((TextView) findViewById(R.id.txtSignUp)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), OrderHistoryActivity.class));
+                startActivity(new Intent(LoginActivity.this, OrderHistoryActivity.class));
             }
         });
 

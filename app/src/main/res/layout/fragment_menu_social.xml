@@ -271,8 +271,8 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <ProgressBar
-                            android:id="@+id/progressMyTradingRecentTab"
+                        <SeekBar
+                            android:id="@+id/seekBarMyTradingRecentTab"
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
                             android:layout_height="10dp"
@@ -345,7 +345,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="Discimilar"
+                            android:text="Disclaimer"
                             android:textSize="18sp"
                             android:textStyle="normal" />
                     </LinearLayout>
@@ -361,7 +361,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Terms and Condition Apply"
-                            android:textSize="18sp"
+                            android:textSize="14sp"
                             android:textStyle="normal" />
                     </LinearLayout>
                 </LinearLayout>
@@ -410,7 +410,7 @@
                         android:layout_marginBottom="10dp"
                         android:drawableStart="@drawable/icon_rate"
                         android:gravity="center"
-                        android:text="May Rating"
+                        android:text="My Rating"
                         android:textColor="@color/white"
                         android:textSize="18sp"
                         android:textStyle="normal" />

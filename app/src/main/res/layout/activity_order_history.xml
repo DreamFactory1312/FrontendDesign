@@ -60,11 +60,11 @@
 
                     <TextView
                         android:id="@+id/textView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginStart="10dp"
-                        android:layout_weight=".6"
+                        android:layout_weight="1"
                         android:fontFamily="@font/neosans_pro_regular"
                         android:text="My Orders"
                         android:textColor="@color/black"
@@ -75,7 +75,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_weight="1.4"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -94,7 +94,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/neosans_pro_regular"
                                 android:text="Swipe down to refresh history"
-                                android:textColor="@color/colorPrimary"
+                                android:textColor="@color/blue_natural"
                                 android:textSize="10dp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -132,7 +132,7 @@
                             android:weightSum="3">
 
                             <LinearLayout
-                                android:id="@+id/depositeLayout"
+                                android:id="@+id/activeOrderHistoryLayout"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
@@ -140,7 +140,7 @@
 
 
                                 <TextView
-                                    android:id="@+id/txtdepsite"
+                                    android:id="@+id/txtActiveOrderHistory"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
@@ -158,14 +158,14 @@
                                 android:background="@color/colorPrimary"></View>
 
                             <LinearLayout
-                                android:id="@+id/withdrawLayout"
+                                android:id="@+id/completedOrderHistoryLayout"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:gravity="center">
 
                                 <TextView
-                                    android:id="@+id/txtwithdraw"
+                                    android:id="@+id/txtCompleteOrderHistory"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
@@ -184,14 +184,14 @@
                             </View>
 
                             <LinearLayout
-                                android:id="@+id/convertLayout"
+                                android:id="@+id/historicalOrderHistoryLayout"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:gravity="center">
 
                                 <TextView
-                                    android:id="@+id/txtconvert"
+                                    android:id="@+id/txtHistoricalOrderHistory"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"

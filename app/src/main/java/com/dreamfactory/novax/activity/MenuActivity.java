@@ -15,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.dreamfactory.novax.R;
@@ -31,6 +33,7 @@ public class MenuActivity extends AppCompatActivity
     private TabItem menuTabItemSocial;
     private ViewPager menuViewPager;
     private MenuPageAdapter menuPageAdapter;
+    private ImageView nav_img_editIcon;
 
 
     @Override
@@ -50,6 +53,15 @@ public class MenuActivity extends AppCompatActivity
         menuTabItemOrder = findViewById(R.id.tab_item_order);
         menuTabItemSocial = findViewById(R.id.tab_item_social);
         menuViewPager = findViewById(R.id.menu_viewpager);
+        //nav_img_editIcon = findViewById(R.id.nav_img_editIcon);
+
+        // nav bar edit icon implementation
+//        nav_img_editIcon.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(MenuActivity.this, "Edit Icon Clicked", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         menuPageAdapter = new MenuPageAdapter(getSupportFragmentManager(), menuTabLayout.getTabCount());
         menuViewPager.setAdapter(menuPageAdapter);
@@ -118,6 +130,9 @@ public class MenuActivity extends AppCompatActivity
         });
 
         menuViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(menuTabLayout));
+
+
+
     }
 
     private void setToolBarTitle(int position) {
@@ -136,7 +151,7 @@ public class MenuActivity extends AppCompatActivity
                 break;
 
             case 3:
-                toolbar.setTitle("Social");
+                toolbar.setTitle("Social Trading");
                 break;
         }
     }

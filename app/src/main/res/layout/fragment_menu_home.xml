@@ -55,10 +55,10 @@
                     android:layout_weight="0.5"
                     android:background="@drawable/layout_radious"
                     android:shadowRadius="10"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold"
-                    app:ms_background_color="@color/colorPrimaryLight"
+                    app:ms_background_color="@color/white"
                     app:ms_dropdown_max_height="300dp" />
 
             </LinearLayout>
@@ -75,7 +75,7 @@
                 <lecho.lib.hellocharts.view.LineChartView
                     android:id="@+id/lineChartViewMenuHome"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp" />
+                    android:layout_height="130dp" />
 
             </LinearLayout>
 
