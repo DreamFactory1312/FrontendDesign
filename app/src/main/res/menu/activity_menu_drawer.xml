@@ -16,15 +16,35 @@
             android:id="@+id/nav_contact_us"
             android:icon="@drawable/nav_icon_contact"
             android:title="@string/contact_us" />
+
+        <item android:title=""
+             />
+
+        <item android:title="">
+            <menu>
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/icon_nav_logout"
+                    android:title="Logout" />
+            </menu>
+        </item>
     </group>
 
-    <item android:title="">
-        <menu>
-            <item
-                android:id="@+id/nav_logout"
-                android:icon="@drawable/icon_nav_logout"
-                android:title="Logout" />
-        </menu>
-    </item>
+
+
+
+    <!--<item-->
+        <!--android:id="@+id/nav_logout"-->
+        <!--android:icon="@drawable/icon_nav_logout"-->
+        <!--android:title="Logout" />-->
+
+    <!--<item android:title="">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_logout"-->
+                <!--android:icon="@drawable/icon_nav_logout"-->
+                <!--android:title="Logout" />-->
+        <!--</menu>-->
+    <!--</item>-->
 
 </menu>

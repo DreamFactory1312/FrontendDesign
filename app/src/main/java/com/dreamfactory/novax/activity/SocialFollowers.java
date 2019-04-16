@@ -33,7 +33,7 @@ import lecho.lib.hellocharts.model.PointValue;
 import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.view.LineChartView;
 
-public class SocialFollowes extends AppCompatActivity {
+public class SocialFollowers extends AppCompatActivity {
 
     private Toolbar toolBarSoicalFollowers;
 

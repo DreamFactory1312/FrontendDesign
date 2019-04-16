@@ -117,11 +117,7 @@ public class ContactUsActivity extends AppCompatActivity implements NavigationVi
     public void onMapReady(GoogleMap googleMap) {
         googleMap = googleMap;
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        LatLng latLng = new LatLng(22.2826263, 114.1524992);
-//        MarkerOptions markerOptions = new MarkerOptions();
-//        markerOptions.position(latLng);
-//        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
-//        mCurrLocationMarker = googleMap.addMarker(markerOptions);
+        LatLng latLng = new LatLng(22.282599, 114.154688);
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(18));
     }

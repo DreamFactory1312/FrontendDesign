@@ -19,7 +19,7 @@
         <activity android:name=".activity.BuyMarketOrder" />
         <activity android:name=".activity.OrderHistoryActivity" />
         <activity android:name=".activity.AmendOrder" />
-        <activity android:name=".activity.SocialFollowes" />
+        <activity android:name=".activity.SocialFollowers" />
         <activity
             android:name=".activity.BalanceActivity"
             android:label="@string/title_activity_balance" />

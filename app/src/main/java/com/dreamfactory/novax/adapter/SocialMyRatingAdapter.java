@@ -1,7 +1,6 @@
 package com.dreamfactory.novax.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -12,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dreamfactory.novax.R;
-import com.dreamfactory.novax.activity.SocialFollowes;
 import com.dreamfactory.novax.model.SocialRating;
 
 import java.util.ArrayList;

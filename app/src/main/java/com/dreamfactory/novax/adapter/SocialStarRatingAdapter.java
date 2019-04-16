@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dreamfactory.novax.R;
-import com.dreamfactory.novax.activity.SocialFollowes;
+import com.dreamfactory.novax.activity.SocialFollowers;
 import com.dreamfactory.novax.model.SocialRating;
 
 import java.util.ArrayList;
@@ -68,16 +68,16 @@ public class SocialStarRatingAdapter extends RecyclerView.Adapter<RecyclerView.V
             txt_followTrader_social_star = itemView.findViewById(R.id.txt_followTrader_social_star);
             //  btn_cancel=itemView.findViewById(R.id.btn_cancel);
 
+//            txt_followTrader_social_star.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                    Intent intent=new Intent(mcontext, SocialFollowers.class);
+//                    mcontext.startActivity(intent);
+//                }
+//            });
+
             txt_followTrader_social_star.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Intent intent=new Intent(mcontext, SocialFollowes.class);
-                    mcontext.startActivity(intent);
-                }
-            });
-
-            startradersName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     dialog = new Dialog(mcontext);
@@ -95,7 +95,8 @@ public class SocialStarRatingAdapter extends RecyclerView.Adapter<RecyclerView.V
                         @Override
                         public void onClick(View v) {
                             dialog.dismiss();
-                            Toast.makeText(mcontext, "Continue", Toast.LENGTH_SHORT).show();
+                            Intent intent=new Intent(mcontext, SocialFollowers.class);
+                            mcontext.startActivity(intent);
                         }
                     });
                     dialog.show();

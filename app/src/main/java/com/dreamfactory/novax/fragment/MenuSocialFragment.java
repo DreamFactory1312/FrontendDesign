@@ -160,30 +160,33 @@ public class MenuSocialFragment extends Fragment {
     }
 
     private void implementationseekBarMyTradingRecentTab() {
-        if (progress > 0) {
-            progress = 0;
-        }
-
-        new Thread(new Runnable() {
-            public void run() {
-                while (progress < getProgressData()) {
-                    progress += 1;
-                    handler.post(new Runnable() {
-                        public void run() {
-                            seekBarMyTradingRecentTab.setProgress(progress);
-                            txtPercentageValue.setText(progress + "%");
-                            //txtPercentageValue.setPadding(progress + 270, 0, 0, 0);
-                        }
-                    });
-                    try {
-                        // Sleep for 100 milliseconds to show the progress slowly.
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }).start();
+        progress = 7;
+        seekBarMyTradingRecentTab.setProgress(progress);
+        txtPercentageValue.setText(progress + "%");
+//        if (progress > 0) {
+//            progress = 0;
+//        }
+//
+//        new Thread(new Runnable() {
+//            public void run() {
+//                while (progress < getProgressData()) {
+//                    progress += 1;
+//                    handler.post(new Runnable() {
+//                        public void run() {
+//                            seekBarMyTradingRecentTab.setProgress(progress);
+//                            txtPercentageValue.setText(progress + "%");
+//                            //txtPercentageValue.setPadding(progress + 270, 0, 0, 0);
+//                        }
+//                    });
+//                    try {
+//                        // Sleep for 100 milliseconds to show the progress slowly.
+//                        Thread.sleep(100);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }).start();
     }
 
     private void implementationllRecentTab() {

@@ -285,7 +285,7 @@ public class MenuHomeFragment extends Fragment {
 
     private void implementationSpinnerMenuHome() {
 
-        spinnerMenuHome.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.right_convertlayout_rounded_sharpe));
+        spinnerMenuHome.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.right_convertlayout_rounded_shape_white));
         spinnerMenuHome.setItems("2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020");
         spinnerMenuHome.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override

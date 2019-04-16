@@ -28,7 +28,7 @@ public class DepositeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_deposite);
 
         toolbar_watchlist = findViewById(R.id.toolbar_watchlist);
-
+           toolbar_watchlist.setTitle("How do I make a deposit?");
         setSupportActionBar(toolbar_watchlist);
 
 

@@ -77,7 +77,7 @@ public class OrderHistoryActivity extends AppCompatActivity {
         completedOrderHistoryLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                completedOrderHistoryLayout.setBackgroundDrawable(ContextCompat.getDrawable(OrderHistoryActivity.this, R.color.colorPrimaryLight));
+                completedOrderHistoryLayout.setBackgroundDrawable(ContextCompat.getDrawable(OrderHistoryActivity.this, R.color.colorPrimary));
                 activeOrderHistoryLayout.setBackgroundColor(Color.TRANSPARENT);
                 historicalOrderHistoryLayout.setBackgroundColor(Color.TRANSPARENT);
 
