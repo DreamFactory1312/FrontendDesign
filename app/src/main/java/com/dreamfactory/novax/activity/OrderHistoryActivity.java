@@ -1,5 +1,6 @@
 package com.dreamfactory.novax.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -110,7 +111,8 @@ public class OrderHistoryActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            finish();
+           // finish();
+            startActivity(new Intent(this,MenuActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

@@ -141,7 +141,8 @@ public class AmendOrder extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            finish();
+          //  finish();
+            startActivity(new Intent(this,MenuActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

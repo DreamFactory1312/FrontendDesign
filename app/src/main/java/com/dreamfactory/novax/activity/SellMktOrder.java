@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.dreamfactory.novax.R;
@@ -30,7 +31,7 @@ public class SellMktOrder extends AppCompatActivity {
     private TextView txtSellMktOrder, txtSellLOOrder, txtSellGTDOrder;
     private TextView txtAvailableForSellSellMKTValue, txtQuantitySellMKTValue, txtAmountSellMKTValue;
     private View viewSellMKT, viewSellLO, viewSellGTD;
-    private ProgressBar progressBarSellMKT;
+    private SeekBar progressBarSellMKT;
     private Button btnNextOrderSellMKT;
 
     private int progress = 0;
@@ -252,7 +253,8 @@ public class SellMktOrder extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            finish();
+           // finish();
+            startActivity(new Intent(this,MenuActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

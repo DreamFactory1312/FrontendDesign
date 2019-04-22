@@ -128,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="0.83"
-                    android:textSize="32sp" />
+                    android:textSize="28sp" />
 
                 <TextView
                     android:id="@+id/txtSecondValueSellMKTOrder"
@@ -137,7 +137,7 @@
                     android:gravity="center"
                     android:text="-0.07"
                     android:textColor="@color/brown"
-                    android:textSize="24sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/txtRealTimeUpdateSellMKTOrder"
@@ -537,7 +537,7 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <ProgressBar
+                    <SeekBar
                         android:id="@+id/progressBarSellMKT"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="match_parent"
@@ -759,7 +759,7 @@
                         android:text="Limit Price"
                         android:textSize="12sp" />
 
-                    <ProgressBar
+                    <SeekBar
                         android:id="@+id/progressBarLimitPriceGTD"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="match_parent"
@@ -795,7 +795,7 @@
                         android:text="Quantity"
                         android:textSize="12sp" />
 
-                    <ProgressBar
+                    <SeekBar
                         android:id="@+id/progressQuantityGTD"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="match_parent"

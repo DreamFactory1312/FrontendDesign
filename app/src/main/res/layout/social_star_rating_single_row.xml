@@ -56,7 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="2dp"
+            android:padding="5dp"
             android:fontFamily="@font/neosans_pro_regular"
             android:gravity="center"
             android:text="Follow Trade"
