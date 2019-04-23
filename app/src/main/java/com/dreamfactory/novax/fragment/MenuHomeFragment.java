@@ -1,6 +1,7 @@
 package com.dreamfactory.novax.fragment;
 
 
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,32 +15,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.SeekBar;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dreamfactory.novax.R;
-import com.dreamfactory.novax.activity.MenuActivity;
 import com.dreamfactory.novax.adapter.FragmentHomeMenuPageAdapter;
 import com.dreamfactory.novax.model.HomeMenu;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GridLabelRenderer;
+import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import lecho.lib.hellocharts.listener.LineChartOnValueSelectListener;
-import lecho.lib.hellocharts.model.Axis;
-import lecho.lib.hellocharts.model.AxisValue;
-import lecho.lib.hellocharts.model.Line;
-import lecho.lib.hellocharts.model.LineChartData;
-import lecho.lib.hellocharts.model.PointValue;
-import lecho.lib.hellocharts.model.Viewport;
-import lecho.lib.hellocharts.view.LineChartView;
 
 
 /**
@@ -48,7 +39,7 @@ import lecho.lib.hellocharts.view.LineChartView;
 public class MenuHomeFragment extends Fragment {
 
     private MaterialSpinner spinnerMenuHome;
-    private LineChartView lineChartViewMenuHome;
+    private GraphView lineChartViewMenuHome;
     private ProgressBar progressBarMenuHome;
 
     private LinearLayout llReturnVsRiskLayout, llDiversificationLayout, llProfitAndLoss, llCompletedOrder;
@@ -57,10 +48,6 @@ public class MenuHomeFragment extends Fragment {
     private RecyclerView recyclerViewMenuHome;
     private FragmentHomeMenuPageAdapter homeMenuPageAdapter;
     private List<HomeMenu> homeMenuList = new ArrayList<>();
-
-    private String[] xAxisData = {"Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept",
-            "Oct", "Nov", "Dec"};
-    private int[] yAxisData = {50, 20, 15, 30, 20, 60, 15, 40, 45, 10, 90, 18};
 
     //Handle ProgressBar
     private int progress = 0;
@@ -228,59 +215,69 @@ public class MenuHomeFragment extends Fragment {
     }
 
     private void implementationLineChartViewMenuHome() {
+        DataPoint[] dp = null;
+        String[] months = null;
 
-        List yAxisValues = new ArrayList();
-        List xAisValues = new ArrayList();
-
-
-        Line line = new Line(yAxisValues).setColor(Color.parseColor("#24A2C1"));
-
-        for (int i = 0; i < xAxisData.length; i++) {
-            xAisValues.add(i, new AxisValue(i).setLabel(xAxisData[i]));
+        if (getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            dp = getDataPoint();
+            months = new String[]{"Jan", "Mar", "May", "Jul", "Sep", "Nov"};
+        } else {
+            dp = getDataPointTwelve();
+            months = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
         }
 
-        for (int i = 0; i < yAxisData.length; i++) {
-            yAxisValues.add(new PointValue(i, getArr()));
-        }
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dp);
 
-        List lines = new ArrayList();
-        lines.add(line);
+        series.setColor(Color.rgb(32, 141, 168));
+        // series.setColor(R.color.colorPrimary);
+        series.setThickness(6);
+        series.setDrawBackground(true);
+        series.setBackgroundColor(Color.parseColor("#24A2C1"));
+        // series.setBackgroundColor(R.color.colorPrimaryDark);
+        series.setAnimated(true);
+        series.setDrawDataPoints(true);
+        series.setDataPointsRadius(8);
 
-        final LineChartData data = new LineChartData();
-        data.setLines(lines);
+        lineChartViewMenuHome.addSeries(series);
 
-        Axis xAxis = new Axis();
-        xAxis.setValues(xAisValues);
-        xAxis.setTextSize(12);
-        xAxis.setTextColor(Color.parseColor("#000000"));
-        data.setAxisXBottom(xAxis);
+        StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(lineChartViewMenuHome);
+        staticLabelsFormatter.setHorizontalLabels(months);
+        lineChartViewMenuHome.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
+        lineChartViewMenuHome.getGridLabelRenderer().setVerticalLabelsVisible(false);
 
-        Axis yAxis = new Axis();
-//        yAxis.setName("Sales in millions");
-        yAxis.setTextColor(Color.parseColor("#000000"));
-        yAxis.setTextSize(12);
-        data.setAxisYLeft(yAxis);
+        lineChartViewMenuHome.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.NONE);  //For invisible x and y axies line
+    }
 
+    private DataPoint[] getDataPointTwelve() {
+        DataPoint[] dp = new DataPoint[]{
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3),
+                new DataPoint(3, 7),
+                new DataPoint(4, 2),
+                new DataPoint(5, 5),
+                new DataPoint(6, 7),
+                new DataPoint(7, 2),
+                new DataPoint(8, 6),
+                new DataPoint(9, 8),
+                new DataPoint(10, 2),
+                new DataPoint(11, 1),
+        };
 
-        lineChartViewMenuHome.setLineChartData(data);
+        return (dp);
+    }
 
-        Viewport viewport = new Viewport(lineChartViewMenuHome.getMaximumViewport());
-        viewport.top = 10;  //set max value of Y axies
-        lineChartViewMenuHome.setMaximumViewport(viewport);
-        lineChartViewMenuHome.setCurrentViewport(viewport);
+    private DataPoint[] getDataPoint() {
+        DataPoint[] dp = new DataPoint[]{
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3),
+                new DataPoint(3, 7),
+                new DataPoint(4, 2),
+                new DataPoint(5, 5),
+        };
 
-        lineChartViewMenuHome.setOnValueTouchListener(new LineChartOnValueSelectListener() {
-
-            @Override
-            public void onValueSelected(int lineIndex, int pointIndex, PointValue value) {
-                Toast.makeText(getActivity(), "Touched: " + value.getY(), Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onValueDeselected() {
-
-            }
-        });
+        return (dp);
     }
 
     private void implementationSpinnerMenuHome() {
@@ -305,3 +302,4 @@ public class MenuHomeFragment extends Fragment {
         return new Random().nextInt(100) + 1;
     }
 }
+

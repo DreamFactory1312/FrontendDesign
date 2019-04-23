@@ -23,7 +23,7 @@ import com.dreamfactory.novax.R;
 import com.dreamfactory.novax.adapter.MenuPageAdapter;
 
 public class MenuActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
 
     private Toolbar toolbar;
     private TabLayout menuTabLayout;
@@ -34,6 +34,18 @@ public class MenuActivity extends AppCompatActivity
     private ViewPager menuViewPager;
     private MenuPageAdapter menuPageAdapter;
     private ImageView nav_img_editIcon;
+
+    final int[] tabSelected = {
+            R.drawable.icon_summary_home,
+            R.drawable.icon_summary_portfoilo_white,
+            R.drawable.icon_summary_order_white,
+            R.drawable.icon_summary_social_trading_white};
+
+    final int[] tabsUnselected = {
+            R.drawable.icon_summary_home_black,
+            R.drawable.icon_summary_portfoilo,
+            R.drawable.icon_summary_order,
+            R.drawable.icon_summary_social};
 
 
     @Override
@@ -78,6 +90,13 @@ public class MenuActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         //end setting navigation drawer
 
+
+
+        menuViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(menuTabLayout));
+
+
+
+
         //setting tab selected listner so that we can change selected or unselected tab items background
         menuTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -93,28 +112,37 @@ public class MenuActivity extends AppCompatActivity
 
                 setToolBarTitle(tab.getPosition());
 
-                /*if (tab.getPosition() == 1) {
-                    toolbar.setBackgroundColor(ContextCompat.getColor(MenuActivity.this, R.color.colorAccent));
-                    menuTabLayout.setBackgroundColor(ContextCompat.getColor(MenuActivity.this, R.color.colorAccent));
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        getWindow().setStatusBarColor(ContextCompat.getColor(MenuActivity.this, R.color.colorAccent));
-                    }
-                } else if (tab.getPosition() == 2) {
-                    toolbar.setBackgroundColor(ContextCompat.getColor(MenuActivity.this, android.R.color.darker_gray));
-                    menuTabLayout.setBackgroundColor(ContextCompat.getColor(MenuActivity.this, android.R.color.darker_gray));
+                if (tab.getPosition() == 0) {
+                    // menuTabItemPortfoilo.setBackground(getDrawable(R.drawable.icon_portfolios_white));
+                    menuTabLayout.getTabAt(0).setIcon(tabSelected[0]);
+                    menuTabLayout.getTabAt(1).setIcon(tabsUnselected[1]);
+                    menuTabLayout.getTabAt(2).setIcon(tabsUnselected[2]);
+                    menuTabLayout.getTabAt(3).setIcon(tabsUnselected[3]);
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        getWindow().setStatusBarColor(ContextCompat.getColor(MenuActivity.this, android.R.color.darker_gray));
-                    }
+
+                } else if (tab.getPosition() == 1) {
+                  //  menuTabItemPortfoilo.setBackgroundDrawable(getDrawable(R.drawable.icon_portfolios_white));
+                    menuTabLayout.getTabAt(0).setIcon(tabsUnselected[0]);
+                    menuTabLayout.getTabAt(1).setIcon(tabSelected[1]);
+                    menuTabLayout.getTabAt(2).setIcon(tabsUnselected[2]);
+                    menuTabLayout.getTabAt(3).setIcon(tabsUnselected[3]);
+
+                }else if (tab.getPosition() == 2) {
+                  //  menuTabItemOrder.setBackgroundDrawable(getDrawable(R.drawable.icon_portfolios_white));
+                    menuTabLayout.getTabAt(2).setIcon(tabSelected[2]);
+                    menuTabLayout.getTabAt(1).setIcon(tabsUnselected[1]);
+                    menuTabLayout.getTabAt(0).setIcon(tabsUnselected[0]);
+                    menuTabLayout.getTabAt(3).setIcon(tabsUnselected[3]);
+
                 } else {
-                    toolbar.setBackgroundColor(ContextCompat.getColor(MenuActivity.this, R.color.colorPrimary));
-                    menuTabLayout.setBackgroundColor(ContextCompat.getColor(MenuActivity.this, R.color.colorPrimary));
+                  //  menuTabItemSocial.setBackgroundDrawable(getDrawable(R.drawable.icon_portfolios_white));
+                    menuTabLayout.getTabAt(2).setIcon(tabsUnselected[2]);
+                    menuTabLayout.getTabAt(1).setIcon(tabsUnselected[1]);
+                    menuTabLayout.getTabAt(0).setIcon(tabsUnselected[0]);
+                    menuTabLayout.getTabAt(3).setIcon(tabSelected[3]);
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        getWindow().setStatusBarColor(ContextCompat.getColor(MenuActivity.this, R.color.colorPrimary));
-                    }
-                }*/
+                }
 
             }
 
@@ -129,11 +157,26 @@ public class MenuActivity extends AppCompatActivity
             }
         });
 
-        menuViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(menuTabLayout));
-
 
 
     }
+
+//    @Override
+//    public void onPageSelected(int position) {
+//
+//        int size = 4;
+//        position = Math.min(position, size);
+//
+//        for(int i = 0; i <= size; i++){
+//            if(i == position){
+//                tabLayout.getTabAt(i).setIcon(tabSelected[i]);
+//            }
+//            else {
+//                tabLayout.getTabAt(i).setIcon(tabsUnselected[i]);
+//            }
+//        }
+//
+//    }
 
     private void setToolBarTitle(int position) {
         switch (position) {
@@ -144,6 +187,8 @@ public class MenuActivity extends AppCompatActivity
 
             case 1:
                 toolbar.setTitle("Portfolios");
+                // menuTabItemPortfoilo.setBackground(getDrawable(R.drawable.icon_portfolios_white));
+                // menuTabItemPortfoilo.setBackgroundDrawable(getDrawable(R.drawable.icon_portfolios_white));
                 break;
 
             case 2:
@@ -213,5 +258,30 @@ public class MenuActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onPageScrolled(int i, float v, int i1) {
+
+    }
+
+    @Override
+    public void onPageSelected(int positin) {
+
+                int size = 3;
+                int position = Math.min(positin, size);
+
+                for (int i = 0; i <= size; i++) {
+                    if (i == position) {
+                        menuTabLayout.getTabAt(i).setIcon(tabSelected[i]);
+                    } else {
+                        menuTabLayout.getTabAt(i).setIcon(tabsUnselected[i]);
+                    }
+                }
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int i) {
+
     }
 }

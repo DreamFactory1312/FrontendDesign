@@ -127,51 +127,51 @@
             </LinearLayout>
 
             <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginStart="40dp"-->
-                <!--android:layout_marginTop="5dp"-->
-                <!--android:layout_marginEnd="40dp"-->
-                <!--android:layout_marginBottom="10dp"-->
-                <!--android:background="@drawable/rounded_shape_deepblue_color"-->
-                <!--android:orientation="horizontal"-->
-                <!--android:weightSum="1">-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="40dp"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:layout_marginEnd="40dp"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:background="@drawable/rounded_shape_deepblue_color"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:weightSum="1">-->
 
-                <!--<LinearLayout-->
-                    <!--android:id="@+id/llBuyMarketOrderTab"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:layout_weight="0.5">-->
+            <!--<LinearLayout-->
+            <!--android:id="@+id/llBuyMarketOrderTab"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_weight="0.5">-->
 
-                    <!--<TextView-->
-                        <!--android:id="@+id/txtBuyMarketOrderTab"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:fontFamily="@font/neosans_pro_regular"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="Buy"-->
-                        <!--android:textSize="24dp" />-->
+            <!--<TextView-->
+            <!--android:id="@+id/txtBuyMarketOrderTab"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:fontFamily="@font/neosans_pro_regular"-->
+            <!--android:gravity="center"-->
+            <!--android:text="Buy"-->
+            <!--android:textSize="24dp" />-->
 
-                <!--</LinearLayout>-->
+            <!--</LinearLayout>-->
 
-                <!--<LinearLayout-->
-                    <!--android:id="@+id/llSellMarketOrderTab"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:layout_weight="0.5">-->
+            <!--<LinearLayout-->
+            <!--android:id="@+id/llSellMarketOrderTab"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_weight="0.5">-->
 
-                    <!--<TextView-->
-                        <!--android:id="@+id/txtSellMarketOrderTab"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:fontFamily="@font/neosans_pro_regular"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="Sell"-->
-                        <!--android:textSize="24sp" />-->
+            <!--<TextView-->
+            <!--android:id="@+id/txtSellMarketOrderTab"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:fontFamily="@font/neosans_pro_regular"-->
+            <!--android:gravity="center"-->
+            <!--android:text="Sell"-->
+            <!--android:textSize="24sp" />-->
 
-                <!--</LinearLayout>-->
+            <!--</LinearLayout>-->
 
             <!--</LinearLayout>-->
 
@@ -242,17 +242,12 @@
                                 android:layout_gravity="center"
                                 android:fontFamily="@font/neosans_pro_regular"
                                 android:gravity="center"
-                                android:textStyle="bold"
-                                android:text="SELL" />
+                                android:text="SELL"
+                                android:textStyle="bold" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-
-
-
-
-
 
 
             <LinearLayout

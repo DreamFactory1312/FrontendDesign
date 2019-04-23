@@ -2,6 +2,7 @@ package com.dreamfactory.novax.fragment;
 
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -13,10 +14,14 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.dreamfactory.novax.R;
-import com.dreamfactory.novax.activity.AmendCancelOrderActivity;
 import com.dreamfactory.novax.activity.BuyMarketOrder;
 import com.dreamfactory.novax.activity.SellMktOrder;
 import com.jaredrummler.materialspinner.MaterialSpinner;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GridLabelRenderer;
+import com.jjoe64.graphview.helper.StaticLabelsFormatter;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +34,6 @@ import lecho.lib.hellocharts.model.Line;
 import lecho.lib.hellocharts.model.LineChartData;
 import lecho.lib.hellocharts.model.PointValue;
 import lecho.lib.hellocharts.model.Viewport;
-import lecho.lib.hellocharts.view.LineChartView;
 
 
 /**
@@ -38,11 +42,8 @@ import lecho.lib.hellocharts.view.LineChartView;
 public class MenuOrderFragment extends Fragment {
 
     private MaterialSpinner spinnerMenuOrder;
-    private LineChartView lineChartViewMenuOrder;
+    private GraphView lineChartViewMenuOrder;
 
-    private String[] xAxisData = {"Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept",
-            "Oct", "Nov", "Dec"};
-    private int[] yAxisData = {50, 20, 15, 30, 20, 60, 15, 40, 45, 10, 90, 18};
     private Button btnSellMenuOrder, btnBuyMenuOrder;
 
 
@@ -87,58 +88,67 @@ public class MenuOrderFragment extends Fragment {
 
     private void implementationLineChartViewMenuOrder() {
 
-        List yAxisValues = new ArrayList();
-        List xAisValues = new ArrayList();
+        DataPoint[] dp = null;
+        String[] months = null;
 
-
-        Line line = new Line(yAxisValues).setColor(Color.parseColor("#24A2C1"));
-
-        for (int i = 0; i < xAxisData.length; i++) {
-            xAisValues.add(i, new AxisValue(i).setLabel(xAxisData[i]));
+        if (getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            dp = getDataPoint();
+            months = new String[]{"Jan", "Mar", "May", "Jul", "Sep", "Nov"};
+        } else {
+            dp = getDataPointTwelve();
+            months = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
         }
 
-        for (int i = 0; i < yAxisData.length; i++) {
-            yAxisValues.add(new PointValue(i, getArr()));
-        }
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dp);
 
-        List lines = new ArrayList();
-        lines.add(line);
+        series.setColor(Color.rgb(32, 141, 168));
+        series.setThickness(6);
+        series.setDrawBackground(true);
+        series.setBackgroundColor(Color.parseColor("#24A2C1"));
+        series.setAnimated(true);
+        series.setDrawDataPoints(true);
+        series.setDataPointsRadius(8);
 
-        final LineChartData data = new LineChartData();
-        data.setLines(lines);
+        lineChartViewMenuOrder.addSeries(series);
 
-        Axis xAxis = new Axis();
-        xAxis.setValues(xAisValues);
-        xAxis.setTextSize(12);
-        xAxis.setTextColor(Color.parseColor("#000000"));
-        data.setAxisXBottom(xAxis);
+        StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(lineChartViewMenuOrder);
+        staticLabelsFormatter.setHorizontalLabels(months);
+        lineChartViewMenuOrder.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
+        lineChartViewMenuOrder.getGridLabelRenderer().setVerticalLabelsVisible(false);
 
-        Axis yAxis = new Axis();
-//        yAxis.setName("Sales in millions");
-        yAxis.setTextColor(Color.parseColor("#000000"));
-        yAxis.setTextSize(12);
-        data.setAxisYLeft(yAxis);
+        lineChartViewMenuOrder.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.NONE);  //For invisible x and y axies line
+    }
 
+    private DataPoint[] getDataPointTwelve() {
+        DataPoint[] dp = new DataPoint[]{
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3),
+                new DataPoint(3, 7),
+                new DataPoint(4, 2),
+                new DataPoint(5, 5),
+                new DataPoint(6, 7),
+                new DataPoint(7, 2),
+                new DataPoint(8, 6),
+                new DataPoint(9, 8),
+                new DataPoint(10, 2),
+                new DataPoint(11, 1),
+        };
 
-        lineChartViewMenuOrder.setLineChartData(data);
+        return (dp);
+    }
 
-        Viewport viewport = new Viewport(lineChartViewMenuOrder.getMaximumViewport());
-        viewport.top = 10;  //set max value of Y axies
-        lineChartViewMenuOrder.setMaximumViewport(viewport);
-        lineChartViewMenuOrder.setCurrentViewport(viewport);
+    private DataPoint[] getDataPoint() {
+        DataPoint[] dp = new DataPoint[]{
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3),
+                new DataPoint(3, 7),
+                new DataPoint(4, 2),
+                new DataPoint(5, 5),
+        };
 
-        lineChartViewMenuOrder.setOnValueTouchListener(new LineChartOnValueSelectListener() {
-
-            @Override
-            public void onValueSelected(int lineIndex, int pointIndex, PointValue value) {
-                Toast.makeText(getActivity(), "Touched: " + value.getY(), Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onValueDeselected() {
-
-            }
-        });
+        return (dp);
     }
 
 

@@ -1,5 +1,6 @@
 package com.dreamfactory.novax.activity;
 
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
@@ -19,6 +20,11 @@ import com.dreamfactory.novax.adapter.SocialFollowersAdapter;
 import com.dreamfactory.novax.adapter.WatchlistAdapter;
 import com.dreamfactory.novax.model.Watchlist;
 import com.jaredrummler.materialspinner.MaterialSpinner;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GridLabelRenderer;
+import com.jjoe64.graphview.helper.StaticLabelsFormatter;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,16 +44,13 @@ public class SocialFollowers extends AppCompatActivity {
     private Toolbar toolBarSoicalFollowers;
 
     private MaterialSpinner spinnerYearSocialFollowers;
-    private LineChartView lineSocialFollowers;
+    private GraphView lineSocialFollowers;
     private LinearLayout llCurrentTradesTab, llTradesReviewTab;
     private TextView txtCurrentTradesTab, txtTraderReviewsTab;
     private RecyclerView recyclerViewSocialFollowers;
     List<Watchlist> socialFollowersList = new ArrayList<>();
     private SocialFollowersAdapter socialFollowersAdapter;
 
-    private String[] xAxisData = {"Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept",
-            "Oct", "Nov", "Dec"};
-    private int[] yAxisData = {50, 20, 15, 30, 20, 60, 15, 40, 45, 10, 90, 18};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,58 +136,69 @@ public class SocialFollowers extends AppCompatActivity {
     }
 
     private void implementationLineSocialFollowers() {
-        List yAxisValues = new ArrayList();
-        List xAisValues = new ArrayList();
+        DataPoint[] dp = null;
+        String[] months = null;
 
-
-        Line line = new Line(yAxisValues).setColor(Color.parseColor("#339684"));
-
-        for (int i = 0; i < xAxisData.length; i++) {
-            xAisValues.add(i, new AxisValue(i).setLabel(xAxisData[i]));
+        if (SocialFollowers.this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            dp = getDataPoint();
+            months = new String[]{"Jan", "Mar", "May", "Jul", "Sep", "Nov"};
+        } else {
+            dp = getDataPointTwelve();
+            months = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
         }
 
-        for (int i = 0; i < yAxisData.length; i++) {
-            yAxisValues.add(new PointValue(i, getArr()));
-        }
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dp);
 
-        List lines = new ArrayList();
-        lines.add(line);
+        series.setColor(Color.rgb(32, 141, 168));
+        // series.setColor(R.color.colorPrimary);
+        series.setThickness(6);
+        series.setDrawBackground(true);
+        series.setBackgroundColor(Color.parseColor("#24A2C1"));
+        // series.setBackgroundColor(R.color.colorPrimaryDark);
+        series.setAnimated(true);
+        series.setDrawDataPoints(true);
+        series.setDataPointsRadius(8);
 
-        final LineChartData data = new LineChartData();
-        data.setLines(lines);
+        lineSocialFollowers.addSeries(series);
 
-        Axis xAxis = new Axis();
-        xAxis.setValues(xAisValues);
-        xAxis.setTextSize(12);
-        xAxis.setTextColor(Color.parseColor("#000000"));
-        data.setAxisXBottom(xAxis);
+        StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(lineSocialFollowers);
+        staticLabelsFormatter.setHorizontalLabels(months);
+        lineSocialFollowers.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
+        lineSocialFollowers.getGridLabelRenderer().setVerticalLabelsVisible(false);
 
-        Axis yAxis = new Axis();
-//        yAxis.setName("Sales in millions");
-        yAxis.setTextColor(Color.parseColor("#000000"));
-        yAxis.setTextSize(12);
-        data.setAxisYLeft(yAxis);
+        lineSocialFollowers.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.NONE);  //For invisible x and y axies line
+    }
 
+    private DataPoint[] getDataPointTwelve() {
+        DataPoint[] dp = new DataPoint[]{
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3),
+                new DataPoint(3, 7),
+                new DataPoint(4, 2),
+                new DataPoint(5, 5),
+                new DataPoint(6, 7),
+                new DataPoint(7, 2),
+                new DataPoint(8, 6),
+                new DataPoint(9, 8),
+                new DataPoint(10, 2),
+                new DataPoint(11, 1),
+        };
 
-        lineSocialFollowers.setLineChartData(data);
+        return (dp);
+    }
 
-        Viewport viewport = new Viewport(lineSocialFollowers.getMaximumViewport());
-        viewport.top = 10;  //set max value of Y axies
-        lineSocialFollowers.setMaximumViewport(viewport);
-        lineSocialFollowers.setCurrentViewport(viewport);
+    private DataPoint[] getDataPoint() {
+        DataPoint[] dp = new DataPoint[]{
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3),
+                new DataPoint(3, 7),
+                new DataPoint(4, 2),
+                new DataPoint(5, 5),
+        };
 
-        lineSocialFollowers.setOnValueTouchListener(new LineChartOnValueSelectListener() {
-
-            @Override
-            public void onValueSelected(int lineIndex, int pointIndex, PointValue value) {
-                Toast.makeText(getApplicationContext(), "Touched: " + value.getY(), Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onValueDeselected() {
-
-            }
-        });
+        return (dp);
     }
 
     private void implementationSpinnerYearSocialFollowers() {

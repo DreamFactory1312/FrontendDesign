@@ -28,7 +28,7 @@ public class FragmentHomeMenuPageAdapter extends RecyclerView.Adapter<RecyclerVi
     private Context context;
     private String[] axisData = {"Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept",
             "Oct", "Nov", "Dec"};
-    private int[] yAxisData = {50, 20, 15, 30, 20, 60, 15, 40, 45, 10, 90, 18};
+    private int[] yAxisData = {50, 20, 15, 30};
 
     public FragmentHomeMenuPageAdapter(List<HomeMenu> homeMenuList, Context context) {
         this.homeMenuList = homeMenuList;

@@ -177,7 +177,7 @@
             android:layout_marginBottom="10dp"
             android:orientation="vertical">
 
-            <lecho.lib.hellocharts.view.LineChartView
+            <com.jjoe64.graphview.GraphView
                 android:id="@+id/lineChartViewMenuOrder"
                 android:layout_width="match_parent"
                 android:layout_height="130dp" />
