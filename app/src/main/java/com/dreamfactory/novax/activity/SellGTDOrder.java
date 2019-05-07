@@ -44,7 +44,7 @@ public class SellGTDOrder extends AppCompatActivity {
         setContentView(R.layout.activity_sell_gtdorder);
 
         toolBarSellGTDOrder = findViewById(R.id.toolBarSellGTDOrder);
-        toolBarSellGTDOrder.setTitle("Buy Market Order");
+        toolBarSellGTDOrder.setTitle("Sell GTD Order");
         setSupportActionBar(toolBarSellGTDOrder);
 
         if (getSupportActionBar() != null) {

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dreamfactory.novax.R;
@@ -16,6 +17,8 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     private EditText etUsername, etPassword;
 
     private String username, password;
+
+    private TextView txtNotThisUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,9 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         etUsername = findViewById(R.id.editText_userName_WelcomePage);
         etPassword = findViewById(R.id.editText_userPassword_WelcomePage);
 
+        txtNotThisUser = findViewById(R.id.forgotPassText_welcomePage);
+
+        txtNotThisUser.setOnClickListener(this);
         btn_continue.setOnClickListener(this);
     }
 
@@ -54,6 +60,10 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
                     etUsername.setError("At least 6 to 16 characters");
                 }
 
+                break;
+
+            case R.id.forgotPassText_welcomePage:
+                startActivity(new Intent(getApplicationContext(), SellGTDOrder.class));
                 break;
         }
     }

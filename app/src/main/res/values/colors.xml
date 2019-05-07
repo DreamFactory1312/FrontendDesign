@@ -63,6 +63,7 @@
     <color name="color_grey_toWhite">#eeeeee</color>
     <color name="textGrey">#9b9a9a</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="viewGray">#252222</color>
 
     <!--others-->
 

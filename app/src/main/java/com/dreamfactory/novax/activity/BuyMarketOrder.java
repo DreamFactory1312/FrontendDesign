@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dreamfactory.novax.R;
 
@@ -26,7 +27,7 @@ public class BuyMarketOrder extends AppCompatActivity {
     private TextView txtFirstValueMKTOrder, txtSecondValueMKTOrder, txtRealTimeUpdateMKTOrder,
             txtMaximumBuyValue, txtQuantityBMOValue, txtAmountBMOValue, txtBuyMarketOrderTab,
             txtSellMarketOrderTab, txtMktOrder, txtLOOrder, txtGTDOrder;
-    private Button btnNextOrderBMO;
+    private Button btnNextOrderBMO,btnMinusLimitPrice,btnPlusLimitPrice,btnMinusQuantity,btnPlusQuantity;
     private LinearLayout llBuyMarketOrderTab, llSellMarketOrderTab, llMKTOrder, llLOOrder, llGTDOrder;
 
     private SeekBar seekBarLimitPriceBMO, seekBarQuantityAmendOrderBMO;
@@ -57,8 +58,36 @@ public class BuyMarketOrder extends AppCompatActivity {
         btnNextOrderBMO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BuyMarketOrder.this, OrderHistoryActivity.class);
+                Intent intent = new Intent(BuyMarketOrder.this, OrderDetailsActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        btnMinusLimitPrice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(BuyMarketOrder.this, "Minus Button Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnPlusLimitPrice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(BuyMarketOrder.this, "Plus Button Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnMinusQuantity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(BuyMarketOrder.this, "Minus Button Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnPlusQuantity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(BuyMarketOrder.this, "Plus Button Clicked", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -77,7 +106,12 @@ public class BuyMarketOrder extends AppCompatActivity {
         txtLOOrder = findViewById(R.id.txtLOOrder);
         txtGTDOrder = findViewById(R.id.txtGTDOrder);
 
+
         btnNextOrderBMO = findViewById(R.id.btnNextOrderBMO);
+        btnMinusLimitPrice = findViewById(R.id.btnMinusLimitPrice);
+        btnPlusLimitPrice = findViewById(R.id.btnPlusLimitPrice);
+        btnMinusQuantity = findViewById(R.id.btnMinusQuantity);
+        btnPlusQuantity = findViewById(R.id.btnPlusQuantity);
 
         llBuyMarketOrderTab = findViewById(R.id.llBuyMarketOrderTab);
         llSellMarketOrderTab = findViewById(R.id.llSellMarketOrderTab);
@@ -182,6 +216,10 @@ public class BuyMarketOrder extends AppCompatActivity {
         llGTDOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                toolBarBuyMarketOrder.setTitle("Buy Good Till Date Order");
+                setSupportActionBar(toolBarBuyMarketOrder);
+
                 implementationseekBarLimitPriceBMO();
                 implementationseekBarQuantityAmendOrderBMO();
 
@@ -198,6 +236,10 @@ public class BuyMarketOrder extends AppCompatActivity {
         llLOOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                toolBarBuyMarketOrder.setTitle("Buy Limit Order");
+                setSupportActionBar(toolBarBuyMarketOrder);
+
                 implementationseekBarLimitPriceBMO();
                 implementationseekBarQuantityAmendOrderBMO();
 
@@ -214,6 +256,9 @@ public class BuyMarketOrder extends AppCompatActivity {
         llMKTOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                toolBarBuyMarketOrder.setTitle("Buy Market Order");
+                setSupportActionBar(toolBarBuyMarketOrder);
                 implementationseekBarLimitPriceBMO();
                 implementationseekBarQuantityAmendOrderBMO();
 

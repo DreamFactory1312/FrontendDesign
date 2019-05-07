@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.dreamfactory.novax"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -40,4 +40,7 @@ dependencies {
     //for materiall spinner (link : https://github.com/jaredrummler/MaterialSpinner)
     implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
     //for line chart(link : https://www.codingdemos.com/draw-android-line-chart/)
+
+    implementation 'com.airbnb.android:lottie:2.5.5'
+    //for animation
 }

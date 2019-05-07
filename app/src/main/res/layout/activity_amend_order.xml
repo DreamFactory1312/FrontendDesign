@@ -206,6 +206,7 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
+                android:visibility="gone"
                 android:orientation="vertical">
 
                 <TextView
@@ -245,6 +246,7 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
+                android:visibility="gone"
                 android:orientation="vertical">
 
                 <TextView
@@ -275,6 +277,172 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:background="@color/white"
+                android:paddingBottom="5dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_weight="0.5"
+                        android:gravity="start"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txtQuantityLimit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/neosans_pro_regular"
+                            android:gravity="start"
+                            android:text="Limit Order"
+                            android:textSize="12sp" />
+
+                        <EditText
+                            android:id="@+id/txtLimitPriceValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/white"
+                            android:fontFamily="@font/neosans_pro_regular"
+                            android:gravity="start"
+                            android:text="21.11"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_weight="0.5"
+                        android:gravity="end"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnMinusLimitPrice"
+                            android:layout_width="35dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/icon_minus" />
+
+                        <Button
+                            android:id="@+id/btnPlusLimitPrice"
+                            android:layout_width="35dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/icon_plus" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <View
+                    android:id="@+id/viewPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@android:color/darker_gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_weight="0.5"
+                        android:gravity="start"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txtQuantityQuantity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/neosans_pro_regular"
+                            android:gravity="start"
+                            android:text="Quantity"
+                            android:textSize="12sp" />
+
+                        <EditText
+                            android:id="@+id/txtQuantityValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/white"
+                            android:fontFamily="@font/neosans_pro_regular"
+                            android:gravity="start"
+                            android:text="1"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_weight="0.5"
+                        android:gravity="end"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnMinusQuantity"
+                            android:layout_width="35dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/icon_minus" />
+
+                        <Button
+                            android:id="@+id/btnPlusQuantity"
+                            android:layout_width="35dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/icon_plus" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <View
+                    android:id="@+id/viewQuantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@android:color/darker_gray" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

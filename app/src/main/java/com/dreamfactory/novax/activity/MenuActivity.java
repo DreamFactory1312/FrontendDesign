@@ -22,8 +22,7 @@ import android.widget.Toast;
 import com.dreamfactory.novax.R;
 import com.dreamfactory.novax.adapter.MenuPageAdapter;
 
-public class MenuActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
+public class MenuActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
 
     private Toolbar toolbar;
     private TabLayout menuTabLayout;
@@ -52,6 +51,8 @@ public class MenuActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        // Updated by Atikur Rahman
 
         //settup toolbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);

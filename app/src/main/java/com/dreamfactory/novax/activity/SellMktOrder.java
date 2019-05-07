@@ -43,7 +43,7 @@ public class SellMktOrder extends AppCompatActivity {
         setContentView(R.layout.activity_sell_mkt_order);
 
         toolBarSellMarketOrder = findViewById(R.id.toolBarSellMarketOrder);
-        toolBarSellMarketOrder.setTitle("Sell Market Order");
+        toolBarSellMarketOrder.setTitle("Sell Limit Order");
         setSupportActionBar(toolBarSellMarketOrder);
 
         if (getSupportActionBar() != null) {
@@ -165,6 +165,10 @@ public class SellMktOrder extends AppCompatActivity {
         llSellGTDOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                toolBarSellMarketOrder.setTitle("Sell Good Till Date Order");
+                setSupportActionBar(toolBarSellMarketOrder);
+
                 implementationprogressBarSellMKT();
 
                 viewSellMKT.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.grey));
@@ -183,6 +187,10 @@ public class SellMktOrder extends AppCompatActivity {
         llSellLOOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                toolBarSellMarketOrder.setTitle("Sell Limit Order");
+                setSupportActionBar(toolBarSellMarketOrder);
+
                 implementationprogressBarSellMKT();
 
                 viewSellMKT.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.grey));
@@ -200,6 +208,10 @@ public class SellMktOrder extends AppCompatActivity {
         llSellMKTOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                toolBarSellMarketOrder.setTitle("Sell Market Order");
+                setSupportActionBar(toolBarSellMarketOrder);
+
                 implementationprogressBarSellMKT();
 
                 viewSellMKT.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));

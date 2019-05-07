@@ -39,7 +39,6 @@ public class AmendOrder extends AppCompatActivity {
         toolBarAmendOrder.setTitle(R.string.US_NVIDIA);
         setSupportActionBar(toolBarAmendOrder);
 
-
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
