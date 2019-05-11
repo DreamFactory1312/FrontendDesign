@@ -20,14 +20,13 @@ import com.dreamfactory.novax.adapter.DetectSwipeGestureListener;
 
 public class OrderDetailsActivity extends AppCompatActivity {
 
-    private TextView orderDetailsProductDirection,orderDetailsProductType,orderDetailsProductQuantity,orderDetailsProductUpdated,orderDetailsProductNetAmount;
+    private TextView orderDetailsProductDirection, orderDetailsProductType, orderDetailsProductQuantity, orderDetailsProductUpdated, orderDetailsProductNetAmount;
     private Button btn_buy_order;
     private Toolbar toolBarOrderDetails;
     private LottieAnimationView animationView;
 
     // This is the gesture detector compat instance.
     private GestureDetectorCompat gestureDetectorCompat = null;
-
 
 
     @Override
@@ -43,7 +42,6 @@ public class OrderDetailsActivity extends AppCompatActivity {
         orderDetailsProductUpdated = findViewById(R.id.orderDetailsProductUpdated);
         orderDetailsProductNetAmount = findViewById(R.id.orderDetailsProductNetAmount);
 //        animationView = findViewById(R.id.animation);
-
 
 
         // Create a common gesture listener object.
@@ -95,23 +93,20 @@ public class OrderDetailsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if (item.getItemId() == android.R.id.home) {
-            finish(); // close this activity and return to preview activity (if there is any)
+            startActivity(new Intent(getApplicationContext(), MenuActivity.class));
         } else if (item.getItemId() == R.id.item_menu_search) {
             Toast.makeText(this, "Clicked : " + item.getTitle(), Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public void displayMessage(String message)
-    {
-        if(message!=null)
-        {
+    public void displayMessage(String message) {
+        if (message != null) {
             // Display text in the text view.
-           if(message.equals("Swipe to up")){
-               Intent intent = new Intent(OrderDetailsActivity.this, OrderConfirmActivity.class);
-               startActivity(intent);
-           }
+            if (message.equals("Swipe to up")) {
+                Intent intent = new Intent(OrderDetailsActivity.this, OrderConfirmActivity.class);
+                startActivity(intent);
+            }
         }
     }
-
 }

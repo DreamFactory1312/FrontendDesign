@@ -600,7 +600,7 @@
                                     android:id="@+id/txtLimitPriceValue"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:backgroundTint="@color/white"
+                                    android:background="@android:color/transparent"
                                     android:fontFamily="@font/neosans_pro_regular"
                                     android:gravity="start"
                                     android:text="0.83"
@@ -680,7 +680,7 @@
                                     android:id="@+id/txtQuantityValue"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:backgroundTint="@color/white"
+                                    android:background="@android:color/transparent"
                                     android:fontFamily="@font/neosans_pro_regular"
                                     android:gravity="start"
                                     android:text="1"
@@ -730,8 +730,8 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="7dp"
                         android:background="@color/white"
-                        android:paddingBottom="5dp"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:paddingBottom="5dp">
 
                         <Button
                             android:id="@+id/btnNextOrderBMO"

@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
@@ -20,7 +21,7 @@ import com.dreamfactory.novax.R;
 import java.util.Calendar;
 import java.util.Random;
 
-public class SellMktOrder extends AppCompatActivity {
+public class SellMktOrder extends AppCompatActivity implements View.OnClickListener {
 
     private Toolbar toolBarSellMarketOrder;
 
@@ -34,8 +35,15 @@ public class SellMktOrder extends AppCompatActivity {
     private SeekBar progressBarSellMKT;
     private Button btnNextOrderSellMKT;
 
+    private Button btnPlusLimitPrice, btnMinusLimitPrice, btnPlusQuantity, btnMinusQuantity;
+
+    private EditText etLimitPriceValue, etQuantityValue;
+
     private int progress = 0;
     private Handler handler = new Handler();
+
+    private int limitPrice = 11;
+    private int quantity = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +51,7 @@ public class SellMktOrder extends AppCompatActivity {
         setContentView(R.layout.activity_sell_mkt_order);
 
         toolBarSellMarketOrder = findViewById(R.id.toolBarSellMarketOrder);
-        toolBarSellMarketOrder.setTitle("Sell Limit Order");
+        toolBarSellMarketOrder.setTitle("Sell Market Order");
         setSupportActionBar(toolBarSellMarketOrder);
 
         if (getSupportActionBar() != null) {
@@ -88,13 +96,21 @@ public class SellMktOrder extends AppCompatActivity {
         GTDLayout = findViewById(R.id.GTDLayout);
         mktLoLayout = findViewById(R.id.mktLoLayout);
 
-        //To Start Sell GTD Order activity
-        btnNextOrderSellMKT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), AmendCancelOrderActivity.class));
-            }
-        });
+        etLimitPriceValue = findViewById(R.id.txtLimitPriceValue);
+        etQuantityValue = findViewById(R.id.txtQuantityValue);
+
+        btnPlusLimitPrice = findViewById(R.id.btnPlusLimitPrice);
+        btnMinusLimitPrice = findViewById(R.id.btnMinusLimitPrice);
+        btnPlusQuantity = findViewById(R.id.btnPlusQuantity);
+        btnMinusQuantity = findViewById(R.id.btnMinusQuantity);
+
+        btnNextOrderSellMKT.setOnClickListener(this);
+
+        btnPlusLimitPrice.setOnClickListener(this);
+        btnMinusLimitPrice.setOnClickListener(this);
+        btnPlusQuantity.setOnClickListener(this);
+        btnMinusQuantity.setOnClickListener(this);
+
     }
 
     private void implementationProperty() {
@@ -265,9 +281,41 @@ public class SellMktOrder extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-           // finish();
-            startActivity(new Intent(this,MenuActivity.class));
+            // finish();
+            startActivity(new Intent(this, MenuActivity.class));
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+
+            case R.id.btnNextOrderSellMKT:
+                startActivity(new Intent(getApplicationContext(), AmendCancelOrderActivity.class));
+                break;
+
+            case R.id.btnPlusLimitPrice:
+                limitPrice = limitPrice + 1;
+                etLimitPriceValue.setText("21." + limitPrice);
+                break;
+
+            case R.id.btnMinusLimitPrice:
+                limitPrice = limitPrice - 1;
+                etLimitPriceValue.setText("21." + limitPrice);
+                break;
+
+            case R.id.btnPlusQuantity:
+                quantity = quantity + 1;
+                etQuantityValue.setText("" + quantity);
+                break;
+
+            case R.id.btnMinusQuantity:
+                quantity = quantity - 1;
+                etQuantityValue.setText("" + quantity);
+                break;
+
+
+        }
     }
 }

@@ -25,10 +25,10 @@ import java.util.List;
 public class OrderHistoryActivity extends AppCompatActivity {
     private Toolbar toolBarAmendOrder;
     private RecyclerView recyclerOrderHistory;
-    List<OrderHistoryList> orderHistoryLists=new ArrayList<>();
+    List<OrderHistoryList> orderHistoryLists = new ArrayList<>();
     private OderHistoryAdapter oderHistoryAdapter;
-    private LinearLayout historicalOrderHistoryLayout,completedOrderHistoryLayout,activeOrderHistoryLayout;
-    private TextView txtActiveOrderHistory,txtCompleteOrderHistory,txtHistoricalOrderHistory;
+    private LinearLayout historicalOrderHistoryLayout, completedOrderHistoryLayout, activeOrderHistoryLayout;
+    private TextView txtActiveOrderHistory, txtCompleteOrderHistory, txtHistoricalOrderHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class OrderHistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_history);
 
         toolBarAmendOrder = findViewById(R.id.toolbar_order_history);
-        toolBarAmendOrder.setTitle("Orders");
+        toolBarAmendOrder.setTitle("Orders History");
         setSupportActionBar(toolBarAmendOrder);
 
         recyclerOrderHistory = findViewById(R.id.recyclerOrderHistory);
@@ -44,9 +44,9 @@ public class OrderHistoryActivity extends AppCompatActivity {
         recyclerOrderHistory.setLayoutManager(new LinearLayoutManager(this));
 
         orderHistoryLists.clear();
-        orderHistoryLists.add(new OrderHistoryList("US: NVIDIA", "Yesterday, 515 AM", "Sell", "Limit Order", "1,500", "USD 1.75", "Dec 12, 2018",""));
-        orderHistoryLists.add(new OrderHistoryList("US: FTFT", "Yesterday, 515 AM", "Sell", "Limit Order", "1,500", "USD 1.75", "Dec 12, 2018","1"));
-        orderHistoryLists.add(new OrderHistoryList("US: FTFT", "Yesterday, 515 AM", "Sell", "Limit Order", "1,500", "USD 1.75", "Dec 12, 2018",""));
+        orderHistoryLists.add(new OrderHistoryList("US: NVIDIA", "Yesterday, 515 AM", "Sell", "Limit Order", "1,500", "USD 1.75", "Dec 12, 2018", ""));
+        orderHistoryLists.add(new OrderHistoryList("US: FTFT", "Yesterday, 515 AM", "Sell", "Limit Order", "1,500", "USD 1.75", "Dec 12, 2018", "1"));
+        orderHistoryLists.add(new OrderHistoryList("US: FTFT", "Yesterday, 515 AM", "Sell", "Limit Order", "1,500", "USD 1.75", "Dec 12, 2018", ""));
         oderHistoryAdapter = new OderHistoryAdapter(orderHistoryLists, this);
         recyclerOrderHistory.setAdapter(oderHistoryAdapter);
 
@@ -59,7 +59,6 @@ public class OrderHistoryActivity extends AppCompatActivity {
 
 
         historicalOrderHistoryLayout.setBackgroundDrawable(ContextCompat.getDrawable(OrderHistoryActivity.this, R.drawable.convertlayout_rounded_shape));
-
 
 
         activeOrderHistoryLayout.setOnClickListener(new View.OnClickListener() {
@@ -111,9 +110,15 @@ public class OrderHistoryActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-           // finish();
-            startActivity(new Intent(this,MenuActivity.class));
+            // finish();
+            startActivity(new Intent(this, MenuActivity.class));
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this, MenuActivity.class));
     }
 }

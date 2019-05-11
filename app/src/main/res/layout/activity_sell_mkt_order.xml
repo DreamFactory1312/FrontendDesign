@@ -421,7 +421,7 @@
                                 android:fontFamily="@font/neosans_pro_regular"
                                 android:gravity="start"
                                 android:text="Type"
-                                android:textSize="12dp" />
+                                android:textSize="12sp" />
 
                             <TextView
                                 android:id="@+id/txtMarketOrder"
@@ -432,7 +432,7 @@
                                 android:fontFamily="@font/neosans_pro_regular"
                                 android:gravity="end"
                                 android:text="Market Order"
-                                android:textSize="12dp" />
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -454,7 +454,7 @@
                                 android:fontFamily="@font/neosans_pro_regular"
                                 android:gravity="start"
                                 android:text="Maximum Buy Amount"
-                                android:textSize="12dp" />
+                                android:textSize="12sp" />
 
                             <TextView
                                 android:id="@+id/txtAvailableForSellSellMKTValue"
@@ -628,7 +628,7 @@
                                 android:fontFamily="@font/neosans_pro_regular"
                                 android:gravity="start"
                                 android:text="Available for sell"
-                                android:textSize="12dp" />
+                                android:textSize="12sp" />
 
                             <TextView
                                 android:id="@+id/txtAvailableForSellGTDValue"
@@ -825,17 +825,17 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:gravity="center"
                         android:background="@color/white"
-                        android:paddingBottom="5dp"
-                        android:orientation="vertical">
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingBottom="5dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
                             android:layout_marginStart="20dp"
                             android:layout_marginEnd="20dp"
+                            android:orientation="horizontal"
                             android:weightSum="1">
 
                             <LinearLayout
@@ -859,7 +859,7 @@
                                     android:id="@+id/txtLimitPriceValue"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:backgroundTint="@color/white"
+                                    android:background="@android:color/transparent"
                                     android:fontFamily="@font/neosans_pro_regular"
                                     android:gravity="start"
                                     android:text="21.11"
@@ -909,16 +909,16 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:gravity="center"
                         android:background="@color/white"
+                        android:gravity="center"
                         android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
                             android:layout_marginStart="20dp"
                             android:layout_marginEnd="20dp"
+                            android:orientation="horizontal"
                             android:weightSum="1">
 
                             <LinearLayout
@@ -942,7 +942,7 @@
                                     android:id="@+id/txtQuantityValue"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:backgroundTint="@color/white"
+                                    android:background="@android:color/transparent"
                                     android:fontFamily="@font/neosans_pro_regular"
                                     android:gravity="start"
                                     android:text="1"

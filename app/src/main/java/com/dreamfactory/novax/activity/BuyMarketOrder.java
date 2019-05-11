@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -20,22 +21,27 @@ import com.dreamfactory.novax.R;
 import java.util.Calendar;
 import java.util.Random;
 
-public class BuyMarketOrder extends AppCompatActivity {
+public class BuyMarketOrder extends AppCompatActivity implements View.OnClickListener {
 
     private Toolbar toolBarBuyMarketOrder;
 
     private TextView txtFirstValueMKTOrder, txtSecondValueMKTOrder, txtRealTimeUpdateMKTOrder,
             txtMaximumBuyValue, txtQuantityBMOValue, txtAmountBMOValue, txtBuyMarketOrderTab,
             txtSellMarketOrderTab, txtMktOrder, txtLOOrder, txtGTDOrder;
-    private Button btnNextOrderBMO,btnMinusLimitPrice,btnPlusLimitPrice,btnMinusQuantity,btnPlusQuantity;
+    private Button btnNextOrderBMO, btnMinusLimitPrice, btnPlusLimitPrice, btnMinusQuantity, btnPlusQuantity;
     private LinearLayout llBuyMarketOrderTab, llSellMarketOrderTab, llMKTOrder, llLOOrder, llGTDOrder;
 
     private SeekBar seekBarLimitPriceBMO, seekBarQuantityAmendOrderBMO;
 
     private View viewMKT, viewLO, viewGTD;
 
+    private EditText etLimitPriceValue, etQuantityValue;
+
     private int progress = 0;
     private Handler handler = new Handler();
+
+    private int limitPrice = 83;
+    private int quantity = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,42 +61,6 @@ public class BuyMarketOrder extends AppCompatActivity {
 
         implementationProperty();
 
-        btnNextOrderBMO.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(BuyMarketOrder.this, OrderDetailsActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btnMinusLimitPrice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(BuyMarketOrder.this, "Minus Button Clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        btnPlusLimitPrice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(BuyMarketOrder.this, "Plus Button Clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        btnMinusQuantity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(BuyMarketOrder.this, "Minus Button Clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        btnPlusQuantity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(BuyMarketOrder.this, "Plus Button Clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
-
     }
 
     private void initializeProperty() {
@@ -108,6 +78,7 @@ public class BuyMarketOrder extends AppCompatActivity {
 
 
         btnNextOrderBMO = findViewById(R.id.btnNextOrderBMO);
+
         btnMinusLimitPrice = findViewById(R.id.btnMinusLimitPrice);
         btnPlusLimitPrice = findViewById(R.id.btnPlusLimitPrice);
         btnMinusQuantity = findViewById(R.id.btnMinusQuantity);
@@ -125,6 +96,16 @@ public class BuyMarketOrder extends AppCompatActivity {
         viewMKT = findViewById(R.id.viewMKT);
         viewGTD = findViewById(R.id.viewGTD);
         viewLO = findViewById(R.id.viewLO);
+
+        etQuantityValue = findViewById(R.id.txtQuantityValue);
+        etLimitPriceValue = findViewById(R.id.txtLimitPriceValue);
+
+        btnNextOrderBMO.setOnClickListener(this);
+
+        btnPlusLimitPrice.setOnClickListener(this);
+        btnMinusLimitPrice.setOnClickListener(this);
+        btnPlusQuantity.setOnClickListener(this);
+        btnMinusQuantity.setOnClickListener(this);
     }
 
     private void getNextValueForSecondTab() {
@@ -310,9 +291,41 @@ public class BuyMarketOrder extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-           // finish();
-            startActivity(new Intent(this,MenuActivity.class));
+            // finish();
+            startActivity(new Intent(this, MenuActivity.class));
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+
+            case R.id.btnNextOrderBMO:
+                startActivity(new Intent(BuyMarketOrder.this, OrderDetailsActivity.class));
+                break;
+
+            case R.id.btnPlusLimitPrice:
+                limitPrice = limitPrice + 1;
+                etLimitPriceValue.setText("0." + limitPrice);
+                break;
+
+            case R.id.btnMinusLimitPrice:
+                limitPrice = limitPrice - 1;
+                etLimitPriceValue.setText("0." + limitPrice);
+                break;
+
+            case R.id.btnPlusQuantity:
+                quantity = quantity + 1;
+                etQuantityValue.setText("" + quantity);
+                break;
+
+            case R.id.btnMinusQuantity:
+                quantity = quantity - 1;
+                etQuantityValue.setText("" + quantity);
+                break;
+
+        }
     }
 }
