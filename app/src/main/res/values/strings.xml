@@ -20,6 +20,11 @@
     <string name="watchlist">Watchlist</string>
     <string name="contact_us">Contact Us</string>
     <string name="profitloss"><![CDATA[Profit & Loss]]></string>
+    <string name="home">Home</string>
+    <string name="portfolio">Portfolio</string>
+    <string name="orders">Orders</string>
+    <string name="logout">Logout</string>
+    <string name="social_traders">Social Traders</string>
 
     <array name="list_user">
         <item>WONG MAY FUNG 29287120891</item>

@@ -21,6 +21,10 @@ import android.widget.Toast;
 
 import com.dreamfactory.novax.R;
 import com.dreamfactory.novax.adapter.MenuPageAdapter;
+import com.dreamfactory.novax.fragment.MenuHomeFragment;
+import com.dreamfactory.novax.fragment.MenuOrderFragment;
+import com.dreamfactory.novax.fragment.MenuPortfoiloFragment;
+import com.dreamfactory.novax.fragment.MenuSocialFragment;
 
 public class MenuActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
 
@@ -92,10 +96,7 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
         //end setting navigation drawer
 
 
-
         menuViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(menuTabLayout));
-
-
 
 
         //setting tab selected listner so that we can change selected or unselected tab items background
@@ -123,21 +124,21 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
 
 
                 } else if (tab.getPosition() == 1) {
-                  //  menuTabItemPortfoilo.setBackgroundDrawable(getDrawable(R.drawable.icon_portfolios_white));
+                    //  menuTabItemPortfoilo.setBackgroundDrawable(getDrawable(R.drawable.icon_portfolios_white));
                     menuTabLayout.getTabAt(0).setIcon(tabsUnselected[0]);
                     menuTabLayout.getTabAt(1).setIcon(tabSelected[1]);
                     menuTabLayout.getTabAt(2).setIcon(tabsUnselected[2]);
                     menuTabLayout.getTabAt(3).setIcon(tabsUnselected[3]);
 
-                }else if (tab.getPosition() == 2) {
-                  //  menuTabItemOrder.setBackgroundDrawable(getDrawable(R.drawable.icon_portfolios_white));
+                } else if (tab.getPosition() == 2) {
+                    //  menuTabItemOrder.setBackgroundDrawable(getDrawable(R.drawable.icon_portfolios_white));
                     menuTabLayout.getTabAt(2).setIcon(tabSelected[2]);
                     menuTabLayout.getTabAt(1).setIcon(tabsUnselected[1]);
                     menuTabLayout.getTabAt(0).setIcon(tabsUnselected[0]);
                     menuTabLayout.getTabAt(3).setIcon(tabsUnselected[3]);
 
                 } else {
-                  //  menuTabItemSocial.setBackgroundDrawable(getDrawable(R.drawable.icon_portfolios_white));
+                    //  menuTabItemSocial.setBackgroundDrawable(getDrawable(R.drawable.icon_portfolios_white));
                     menuTabLayout.getTabAt(2).setIcon(tabsUnselected[2]);
                     menuTabLayout.getTabAt(1).setIcon(tabsUnselected[1]);
                     menuTabLayout.getTabAt(0).setIcon(tabsUnselected[0]);
@@ -157,7 +158,6 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
 
             }
         });
-
 
 
     }
@@ -240,24 +240,44 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
 
-        if (id == R.id.nav_balance) {
-            Intent intent = new Intent(this, BalanceActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_watchlist) {
-            Intent intent = new Intent(MenuActivity.this, WatchlistActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_contact_us) {
-            Intent intent1 = new Intent(this, ContactUsActivity.class);
-            startActivity(intent1);
-        } else if (id == R.id.nav_logout) {
-            Intent intent1 = new Intent(this, WelcomeActivity.class);
-            startActivity(intent1);
+        switch (item.getItemId()) {
+
+            case R.id.nav_home:
+                //startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                break;
+
+            case R.id.nav_portfolio:
+                // startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                break;
+
+            case R.id.nav_balance:
+                startActivity(new Intent(getApplicationContext(), BalanceActivity.class));
+                break;
+
+            case R.id.nav_watchlist:
+                startActivity(new Intent(getApplicationContext(), WatchlistActivity.class));
+                break;
+
+            case R.id.nav_orders:
+                // startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                break;
+
+            case R.id.nav_social_traders:
+                //startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                break;
+
+            case R.id.nav_contact_us:
+                startActivity(new Intent(getApplicationContext(), ContactUsActivity.class));
+                break;
+            case R.id.nav_logout:
+                startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
 
@@ -269,16 +289,16 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onPageSelected(int positin) {
 
-                int size = 3;
-                int position = Math.min(positin, size);
+        int size = 3;
+        int position = Math.min(positin, size);
 
-                for (int i = 0; i <= size; i++) {
-                    if (i == position) {
-                        menuTabLayout.getTabAt(i).setIcon(tabSelected[i]);
-                    } else {
-                        menuTabLayout.getTabAt(i).setIcon(tabsUnselected[i]);
-                    }
-                }
+        for (int i = 0; i <= size; i++) {
+            if (i == position) {
+                menuTabLayout.getTabAt(i).setIcon(tabSelected[i]);
+            } else {
+                menuTabLayout.getTabAt(i).setIcon(tabsUnselected[i]);
+            }
+        }
     }
 
     @Override

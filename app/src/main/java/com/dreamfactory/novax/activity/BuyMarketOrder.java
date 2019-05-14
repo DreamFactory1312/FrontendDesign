@@ -27,21 +27,22 @@ public class BuyMarketOrder extends AppCompatActivity implements View.OnClickLis
 
     private TextView txtFirstValueMKTOrder, txtSecondValueMKTOrder, txtRealTimeUpdateMKTOrder,
             txtMaximumBuyValue, txtQuantityBMOValue, txtAmountBMOValue, txtBuyMarketOrderTab,
-            txtSellMarketOrderTab, txtMktOrder, txtLOOrder, txtGTDOrder;
-    private Button btnNextOrderBMO, btnMinusLimitPrice, btnPlusLimitPrice, btnMinusQuantity, btnPlusQuantity;
-    private LinearLayout llBuyMarketOrderTab, llSellMarketOrderTab, llMKTOrder, llLOOrder, llGTDOrder;
+            txtSellMarketOrderTab, txtMktOrder, txtLOOrder, txtGTDOrder, txtLimitOrder, txtMaximumBuyAmount;
+    private Button btnNextOrderBMO, btnMinusLimitPrice, btnPlusLimitPrice, btnMinusQuantity, btnPlusQuantity,btnMinusHold,btnPlusHold;
+    private LinearLayout llBuyMarketOrderTab, llSellMarketOrderTab, llMKTOrder, llLOOrder, llGTDOrder, llMaxBuyAmount, llExpDate, llHoldLayout;
 
     private SeekBar seekBarLimitPriceBMO, seekBarQuantityAmendOrderBMO;
 
     private View viewMKT, viewLO, viewGTD;
 
-    private EditText etLimitPriceValue, etQuantityValue;
+    private EditText etLimitPriceValue, etQuantityValue,txtHoldValue;
 
     private int progress = 0;
     private Handler handler = new Handler();
 
     private int limitPrice = 83;
     private int quantity = 1;
+    private int hold = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,7 @@ public class BuyMarketOrder extends AppCompatActivity implements View.OnClickLis
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
+
 
         initializeProperty();
 
@@ -75,6 +77,8 @@ public class BuyMarketOrder extends AppCompatActivity implements View.OnClickLis
         txtMktOrder = findViewById(R.id.txtMktOrder);
         txtLOOrder = findViewById(R.id.txtLOOrder);
         txtGTDOrder = findViewById(R.id.txtGTDOrder);
+        txtLimitOrder = findViewById(R.id.txtLimitOrder);
+        txtMaximumBuyAmount = findViewById(R.id.txtMaximumBuyAmount);
 
 
         btnNextOrderBMO = findViewById(R.id.btnNextOrderBMO);
@@ -84,11 +88,18 @@ public class BuyMarketOrder extends AppCompatActivity implements View.OnClickLis
         btnMinusQuantity = findViewById(R.id.btnMinusQuantity);
         btnPlusQuantity = findViewById(R.id.btnPlusQuantity);
 
+        btnMinusHold = findViewById(R.id.btnMinusHold);
+        btnPlusHold = findViewById(R.id.btnPlusHold);
+
         llBuyMarketOrderTab = findViewById(R.id.llBuyMarketOrderTab);
         llSellMarketOrderTab = findViewById(R.id.llSellMarketOrderTab);
         llMKTOrder = findViewById(R.id.llMKTOrder);
         llLOOrder = findViewById(R.id.llLOOrder);
         llGTDOrder = findViewById(R.id.llGTDOrder);
+
+        llMaxBuyAmount = findViewById(R.id.llMaxBuyAmount);
+        llExpDate = findViewById(R.id.llExpDate);
+        llHoldLayout = findViewById(R.id.llHoldLayout);
 
         seekBarLimitPriceBMO = findViewById(R.id.seekBarLimitPriceBMO);
         seekBarQuantityAmendOrderBMO = findViewById(R.id.seekBarQuantityAmendOrderBMO);
@@ -99,6 +110,7 @@ public class BuyMarketOrder extends AppCompatActivity implements View.OnClickLis
 
         etQuantityValue = findViewById(R.id.txtQuantityValue);
         etLimitPriceValue = findViewById(R.id.txtLimitPriceValue);
+        txtHoldValue = findViewById(R.id.txtHoldValue);
 
         btnNextOrderBMO.setOnClickListener(this);
 
@@ -106,18 +118,56 @@ public class BuyMarketOrder extends AppCompatActivity implements View.OnClickLis
         btnMinusLimitPrice.setOnClickListener(this);
         btnPlusQuantity.setOnClickListener(this);
         btnMinusQuantity.setOnClickListener(this);
+        btnMinusHold.setOnClickListener(this);
+        btnPlusHold.setOnClickListener(this);
+
+
+        llHoldLayout.setVisibility(View.GONE);
+        llExpDate.setVisibility(View.GONE);
     }
 
-    private void getNextValueForSecondTab() {
-        txtMaximumBuyValue.setText("0." + getProgressData());
-        txtQuantityBMOValue.setText("" + getProgressData());
-        txtAmountBMOValue.setText(getProgressData() + "." + getProgressData());
+    private void getNextValueForMKTTab() {
+        // txtMaximumBuyValue.setText("0." + getProgressData());
+        llMaxBuyAmount.setVisibility(View.VISIBLE);
+        llExpDate.setVisibility(View.GONE);
+        llHoldLayout.setVisibility(View.GONE);
+        txtMaximumBuyValue.setText("50");
+        txtQuantityBMOValue.setText("10");
+        // txtAmountBMOValue.setText(getProgressData() + "." + getProgressData());
+        txtAmountBMOValue.setText("8.50");
+        txtLimitOrder.setText("Market Order");
     }
+
+    private void getNextValueForLOTab() {
+        // txtMaximumBuyValue.setText("0." + getProgressData());
+        llMaxBuyAmount.setVisibility(View.VISIBLE);
+        llExpDate.setVisibility(View.GONE);
+        llHoldLayout.setVisibility(View.GONE);
+        txtMaximumBuyValue.setText("50");
+        txtQuantityBMOValue.setText("10");
+        // txtAmountBMOValue.setText(getProgressData() + "." + getProgressData());
+        txtAmountBMOValue.setText("8.50");
+        txtLimitOrder.setText("Limit Order");
+    }
+
+    private void getNextValueForGTDTab() {
+        // txtMaximumBuyValue.setText("0." + getProgressData());
+        llMaxBuyAmount.setVisibility(View.GONE);
+        llExpDate.setVisibility(View.VISIBLE);
+        llHoldLayout.setVisibility(View.VISIBLE);
+        txtQuantityBMOValue.setText("10");
+        // txtAmountBMOValue.setText(getProgressData() + "." + getProgressData());
+        txtAmountBMOValue.setText("8.50");
+        txtLimitOrder.setText("Good Till Date");
+    }
+
 
     private void getNextValueForFirstTab() {
         txtFirstValueMKTOrder.setText("0." + getProgressData());
         txtSecondValueMKTOrder.setText("-0." + getProgressData());
         txtRealTimeUpdateMKTOrder.setText("Real Time, Last Updated " + getUpdatedRealTime());
+        // txtLimitOrder.setText("Limit Order");
+        llHoldLayout.setVisibility(View.GONE);
     }
 
     private String getUpdatedRealTime() {
@@ -208,7 +258,7 @@ public class BuyMarketOrder extends AppCompatActivity implements View.OnClickLis
                 viewMKT.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.grey));
                 viewLO.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.grey));
 
-                getNextValueForSecondTab();
+                getNextValueForGTDTab();
             }
         });
     }
@@ -228,7 +278,7 @@ public class BuyMarketOrder extends AppCompatActivity implements View.OnClickLis
                 viewGTD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.grey));
                 viewMKT.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.grey));
 
-                getNextValueForSecondTab();
+                getNextValueForLOTab();
             }
         });
     }
@@ -247,7 +297,7 @@ public class BuyMarketOrder extends AppCompatActivity implements View.OnClickLis
                 viewLO.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.grey));
                 viewGTD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.grey));
 
-                getNextValueForSecondTab();
+                getNextValueForMKTTab();
             }
         });
     }
@@ -324,6 +374,16 @@ public class BuyMarketOrder extends AppCompatActivity implements View.OnClickLis
             case R.id.btnMinusQuantity:
                 quantity = quantity - 1;
                 etQuantityValue.setText("" + quantity);
+                break;
+
+            case R.id.btnPlusHold:
+                hold = hold + 1;
+                txtHoldValue.setText("" + hold);
+                break;
+
+            case R.id.btnMinusHold:
+                hold = hold - 1;
+                txtHoldValue.setText("" + hold);
                 break;
 
         }

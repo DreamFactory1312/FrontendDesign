@@ -28,22 +28,23 @@ public class SellMktOrder extends AppCompatActivity implements View.OnClickListe
     private TextView txtFirstValueSellMKTOrder, txtSecondValueSellMKTOrder, txtRealTimeUpdateSellMKTOrder;
     private LinearLayout llBuySellMKTOrderTab, llSellSellMKTOrderTab;
     private TextView txtBuySellMKTOrderTab, txtSellSellMKTOrderTab;
-    private LinearLayout llSellMKTOrder, llSellLOOrder, llSellGTDOrder, GTDLayout, mktLoLayout;
-    private TextView txtSellMktOrder, txtSellLOOrder, txtSellGTDOrder;
+    private LinearLayout llSellMKTOrder, llSellLOOrder, llSellGTDOrder, GTDLayout, mktLoLayout, llseekBarMKT, llHoldSellLayout;
+    private TextView txtSellMktOrder, txtSellLOOrder, txtSellGTDOrder, txtMarketOrder;
     private TextView txtAvailableForSellSellMKTValue, txtQuantitySellMKTValue, txtAmountSellMKTValue;
     private View viewSellMKT, viewSellLO, viewSellGTD;
     private SeekBar progressBarSellMKT;
     private Button btnNextOrderSellMKT;
 
-    private Button btnPlusLimitPrice, btnMinusLimitPrice, btnPlusQuantity, btnMinusQuantity;
+    private Button btnPlusLimitPrice, btnMinusLimitPrice, btnPlusQuantity, btnMinusQuantity,btnMinusHoldSell,btnPlusHoldSell;
 
-    private EditText etLimitPriceValue, etQuantityValue;
+    private EditText etLimitPriceValue, etQuantityValue,txtHoldSellValue;
 
     private int progress = 0;
     private Handler handler = new Handler();
 
-    private int limitPrice = 11;
+    private int limitPrice = 85;
     private int quantity = 1;
+    private int hold = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +79,8 @@ public class SellMktOrder extends AppCompatActivity implements View.OnClickListe
         txtSellMktOrder = findViewById(R.id.txtSellMktOrder);
         txtSellLOOrder = findViewById(R.id.txtSellLOOrder);
         txtSellGTDOrder = findViewById(R.id.txtSellGTDOrder);
+        txtMarketOrder = findViewById(R.id.txtMarketOrder);
+
 
         llBuySellMKTOrderTab = findViewById(R.id.llBuySellMKTOrderTab);
         llSellSellMKTOrderTab = findViewById(R.id.llSellSellMKTOrderTab);
@@ -85,6 +88,9 @@ public class SellMktOrder extends AppCompatActivity implements View.OnClickListe
         llSellMKTOrder = findViewById(R.id.llSellMKTOrder);
         llSellLOOrder = findViewById(R.id.llSellLOOrder);
         llSellGTDOrder = findViewById(R.id.llSellGTDOrder);
+        llseekBarMKT = findViewById(R.id.llseekBarMKT);
+        llHoldSellLayout = findViewById(R.id.llHoldSellLayout);
+        llHoldSellLayout.setVisibility(View.GONE);
 
         viewSellMKT = findViewById(R.id.viewSellMKT);
         viewSellLO = findViewById(R.id.viewSellLO);
@@ -98,11 +104,14 @@ public class SellMktOrder extends AppCompatActivity implements View.OnClickListe
 
         etLimitPriceValue = findViewById(R.id.txtLimitPriceValue);
         etQuantityValue = findViewById(R.id.txtQuantityValue);
+        txtHoldSellValue = findViewById(R.id.txtHoldSellValue);
 
         btnPlusLimitPrice = findViewById(R.id.btnPlusLimitPrice);
         btnMinusLimitPrice = findViewById(R.id.btnMinusLimitPrice);
         btnPlusQuantity = findViewById(R.id.btnPlusQuantity);
         btnMinusQuantity = findViewById(R.id.btnMinusQuantity);
+        btnMinusHoldSell = findViewById(R.id.btnMinusHoldSell);
+        btnPlusHoldSell = findViewById(R.id.btnPlusHoldSell);
 
         btnNextOrderSellMKT.setOnClickListener(this);
 
@@ -110,6 +119,8 @@ public class SellMktOrder extends AppCompatActivity implements View.OnClickListe
         btnMinusLimitPrice.setOnClickListener(this);
         btnPlusQuantity.setOnClickListener(this);
         btnMinusQuantity.setOnClickListener(this);
+        btnMinusHoldSell.setOnClickListener(this);
+        btnPlusHoldSell.setOnClickListener(this);
 
     }
 
@@ -136,10 +147,31 @@ public class SellMktOrder extends AppCompatActivity implements View.OnClickListe
         GTDLayout.setVisibility(View.GONE);
     }
 
-    private void getNextValueForSecondTab() {
-        txtAvailableForSellSellMKTValue.setText("0." + getProgressData());
-        txtQuantitySellMKTValue.setText("" + getProgressData());
-        txtAmountSellMKTValue.setText(getProgressData() + "." + getProgressData());
+    private void getNextValueForMKTTab() {
+        txtAvailableForSellSellMKTValue.setText("100");
+        txtQuantitySellMKTValue.setText("1");
+        txtAmountSellMKTValue.setText("0.85");
+        llseekBarMKT.setVisibility(View.VISIBLE);
+        txtMarketOrder.setText("Market Order");
+        llHoldSellLayout.setVisibility(View.GONE);
+    }
+
+    private void getNextValueForLOTab() {
+        txtAvailableForSellSellMKTValue.setText("100");
+        txtQuantitySellMKTValue.setText("5");
+        txtAmountSellMKTValue.setText("4.25");
+        llseekBarMKT.setVisibility(View.GONE);
+        txtMarketOrder.setText("Limit Order");
+        etQuantityValue.setText("5");
+        llHoldSellLayout.setVisibility(View.GONE);
+    }
+
+    private void getNextValueForGTDTab() {
+        // txtAvailableForSellSellMKTValue.setText("100");
+        // txtQuantitySellMKTValue.setText("" + getProgressData());
+        // txtAmountSellMKTValue.setText(getProgressData() + "." + getProgressData());
+        llseekBarMKT.setVisibility(View.GONE);
+        llHoldSellLayout.setVisibility(View.VISIBLE);
     }
 
     private void getNextValueForFirstTab() {
@@ -191,7 +223,7 @@ public class SellMktOrder extends AppCompatActivity implements View.OnClickListe
                 viewSellLO.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.grey));
                 viewSellGTD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
 
-                getNextValueForSecondTab();
+                getNextValueForGTDTab();
                 GTDLayout.setVisibility(View.VISIBLE);
                 mktLoLayout.setVisibility(View.GONE);
 
@@ -213,7 +245,7 @@ public class SellMktOrder extends AppCompatActivity implements View.OnClickListe
                 viewSellLO.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
                 viewSellGTD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.grey));
 
-                getNextValueForSecondTab();
+                getNextValueForLOTab();
                 GTDLayout.setVisibility(View.GONE);
                 mktLoLayout.setVisibility(View.VISIBLE);
             }
@@ -234,7 +266,7 @@ public class SellMktOrder extends AppCompatActivity implements View.OnClickListe
                 viewSellLO.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.grey));
                 viewSellGTD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.grey));
 
-                getNextValueForSecondTab();
+                getNextValueForMKTTab();
                 GTDLayout.setVisibility(View.GONE);
                 mktLoLayout.setVisibility(View.VISIBLE);
             }
@@ -292,17 +324,17 @@ public class SellMktOrder extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
 
             case R.id.btnNextOrderSellMKT:
-                startActivity(new Intent(getApplicationContext(), AmendCancelOrderActivity.class));
+                startActivity(new Intent(getApplicationContext(), OrderDetailsActivity.class));
                 break;
 
             case R.id.btnPlusLimitPrice:
                 limitPrice = limitPrice + 1;
-                etLimitPriceValue.setText("21." + limitPrice);
+                etLimitPriceValue.setText("0." + limitPrice);
                 break;
 
             case R.id.btnMinusLimitPrice:
                 limitPrice = limitPrice - 1;
-                etLimitPriceValue.setText("21." + limitPrice);
+                etLimitPriceValue.setText("0." + limitPrice);
                 break;
 
             case R.id.btnPlusQuantity:
@@ -310,9 +342,19 @@ public class SellMktOrder extends AppCompatActivity implements View.OnClickListe
                 etQuantityValue.setText("" + quantity);
                 break;
 
+            case R.id.btnPlusHoldSell:
+                hold = hold + 1;
+                txtHoldSellValue.setText("" + hold);
+                break;
+
             case R.id.btnMinusQuantity:
                 quantity = quantity - 1;
                 etQuantityValue.setText("" + quantity);
+                break;
+
+            case R.id.btnMinusHoldSell:
+                hold = hold - 1;
+                txtHoldSellValue.setText("" + hold);
                 break;
 
 

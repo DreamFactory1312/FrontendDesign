@@ -361,7 +361,7 @@
                             android:id="@+id/txtType"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.5"
+                            android:layout_weight="1"
                             android:fontFamily="@font/neosans_pro_regular"
                             android:gravity="start"
                             android:text="Type"
@@ -373,15 +373,16 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_weight=".5"
+                            android:layout_weight="1"
                             android:fontFamily="@font/neosans_pro_regular"
                             android:gravity="end"
-                            android:text="Limit Order"
+                            android:text="Market Order"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12dp" />
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/llMaxBuyAmount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -480,6 +481,43 @@
                             android:fontFamily="@font/neosans_pro_regular"
                             android:gravity="end"
                             android:text="0.83"
+                            android:textSize="12dp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/llExpDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:id="@+id/txtExpDateBMO"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".7"
+                            android:fontFamily="@font/neosans_pro_regular"
+                            android:gravity="start"
+                            android:text="Expiry Date"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/txtExpDateBMOValue"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.3"
+                            android:fontFamily="@font/neosans_pro_regular"
+                            android:gravity="end"
+                            android:text="Wednesday 15 May 2019"
+                            android:textColor="@color/red_400"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -603,7 +641,7 @@
                                     android:background="@android:color/transparent"
                                     android:fontFamily="@font/neosans_pro_regular"
                                     android:gravity="start"
-                                    android:text="0.83"
+                                    android:text="0.85"
                                     android:textColor="@color/black"
                                     android:textSize="12sp" />
 
@@ -683,7 +721,7 @@
                                     android:background="@android:color/transparent"
                                     android:fontFamily="@font/neosans_pro_regular"
                                     android:gravity="start"
-                                    android:text="1"
+                                    android:text="10"
                                     android:textColor="@color/black"
                                     android:textSize="12sp" />
 
@@ -717,6 +755,87 @@
 
                         <View
                             android:id="@+id/viewQuantity"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@android:color/darker_gray" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llHoldLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_weight="0.7"
+                                android:gravity="start"
+                                android:orientation="vertical">
+
+                                <TextView
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/neosans_pro_regular"
+                                    android:gravity="start"
+                                    android:text="Number of days to hold your order"
+                                    android:textSize="12sp" />
+
+                                <EditText
+                                    android:id="@+id/txtHoldValue"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@android:color/transparent"
+                                    android:fontFamily="@font/neosans_pro_regular"
+                                    android:gravity="start"
+                                    android:text="2"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_weight="0.3"
+                                android:gravity="end"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/btnMinusHold"
+                                    android:layout_width="35dp"
+                                    android:layout_height="25dp"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/icon_minus" />
+
+                                <Button
+                                    android:id="@+id/btnPlusHold"
+                                    android:layout_width="35dp"
+                                    android:layout_height="25dp"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/icon_plus" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <View
+                            android:id="@+id/viewHold"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:background="@android:color/darker_gray" />

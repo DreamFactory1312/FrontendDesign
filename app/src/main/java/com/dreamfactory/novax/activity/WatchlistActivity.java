@@ -43,7 +43,7 @@ public class WatchlistActivity extends AppCompatActivity implements NavigationVi
 
         watchlists.clear();
         watchlists.add(new Watchlist(R.drawable.icon_nvedia, "US: NVIDIA", "40", "15", "30,372.50", "4,500", "-22.4", "39.73"));
-        watchlists.add(new Watchlist(R.drawable.icon_facebook, "US: NVIDIA", "40", "15", "30,372.50", "4,500", "-22.4", "39.73"));
+        watchlists.add(new Watchlist(R.drawable.icon_facebook, "US: FACEBOOK", "25", "10", "20,452.50", "9,362", "-32.6", "42.25"));
         adapter = new WatchlistAdapter(watchlists, this);
         watchlistRecyclerView.setAdapter(adapter);
 
@@ -92,23 +92,52 @@ public class WatchlistActivity extends AppCompatActivity implements NavigationVi
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
+        switch (item.getItemId()) {
 
-        if (id == R.id.nav_balance) {
-            Intent intent = new Intent(this, BalanceActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_watchlist) {
+            case R.id.nav_home:
+                startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                break;
 
-        } else if (id == R.id.nav_contact_us) {
-            Intent intent1 = new Intent(this, ContactUsActivity.class);
-            startActivity(intent1);
-        } else if (id == R.id.nav_logout) {
-            Intent intent1 = new Intent(this, WelcomeActivity.class);
-            startActivity(intent1);
+            case R.id.nav_portfolio:
+                startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                break;
+
+            case R.id.nav_balance:
+                startActivity(new Intent(getApplicationContext(), BalanceActivity.class));
+                break;
+
+            case R.id.nav_watchlist:
+//                startActivity(new Intent(getApplicationContext(), WatchlistActivity.class));
+                break;
+
+            case R.id.nav_orders:
+                startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                break;
+
+            case R.id.nav_social_traders:
+                startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                break;
+
+            case R.id.nav_contact_us:
+                startActivity(new Intent(getApplicationContext(), ContactUsActivity.class));
+                break;
+            case R.id.nav_logout:
+                startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_watchlist);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_watchlist);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 }

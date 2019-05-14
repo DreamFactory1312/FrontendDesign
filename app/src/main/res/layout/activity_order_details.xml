@@ -35,7 +35,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_weight="1.54"
+            android:layout_weight="1.45"
             android:orientation="vertical">
 
             <LinearLayout
@@ -182,7 +182,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/neosans_pro_regular"
                     android:gravity="right"
-                    android:text="Limited Order"
+                    android:text="Limit Order"
                     android:textSize="12dp" />
 
 
@@ -317,8 +317,6 @@
                 android:gravity="center"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:layout_marginStart="6dp"
-                android:layout_marginEnd="6dp"
                 android:background="@color/white"
                 android:orientation="horizontal"
                 android:weightSum="2">
@@ -328,7 +326,6 @@
                     android:id="@+id/btn_buy_order"
                     android:layout_width="128dp"
                     android:layout_height="37dp"
-                    android:layout_marginLeft="15dp"
                     android:text="Buy Order"
                     android:textColor="@color/white"
                     android:background="@drawable/buy_order_button" />

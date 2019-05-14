@@ -103,7 +103,6 @@ public class BalanceActivity extends AppCompatActivity implements NavigationView
         });
 
 
-
         buttonUploadBalanceDeposite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -230,24 +229,54 @@ public class BalanceActivity extends AppCompatActivity implements NavigationView
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
 
-        if (id == R.id.nav_balance) {
-            Toast.makeText(this, "Clicked: " + item.getTitle(), Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_watchlist) {
-            Intent intent = new Intent(this, WatchlistActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_contact_us) {
-            Intent intent = new Intent(this, ContactUsActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_logout) {
-            Intent intent1 = new Intent(this, WelcomeActivity.class);
-            startActivity(intent1);
+        switch (item.getItemId()) {
+
+            case R.id.nav_home:
+                startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                break;
+
+            case R.id.nav_portfolio:
+                startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                break;
+
+            case R.id.nav_balance:
+//                startActivity(new Intent(getApplicationContext(), BalanceActivity.class));
+                break;
+
+            case R.id.nav_watchlist:
+                startActivity(new Intent(getApplicationContext(), WatchlistActivity.class));
+                break;
+
+            case R.id.nav_orders:
+                startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                break;
+
+            case R.id.nav_social_traders:
+                startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                break;
+
+            case R.id.nav_contact_us:
+                startActivity(new Intent(getApplicationContext(), ContactUsActivity.class));
+                break;
+            case R.id.nav_logout:
+                startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_balance);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_balance);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 
 }

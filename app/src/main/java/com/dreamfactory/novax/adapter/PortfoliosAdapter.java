@@ -1,6 +1,7 @@
 package com.dreamfactory.novax.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dreamfactory.novax.R;
+import com.dreamfactory.novax.activity.AmendCancelOrderActivity;
 import com.dreamfactory.novax.model.Watchlist;
 
 import java.util.ArrayList;
@@ -73,7 +75,8 @@ public class PortfoliosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             right_arrow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mcontext, "Clicked", Toast.LENGTH_SHORT).show();
+                   Intent intent=new Intent(mcontext, AmendCancelOrderActivity.class);
+                    mcontext.startActivity(intent);
                 }
             });
 
