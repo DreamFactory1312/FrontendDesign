@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -241,14 +243,19 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
 
+
+
         switch (item.getItemId()) {
 
             case R.id.nav_home:
                 //startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+
+                menuViewPager.setCurrentItem(0, true);
                 break;
 
             case R.id.nav_portfolio:
                 // startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                menuViewPager.setCurrentItem(1, true);
                 break;
 
             case R.id.nav_balance:
@@ -261,10 +268,12 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.nav_orders:
                 // startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                menuViewPager.setCurrentItem(2, true);
                 break;
 
             case R.id.nav_social_traders:
                 //startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                menuViewPager.setCurrentItem(3, true);
                 break;
 
             case R.id.nav_contact_us:
@@ -274,6 +283,8 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
                 break;
         }
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
