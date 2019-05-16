@@ -23,7 +23,7 @@ import com.dreamfactory.novax.model.Watchlist;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WatchlistActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class WatchlistActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private Toolbar toolbar;
     RecyclerView watchlistRecyclerView;
     WatchlistAdapter adapter;
@@ -44,6 +44,16 @@ public class WatchlistActivity extends AppCompatActivity implements NavigationVi
         watchlists.clear();
         watchlists.add(new Watchlist(R.drawable.icon_nvedia, "US: NVIDIA", "40", "15", "30,372.50", "4,500", "-22.4", "39.73"));
         watchlists.add(new Watchlist(R.drawable.icon_facebook, "US: FACEBOOK", "25", "10", "20,452.50", "9,362", "-32.6", "42.25"));
+        watchlists.add(new Watchlist(R.drawable.icon_nvedia, "US: NVIDIA", "40", "15", "30,372.50", "4,500", "-22.4", "39.73"));
+        watchlists.add(new Watchlist(R.drawable.icon_facebook, "US: FACEBOOK", "25", "10", "20,452.50", "9,362", "-32.6", "42.25"));
+        watchlists.add(new Watchlist(R.drawable.icon_nvedia, "US: NVIDIA", "40", "15", "30,372.50", "4,500", "-22.4", "39.73"));
+        watchlists.add(new Watchlist(R.drawable.icon_facebook, "US: FACEBOOK", "25", "10", "20,452.50", "9,362", "-32.6", "42.25"));
+        watchlists.add(new Watchlist(R.drawable.icon_nvedia, "US: NVIDIA", "40", "15", "30,372.50", "4,500", "-22.4", "39.73"));
+        watchlists.add(new Watchlist(R.drawable.icon_facebook, "US: FACEBOOK", "25", "10", "20,452.50", "9,362", "-32.6", "42.25"));
+        watchlists.add(new Watchlist(R.drawable.icon_nvedia, "US: NVIDIA", "40", "15", "30,372.50", "4,500", "-22.4", "39.73"));
+        watchlists.add(new Watchlist(R.drawable.icon_facebook, "US: FACEBOOK", "25", "10", "20,452.50", "9,362", "-32.6", "42.25"));
+
+
         adapter = new WatchlistAdapter(watchlists, this);
         watchlistRecyclerView.setAdapter(adapter);
 
@@ -56,7 +66,6 @@ public class WatchlistActivity extends AppCompatActivity implements NavigationVi
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_watchlist);
         navigationView.setNavigationItemSelectedListener(this);
-
 
 
     }
@@ -74,9 +83,9 @@ public class WatchlistActivity extends AppCompatActivity implements NavigationVi
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.item_menu_search2:
-                Intent intent=new Intent(this,WatchlistSearchActivity.class);
+                Intent intent = new Intent(this, WatchlistSearchActivity.class);
                 startActivity(intent);
                 break;
             case R.id.item_menu_edit:
@@ -95,11 +104,19 @@ public class WatchlistActivity extends AppCompatActivity implements NavigationVi
         switch (item.getItemId()) {
 
             case R.id.nav_home:
-                startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                intent.putExtra("tabSlector", 0);
+                startActivity(intent);
+
+                // startActivity(new Intent(getApplicationContext(), MenuActivity.class));
                 break;
 
             case R.id.nav_portfolio:
-                startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                Intent intent1 = new Intent(getApplicationContext(), MenuActivity.class);
+                intent1.putExtra("tabSlector", 1);
+                startActivity(intent1);
+
+                // startActivity(new Intent(getApplicationContext(), MenuActivity.class));
                 break;
 
             case R.id.nav_balance:
@@ -107,15 +124,23 @@ public class WatchlistActivity extends AppCompatActivity implements NavigationVi
                 break;
 
             case R.id.nav_watchlist:
-//                startActivity(new Intent(getApplicationContext(), WatchlistActivity.class));
+                // startActivity(new Intent(getApplicationContext(), WatchlistActivity.class));
                 break;
 
             case R.id.nav_orders:
-                startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                Intent intent2 = new Intent(getApplicationContext(), MenuActivity.class);
+                intent2.putExtra("tabSlector", 2);
+                startActivity(intent2);
+
+                // startActivity(new Intent(getApplicationContext(), MenuActivity.class));
                 break;
 
             case R.id.nav_social_traders:
-                startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                Intent intent3 = new Intent(getApplicationContext(), MenuActivity.class);
+                intent3.putExtra("tabSlector", 3);
+                startActivity(intent3);
+
+            //    startActivity(new Intent(getApplicationContext(), MenuActivity.class));
                 break;
 
             case R.id.nav_contact_us:

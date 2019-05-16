@@ -40,6 +40,8 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
     private MenuPageAdapter menuPageAdapter;
     private ImageView nav_img_editIcon;
 
+    private int tabSelector = 0;
+
     final int[] tabSelected = {
             R.drawable.icon_summary_home,
             R.drawable.icon_summary_portfoilo_white,
@@ -57,6 +59,10 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+
+        tabSelector = getIntent().getIntExtra("tabSlector", 0);
+
 
         // Updated by Atikur Rahman
 
@@ -162,6 +168,19 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
         });
 
 
+        if (tabSelector == 0) {
+            menuViewPager.setCurrentItem(0, true);
+        } else if (tabSelector == 1) {
+            menuViewPager.setCurrentItem(1, true);
+        } else if (tabSelector == 2) {
+            menuViewPager.setCurrentItem(2, true);
+        } else if (tabSelector == 3) {
+            menuViewPager.setCurrentItem(3, true);
+        }
+        else {
+
+        }
+
     }
 
 //    @Override
@@ -244,7 +263,6 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
 
 
-
         switch (item.getItemId()) {
 
             case R.id.nav_home:
@@ -283,7 +301,6 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
                 break;
         }
-
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

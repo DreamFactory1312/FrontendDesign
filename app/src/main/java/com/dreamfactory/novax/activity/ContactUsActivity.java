@@ -97,11 +97,19 @@ public class ContactUsActivity extends AppCompatActivity implements NavigationVi
         switch (item.getItemId()) {
 
             case R.id.nav_home:
-                startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                intent.putExtra("tabSlector", 0);
+                startActivity(intent);
+
+                // startActivity(new Intent(getApplicationContext(), MenuActivity.class));
                 break;
 
             case R.id.nav_portfolio:
-                startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                Intent intent1 = new Intent(getApplicationContext(), MenuActivity.class);
+                intent1.putExtra("tabSlector", 1);
+                startActivity(intent1);
+
+                // startActivity(new Intent(getApplicationContext(), MenuActivity.class));
                 break;
 
             case R.id.nav_balance:
@@ -113,15 +121,23 @@ public class ContactUsActivity extends AppCompatActivity implements NavigationVi
                 break;
 
             case R.id.nav_orders:
-                startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                Intent intent2 = new Intent(getApplicationContext(), MenuActivity.class);
+                intent2.putExtra("tabSlector", 2);
+                startActivity(intent2);
+
+                // startActivity(new Intent(getApplicationContext(), MenuActivity.class));
                 break;
 
             case R.id.nav_social_traders:
-                startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                Intent intent3 = new Intent(getApplicationContext(), MenuActivity.class);
+                intent3.putExtra("tabSlector", 3);
+                startActivity(intent3);
+
+             //   startActivity(new Intent(getApplicationContext(), MenuActivity.class));
                 break;
 
             case R.id.nav_contact_us:
-               // startActivity(new Intent(getApplicationContext(), ContactUsActivity.class));
+                //               startActivity(new Intent(getApplicationContext(), ContactUsActivity.class));
                 break;
             case R.id.nav_logout:
                 startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));

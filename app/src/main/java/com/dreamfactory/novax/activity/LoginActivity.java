@@ -48,13 +48,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 password = et_login_password.getText().toString();
 
                 if ((username != null) && (!username.isEmpty()) && username.length() > 6) {
-                    startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+
+                    Intent intent=new Intent(getApplicationContext(), MenuActivity.class);
+                    intent.putExtra("tabSlector",0);
+                    startActivity(intent);
+
+                  //  startActivity(new Intent(getApplicationContext(), MenuActivity.class));
                 } else {
                     et_login_username.setError("At least 6 to 16 characters");
                 }
 
                 if (( password != null) && (!password.isEmpty())) {
-                    startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                    Intent intent=new Intent(getApplicationContext(), MenuActivity.class);
+                    intent.putExtra("tabSlector",0);
+                    startActivity(intent);
+
+                  //  startActivity(new Intent(getApplicationContext(), MenuActivity.class));
                 } else {
                     et_login_password.setError("At least 8 characters");
                 }
